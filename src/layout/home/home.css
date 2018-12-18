@@ -1,0 +1,52 @@
+/* HOME FIRST CONTAINER */
+
+.home-first-container{
+    height: 92vh;
+    background: url('../../img/book-bookcase-books-1166657.jpg') center left;
+    background-size: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.home-first-container div:nth-child(1){
+    background-color: rgba(0, 0, 0, 0.692);
+    width: 70%;
+    padding: 12px;
+    border-radius: 2px;
+}
+
+.home-first-container h1{
+    margin: 0;
+}
+
+/* HOME SECOND CONTAINER */
+
+.home-second-container{
+    text-align: center;
+    padding: 24px 12px;
+    background-color: rgb(245, 243, 243);
+}
+
+.home-second-container h1{
+    margin: 48px 0px;
+}
+
+.home-instructions-1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 12px;
+    padding: 24px;
+    margin: 24px auto;
+    margin-top: 48px;
+    width: 90%;
+    align-items: center;
+}
+
+.home-instructions-1 p {
+    width: 90%;
+    margin: auto;
+    margin-top: 24px;
+}
