@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './signup.css';
+import { connect } from 'react-redux';
 
 class Signup extends Component {
     constructor(props) {
@@ -12,6 +13,10 @@ class Signup extends Component {
             country: '',
             state: ''
         }
+    }
+
+    componentDidMount(){
+        this.props.hideFooter()
     }
 
     showBtn() {
@@ -64,4 +69,10 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+const mapDispatchToProps = dispatch => {
+    return {
+        hideFooter: () => dispatch({ type: "SIGNUP_VIEW" })
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Signup);

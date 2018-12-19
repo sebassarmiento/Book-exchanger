@@ -4,8 +4,13 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import Home from './layout/home/Home';
 import Footer from './components/footer/Footer';
 import Signup from './layout/signup/Signup';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {}
+  }
   render() {
     return (
       <div>
@@ -16,7 +21,7 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/signup" component={Signup} />
             </Switch>
-            <Footer />
+            {this.props.footer ? <Footer /> : null}
           </div>
         </BrowserRouter>
       </div>
@@ -24,4 +29,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = store => {
+  return {
+    footer: store.footer
+  }
+}
+
+export default connect(mapStateToProps)(App);
