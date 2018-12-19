@@ -37,13 +37,12 @@
 /* HOME SECOND CONTAINER */
 
 .home-second-container{
-    text-align: center;
-    padding: 24px 12px;
     background-color: rgb(245, 243, 243);
-    position: relative;
+    margin: 0;
+    padding: 20vh 12px;
+    text-align: center;
     height: 90vh;
-    display: flex;
-    align-items: center;
+    position: relative;
 }
 
 .home-second-container::after{
@@ -59,26 +58,24 @@
     transform: translateX(-50vw);
 }
 
-.home-second-container h1{
-    margin: 0px;
-}
-
 .home-instructions-1{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 12px;
+    display: flex;
+    width: 80%;
+    margin: 32px auto;
     padding: 24px;
-    margin: 24px auto;
-    margin-top: 48px;
-    width: 90%;
+    justify-content: center;
     align-items: center;
 }
 
-.home-instructions-1 p {
-    width: 90%;
-    margin: auto;
-    margin-top: 24px;
+.home-instructions-1 div{
+    margin: 0px 12px;
+    padding: 12px;
+    width: 25%;
+    position: relative;
+    font-weight: 400;
+    line-height: 1.4em;
 }
+
 
 /* HOME THIRD CONTAINER */
 
@@ -129,4 +126,63 @@
     top: 0%;
     right: -13px;
     transform: translateY(12%);
+}
+
+/* HOME FOURTH CONTAINER */
+
+.home-fourth-container{
+    background-color: rgb(245, 243, 243);
+    margin: 0;
+    padding: 20vh 12px;
+    text-align: center;
+    height: 70vh;
+    position: relative;
+}
+
+.home-fourth-container::before{
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -50px;
+    border-bottom: 50px solid rgb(245, 243, 243);
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    transform: translateX(-50vw);
+}
+
+.home-faq{
+    display: flex;
+    width: 80%;
+    margin: 32px auto;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-faq div{
+    margin: 0px 12px;
+    padding: 12px;
+    width: 25%;
+    height: 45vh;
+    position: relative;
+    font-weight: 400;
+    line-height: 1.4em;
+    background-color: rgba(0, 0, 0, 0.103);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.3);
+}
+
+.home-faq div span{
+    transition: all 0.3s;
+}
+
+.home-faq div:hover{
+}
+
+.home-faq div:hover span{
+    cursor: pointer;
+    transform: scale(1.1);
 }

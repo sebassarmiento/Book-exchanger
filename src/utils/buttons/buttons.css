@@ -1,0 +1,16 @@
+.blue-btn{
+    background-color: teal;
+    padding: 12px 24px;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+    box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.925);
+}
+
+.blue-btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
