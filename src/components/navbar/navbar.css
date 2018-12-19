@@ -1,16 +1,35 @@
 .navbar{
-    background-color: rgb(245, 243, 243);
+    background-color: transparent;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    height: 60px;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 70px;
     align-items: center;
-    padding: 0px 12px;
+    position: fixed;
+    width: 100%;
+    transition: all 0.6s;
+    color: white;
+    z-index: 1;
+}
+
+.navbar h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar img{
+    margin-right: 12px;
+}
+
+.navbar.scrolled{
+    background-color: rgb(245, 243, 243);
+    color: rgba(0, 0, 0, 0.733);
 }
 
 .navbar .navbar-btns{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .navbar .navbar-btns a:nth-child(1){
@@ -19,6 +38,7 @@
     border: none;
     border-radius: 4px;
     color: white;
+    margin-right: 6px;
 }
 
 .navbar .navbar-btns a:nth-child(2){
@@ -28,5 +48,6 @@
     border-radius: 4px;
     color: #2274A5;
     border: 1px solid #2274A5;
+    margin-left: 6px;
 }
 

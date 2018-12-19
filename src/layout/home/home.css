@@ -1,7 +1,7 @@
 /* HOME FIRST CONTAINER */
 
 .home-first-container{
-    height: 92vh;
+    height: 100vh;
     background: url('../../img/book-bookcase-books-1166657.jpg') center left;
     background-size: 100%;
     margin: 0;
@@ -9,13 +9,25 @@
     align-items: center;
     justify-content: center;
     color: white;
+    position: relative;
+}
+
+.home-first-container::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(black, rgba(0, 0, 0, 0));
+    opacity: 0.5;
 }
 
 .home-first-container div:nth-child(1){
-    background-color: rgba(0, 0, 0, 0.692);
     width: 70%;
     padding: 12px;
     border-radius: 2px;
+    font-size: 2em;
+    text-align: center;
+    z-index: 0;
 }
 
 .home-first-container h1{
@@ -28,10 +40,27 @@
     text-align: center;
     padding: 24px 12px;
     background-color: rgb(245, 243, 243);
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+.home-second-container::after{
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: 100%;
+    left: 50%;
+    border-top: 50px solid rgb(245, 243, 243);
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    transform: translateX(-50vw);
 }
 
 .home-second-container h1{
-    margin: 48px 0px;
+    margin: 0px;
 }
 
 .home-instructions-1{
@@ -49,4 +78,55 @@
     width: 90%;
     margin: auto;
     margin-top: 24px;
+}
+
+/* HOME THIRD CONTAINER */
+
+.home-third-container{
+    background-color: #2274A5;
+    margin: 0;
+    padding: 20vh 12px;
+    color: white;
+    text-align: center;
+    height: 90vh;
+}
+
+.home-our-qualities{
+    display: flex;
+    width: 80%;
+    margin: 32px auto;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-our-qualities div{
+    margin: 0px 12px;
+    padding: 12px;
+    width: 25%;
+    position: relative;
+    font-weight: 400;
+    line-height: 1.4em;
+}
+
+.home-our-qualities div:nth-child(1)::after{
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.404);
+    width: 2px;
+    height: 80%;
+    top: 0%;
+    right: -13px;
+    transform: translateY(12%);
+}
+
+.home-our-qualities div:nth-child(2)::after{
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.411);
+    width: 2px;
+    height: 80%;
+    top: 0%;
+    right: -13px;
+    transform: translateY(12%);
 }
