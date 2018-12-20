@@ -11,12 +11,15 @@
     z-index: 1;
 }
 
+.navbar a{
+    color: white;
+}
+
 .navbar .brand{
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.17em;
-    color: white;
     font-weight: bold;
 }
 
@@ -30,7 +33,10 @@
 
 .navbar.scrolled{
     background-color: rgb(245, 243, 243);
-    color: rgba(0, 0, 0, 0.733);
+}
+
+.navbar.scrolled a{
+    color: rgba(0, 0, 0, 0.733) !important;
 }
 
 .navbar .navbar-btns{
@@ -40,21 +46,25 @@
 }
 
 .navbar .navbar-btns a:nth-child(1){
-    background-color: #2274A5;
     padding: 12px 24px;
-    border: none;
     border-radius: 4px;
-    color: white;
     margin-right: 6px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
 }
 
 .navbar .navbar-btns a:nth-child(2){
-    background-color: white;
     padding: 12px 24px;
-    border: none;
+    border: 2px solid #2274A5;
     border-radius: 4px;
-    color: #2274A5;
-    border: 1px solid #2274A5;
     margin-left: 6px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+.navbar .navbar-btns a:nth-child(2):hover{
+    background-color: #2274A5;
+    color: white !important;
 }
 

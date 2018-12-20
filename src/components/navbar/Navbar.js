@@ -29,8 +29,8 @@ class Navbar extends Component {
         <NavLink onClick={() => this.props.backToHome()} className="brand" to="/" ><img src={Logo} height="32px" />Book exchanger</NavLink>
         <div></div>
         <div className={this.props.signUp ? "transparent" : "navbar-btns"} >
-          <NavLink to="/signup" className="navbar-signup" >Sign up</NavLink>
           <NavLink to="/login" className="navbar-login" >Log in</NavLink>
+          <NavLink to="/signup" className="navbar-signup" >Sign up</NavLink>
         </div>
         {this.state.redirect ? <Redirect to="/" /> : null}
       </div>

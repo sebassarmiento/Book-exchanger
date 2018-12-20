@@ -6,9 +6,9 @@ class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: '',
-            password: '',
-            confirm: '',
+            email: 'seba@gmail.com',
+            password: 'caca',
+            confirm: 'caca',
             username: '',
             country: '',
             state: ''
@@ -43,7 +43,7 @@ class Signup extends Component {
     render() {
         return (
             <div className="signup-container" >
-                <div className={this.state.next ? "hidden" : "signup-first"} >
+                <div className={this.state.next ? "hidden" : null} >
                     <h1>Welcome to book exchanger!</h1>
                     <p>* Email:</p>
                     <input onChange={(e) => this.handleChange(e)} value={this.state.email} name="email" type="text" />
@@ -53,7 +53,7 @@ class Signup extends Component {
                     <input onChange={(e) => this.handleChange(e)} value={this.state.confirm} name="confirm" type="password" />
                     {this.showBtn()}
                 </div>
-                <div className={this.state.next ? "signup-second" : "hidden"} >
+                <div className={this.state.next ? null : "hidden"} >
                     <i onClick={() => this.setState({next: false})} className="fas fa-arrow-left"></i>
                     <h1>Just a few more steps</h1>
                     <p>* Pick a username:</p>

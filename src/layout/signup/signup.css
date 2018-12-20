@@ -1,5 +1,5 @@
 .signup-container{
-    background: radial-gradient(orange, orangered);
+    background: radial-gradient(rgb(59, 183, 255), #2274A5);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -8,10 +8,17 @@
 
 .signup-container div{
     background-color: rgb(240, 240, 240);
-    width: 45%;
+    width: 50%;
     padding: 24px;
     box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.3);
-    animation: signupFormEnter 0.6s ease-in-out;
+}
+
+.signup-container div:nth-child(1){
+    animation: signupFormEnter1 0.5s ease-in-out;
+}
+
+.signup-container div:nth-child(2){
+    animation: signupFormEnter2 0.5s ease-in-out;
 }
 
 .signup-container h1{
@@ -39,8 +46,14 @@
     border: 1px solid rgb(0, 119, 255);
 }
 
+.signup-container i:hover{
+    cursor: pointer;
+}
+
+/* BUTTONS */
+
 .signup-form-next-btn{
-    background-color: teal;
+    background-color: rgb(255, 135, 55);
     border: none;
     border-radius: 4px;
     padding: 12px 24px;
@@ -55,11 +68,10 @@
 
 .signup-form-next-btn:hover{
     cursor: pointer;
-    transform: translateY(-3px);
 }
 
 .signup-form-next-btn-disabled{
-    background-color: rgba(0, 128, 128, 0.596);
+    background-color: rgba(255, 135, 55, 0.603);
     border: none;
     border-radius: 4px;
     padding: 12px 24px;
@@ -72,14 +84,12 @@
     transition: all 0.4s;
 }
 
-.signup-container i:hover{
-    cursor: pointer;
-}
+/* ANIMATIONS */
 
-@keyframes signupFormEnter{
+@keyframes signupFormEnter1{
     0%{
         opacity: 0;
-        transform: scale(2.2);
+        transform: scale(2);
     }
     100%{
         opacity: 1;
@@ -87,13 +97,13 @@
     }
 }
 
-@keyframes signupFormLeave{
+@keyframes signupFormEnter2{
     0%{
-        transform: translateX(0);
-        opacity: 1;
+        opacity: 0;
+        transform: scale(0.2);
     }
     100%{
-        transform: translateX(100px);
-        opacity: 0;
+        opacity: 1;
+        transform: scale(1);
     }
 }
