@@ -25,3 +25,7 @@ h1{
 .hidden{
   display: none;
 }
+
+.transparent{
+  opacity: 0;
+}

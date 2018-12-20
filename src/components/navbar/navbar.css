@@ -11,10 +11,17 @@
     z-index: 1;
 }
 
-.navbar h3{
+.navbar .brand{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.17em;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar .brand:hover{
+    cursor: pointer;
 }
 
 .navbar img{
