@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './signup.css';
 import { connect } from 'react-redux';
 import Loader from '../../utils/loaders/Loader1';
+import { Redirect, NavLink } from 'react-router-dom';
 
 class Signup extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class Signup extends Component {
             password: 'caca',
             confirm: 'caca',
             username: '',
+            gender: null,
             age: 0
         }
     }
@@ -25,7 +27,9 @@ class Signup extends Component {
                 &&
                 this.state.password.length > 3
                 &&
-                this.state.confirm.length === this.state.password.length) {
+                this.state.confirm.length === this.state.password.length
+                &&
+                this.state.validEmail) {
                 return <button
                     onClick={() => this.setState({ next: true })}
                     className="signup-form-next-btn" >Next
@@ -40,10 +44,10 @@ class Signup extends Component {
                 &&
                 this.state.password.length > 3
                 &&
-                this.state.age) {
+                this.state.age && this.state.gender) {
                 return <button
-                    onClick={() => this.setState({ next: true })}
-                    className="signup-form-next-btn" >Sign up
+                onClick={() => this.signUp()}
+                className="signup-form-next-btn" >Sign up
                        </button>
             } else {
                 return <button
@@ -79,15 +83,45 @@ class Signup extends Component {
     }
 
     handleGender(e){
-        this.setState({gender: e.target.value})
-        console.log(this.state.gender)
+        this.setState({gender: e.target.id}, () => console.log(this.state.gender))
+    }
+
+    signUp(){
+        console.log('ENTRA')
+        fetch('http://localhost:3000/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password,
+                username: this.state.username,
+                gender: this.state.gender,
+                age: this.state.age
+            })
+        })
+        .then(d => d.json())
+        .then(response => {
+            console.log(response)
+            if(response.message === 'User added successfully!'){
+                this.setState({userCreated: true})
+                this.props.userCreated()
+                setTimeout(() => this.setState({redirect: true}), 500)
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     render() {
 
+        console.log(this.state)
+
         const validEmail = <p className="valid-email-text" >Email is available!</p>
         const invalidEmail = <p className="invalid-email-text" >Email is already taken!</p>
-        const emailChecker = this.state.checkingEmail ? <Loader /> : this.state.validEmail ? validEmail : this.state.invalidEmail ? invalidEmail : null
+        const emailChecker = this.state.checkingEmail ? <Loader size={"small"} /> : this.state.validEmail ? validEmail : this.state.invalidEmail ? invalidEmail : null
 
         return (
             <div className="signup-container" >
@@ -100,31 +134,33 @@ class Signup extends Component {
                     <p>* Confirm password:</p>
                     <input onChange={(e) => this.handleChange(e)} value={this.state.confirm} name="confirm" type="password" />
                     {this.showBtn(1)}
+                    <p className="signup-to-login" >Already have an account? <NavLink to="/login" >Log in</NavLink></p>
                 </div>
-                <div className={this.state.next ? null : "hidden"} >
+                <div className={this.state.userCreated ? "signup-user-created" : this.state.next ? null : "hidden"} >
                     <i onClick={() => this.setState({ next: false })} className="fas fa-arrow-left"></i>
                     <h1>Just a few more steps</h1>
                     <p>* Pick a username:</p>
                     <input onChange={(e) => this.handleChange(e)} value={this.state.username} name="username" type="text" />
                     <p>* Gender:</p>
-                    <span className="signup-gender-options" >
-                        <span>
-                            <input name="gender" type="radio" />
-                            <label onChange={(e) => this.handleGender(e)} htmlFor="male" >Male</label>
+                    <span className="signup-gender-options" onChange={(e) => this.handleGender(e)} >
+                        <span > 
+                            <input id="male-radio" name="gender" type="radio" />
+                            <label htmlFor="male" >Male</label>
                         </span>
                         <span>
-                            <input name="gender" type="radio" />
-                            <label onChange={(e) => this.handleGender(e)} htmlFor="female" >Female</label>
+                            <input id="female-radio" name="gender" type="radio" />
+                            <label htmlFor="female" >Female</label>
                         </span>
                         <span>
-                            <input name="gender" type="radio" />
-                            <label onChange={(e) => this.handleGender(e)} htmlFor="other" >Other</label>
+                            <input id="other-radio" name="gender" type="radio" />
+                            <label htmlFor="other" >Other</label>
                         </span>
                     </span>
-                    <p>* State:</p>
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.state} name="state" type="text" />
+                    <p>* Age:</p>
+                    <input onChange={(e) => this.handleChange(e)} value={this.state.state} name="age" type="number" />
                     {this.showBtn(0)}
                 </div>
+                {this.state.redirect ? <Redirect to="/main" /> : null}
             </div>
         )
     }
@@ -132,7 +168,8 @@ class Signup extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        hideFooter: () => dispatch({ type: "SIGNUP_VIEW" })
+        hideFooter: () => dispatch({ type: "SIGNUP_VIEW" }),
+        userCreated: () => dispatch({ type: "NEW_USER_SIGNED" })
     }
 }
 

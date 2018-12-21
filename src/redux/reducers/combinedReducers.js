@@ -10,6 +10,8 @@ const reducer =  (store = initialStore, actions) => {
         return {...store, footer: false, signUp: true}
         case Actions.BACK_TO_HOME:
         return {...store, footer: true, signUp: false}
+        case Actions.NEW_USER_SIGNED:
+        return {...store, signUp: false, logged: true}
         default:
         return {...store}
     }

@@ -6,32 +6,38 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Navbar extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {}
   }
 
-  componentDidMount(){
+  componentDidMount() {
     window.onscroll = this.handleScroll.bind(this)
   }
 
-  handleScroll(){
-    if(window.scrollY > 400){
-      this.setState({scrolled: true})
+  handleScroll() {
+    if (window.scrollY > 400) {
+      this.setState({ scrolled: true })
     } else {
-      this.setState({scrolled: false})
+      this.setState({ scrolled: false })
     }
   }
-  
+
   render() {
+
+    const loggedMenu = <div>Welcome!</div>
+    const notLoggedMenu = <div className={this.props.signUp ? "transparent" : "navbar-btns"} >
+                            <NavLink to="/login" className="navbar-login" >Log in</NavLink>
+                            <NavLink to="/signup" className="navbar-signup" >Sign up</NavLink>
+                          </div>
+
     return (
       <div className={this.state.scrolled ? "navbar scrolled" : "navbar"} >
         <NavLink onClick={() => this.props.backToHome()} className="brand" to="/" ><img src={Logo} height="32px" />Book exchanger</NavLink>
         <div></div>
-        <div className={this.props.signUp ? "transparent" : "navbar-btns"} >
-          <NavLink to="/login" className="navbar-login" >Log in</NavLink>
-          <NavLink to="/signup" className="navbar-signup" >Sign up</NavLink>
-        </div>
+        {
+          this.props.logged ? loggedMenu : notLoggedMenu
+        }
         {this.state.redirect ? <Redirect to="/" /> : null}
       </div>
     )
@@ -40,7 +46,8 @@ class Navbar extends Component {
 
 const mapStateToProps = store => {
   return {
-    signUp: store.signUp
+    signUp: store.signUp,
+    logged: store.logged
   }
 }
 

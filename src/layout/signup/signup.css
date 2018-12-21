@@ -8,7 +8,7 @@
 
 .signup-container div{
     background-color: rgb(240, 240, 240);
-    width: 30%;
+    width: 40%;
     padding: 24px;
     box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.3);
 }
@@ -24,7 +24,8 @@
 .signup-container h1{
     text-align: center;
     margin-bottom: 32px;
-    font-size: 2em;
+    font-size: 1.7em;
+    text-transform: uppercase;
 }
 
 .signup-container p{
@@ -70,6 +71,29 @@
     grid-template-columns: 1fr 2fr;
 }
 
+.signup-user-created{
+    transition: all 0.4s cubic-bezier(0.93,-0.79, 1, 0.76);
+    transform: scale(0);
+}
+
+.user-signed-loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.signup-to-login{
+    text-align: center;
+    margin: 0px;
+    padding-top: 12px;
+}
+
+.signup-to-login a{
+    color: #2274A5;
+}
+
 /* VALID/INVALID TEXTS */
 
 .valid-email-text{
@@ -95,7 +119,8 @@
     color: white;
     text-transform: uppercase;
     font-weight: bold;
-    margin: 24px auto;
+    margin: 24px 0px;
+    margin-bottom: 0px;
     width: 100%;
     transition: all 0.4s;
 }
@@ -113,7 +138,8 @@
     color: white;
     text-transform: uppercase;
     font-weight: bold;
-    margin: 24px auto;
+    margin: 24px 0px;
+    margin-bottom: 0px;
     width: 100%;
     transition: all 0.4s;
 }
