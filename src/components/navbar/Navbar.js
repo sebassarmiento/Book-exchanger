@@ -46,7 +46,7 @@ class Navbar extends Component {
 
 const mapStateToProps = store => {
   return {
-    signUp: store.signUp,
+    signUp: store.signUp || store.login,
     logged: store.logged
   }
 }
