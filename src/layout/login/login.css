@@ -1,0 +1,7 @@
+.login-container{
+    background: radial-gradient(rgb(59, 183, 255), #2274A5);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
