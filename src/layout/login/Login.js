@@ -22,7 +22,7 @@ class Login extends Component {
   }
 
   handleLogin(){
-    this.setState({loginTry: true})
+    this.setState({loginTry: true, invalidLogin: false})
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
@@ -58,10 +58,11 @@ class Login extends Component {
           <input name="email" onChange={(e) => this.handleChange(e)} value={this.state.email} type="text" />
           <p>Password:</p>
           <input name="password" onChange={(e) => this.handleChange(e)} value={this.state.password} type="password" />
+          {this.state.invalidLogin ? <p className="invalid-login" >Invalid username or password.</p> : <p style={{opacity: 0}} className="invalid-login" >Invalid username or password.</p>}
           <button onClick={() => this.handleLogin()} className="login-form-btn" >Log in</button>
           <p className="login-to-signup" >Don't have an account? <NavLink to="/signup" >Sign up</NavLink></p>
           {this.state.loginTry ? <div className="login-loader" ><div></div></div> : null}
-          {this.state.loginSuccess ? <Redirect to="/dashboard" /> : null}
+          {this.state.loginSuccess ? <Redirect to="/app/dashboard" /> : null}
         </div>
       </div>
     )

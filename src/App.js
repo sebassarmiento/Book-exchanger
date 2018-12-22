@@ -7,6 +7,7 @@ import Signup from './layout/signup/Signup';
 import { connect } from 'react-redux';
 import Dashboard from './layout/user/dashboard/Dashboard';
 import Login from './layout/login/Login';
+import NavbarApp from './components/navbarApp/NavbarApp';
 
 class App extends Component {
   constructor(props){
@@ -18,12 +19,12 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <Navbar />
+            {this.props.logged ? <NavbarApp /> : <Navbar />}
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route exact path="/app/dashboard" component={Dashboard} />
             </Switch>
             {this.props.footer ? <Footer /> : null}
           </div>
@@ -35,7 +36,8 @@ class App extends Component {
 
 const mapStateToProps = store => {
   return {
-    footer: store.footer
+    footer: store.footer,
+    logged: store.logged
   }
 }
 
