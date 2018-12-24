@@ -105,9 +105,9 @@ class Signup extends Component {
         .then(response => {
             console.log(response)
             if(response.message === 'User added successfully!'){
-                this.setState({userCreated: true})
+                this.setState({userCreated: true, redirect: true})
                 this.props.userCreated()
-                setTimeout(() => this.setState({redirect: true}), 500)
+                //setTimeout(() => this.setState({redirect: true}), 500)
             }
         })
         .catch(err => {
@@ -160,7 +160,7 @@ class Signup extends Component {
                     <input onChange={(e) => this.handleChange(e)} value={this.state.state} name="age" type="number" />
                     {this.showBtn(0)}
                 </div>
-                {this.state.redirect ? <Redirect to="/main" /> : null}
+                {this.state.redirect ? <Redirect to="/dashboard" /> : null}
             </div>
         )
     }
