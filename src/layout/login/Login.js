@@ -39,7 +39,7 @@ class Login extends Component {
       this.setState({loginTry: false})
       if(res.message === 'Access granted'){
         this.setState({loginSuccess: true})
-        this.props.loginSuccess()
+        this.props.loginSuccess({...res.user})
       } else {
         this.setState({invalidLogin: true})
       }
@@ -72,7 +72,7 @@ class Login extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     loginView: () => dispatch({ type: "LOGIN_VIEW" }),
-    loginSuccess: () => dispatch({ type: "LOGIN_SUCCESS" })
+    loginSuccess: userData => dispatch({ type: "LOGIN_SUCCESS" , payload: {...userData} })
   }
 }
 

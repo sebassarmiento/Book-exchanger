@@ -29,7 +29,6 @@ class App extends Component {
             :
             <Switch>
             <Route path="/dashboard" component={Dashboard} />
-            <Route path="*" component={Home} />
             </Switch>
             }
             {this.props.footer ? <Footer /> : null}
