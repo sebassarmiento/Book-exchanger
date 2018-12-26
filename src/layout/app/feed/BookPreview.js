@@ -6,7 +6,7 @@ class BookPreview extends Component {
         return (
             <div className="book-preview" >
                 <p>In <NavLink to={`/app/books/${this.props.category}`} >{this.props.category}</NavLink></p>
-                <img src="//unsplash.it/200/200" />
+                <div className="book-preview-img" ><img src="//unsplash.it/300/500" /></div>
                 <NavLink className="book-preview-title" to={`/app/books/${this.props._id}`} >{this.props.name}</NavLink>
                 <p>Location: {this.props.place}</p>
                 <p>Pages: {this.props.pages}</p>

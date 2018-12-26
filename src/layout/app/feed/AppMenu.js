@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Categories extends Component {
+class AppMenu extends Component {
   render() {
     return (
       <div className="feed-categories" >
@@ -16,4 +16,4 @@ class Categories extends Component {
   }
 }
 
-export default Categories;
+export default AppMenu;

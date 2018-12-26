@@ -1,9 +1,5 @@
 .feed-container{
-    display: grid;
-    grid-template-columns: 1fr 5fr;
     padding-top: 70px;
-    grid-row-gap: 12px;
-    grid-column-gap: 12px;
 }
 
 /* CATEGORIES COLUMN */
@@ -15,6 +11,10 @@
     background-color: rgba(239, 241, 241, 0.514);
     max-height: calc(100vh - 70px);
     position: fixed;
+    width: 20vw;
+    height: calc(100vh - 70px);
+    box-sizing: border-box;
+    overflow: scroll;
 }
 
 .feed-container .feed-categories p{
@@ -33,20 +33,40 @@
 
 .feed-container .feedview-container {
     padding: 12px;
+    max-width: 80vw;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    background-color: gray;
 }
 
 .feed-container .feedview-container .feedview-books{
     padding: 12px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 4px;
+    grid-row-gap: 8px;
 }
 
 /* BOOK PREVIEW */
 
 .feedview-books .book-preview{
-    display: grid;
+    background-color: #2274A5;
+    padding: 0;
+    width: 100%;
+}
+
+.feedview-books .book-preview-img{
+    background-color: black;
+    height: 25vh;
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.feedview-books .book-preview img{
+    height: 100%;
 }
 
 .feedview-books .book-preview p{
