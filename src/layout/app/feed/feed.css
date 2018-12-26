@@ -38,31 +38,47 @@
     box-sizing: border-box;
     position: absolute;
     right: 0;
-    background-color: gray;
 }
 
 .feed-container .feedview-container .feedview-books{
     padding: 12px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 4px;
+    grid-column-gap: 8px;
     grid-row-gap: 8px;
 }
 
 /* BOOK PREVIEW */
 
 .feedview-books .book-preview{
-    background-color: #2274A5;
     padding: 0;
     width: 100%;
+    background-color: rgb(243, 241, 241);
+    padding: 6px 12px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.288);
+}
+
+.feedview-books .book-preview a{
+    color: rgba(0, 0, 0, 0.877);
+    font-weight: bold;
+}
+
+.feedview-books .book-preview a:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .feedview-books .book-preview-img{
-    background-color: black;
+    margin: 24px 0px;
     height: 25vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.feedview-books .book-preview-img:hover{
+    cursor: pointer;
 }
 
 .feedview-books .book-preview img{
@@ -71,6 +87,7 @@
 
 .feedview-books .book-preview p{
     margin: 4px 0px;
+    font-size: 0.9em;
 }
 
 .feedview-books .book-preview .book-preview-title{
@@ -78,4 +95,9 @@
     color: rgba(0, 0, 0, 0.726);
     font-size: 1.17em;
     font-weight: bold;
+}
+
+.feedview-books .book-preview .book-preview-title:hover{
+    color: rgba(0, 0, 0, 0.836);
+    text-decoration: underline;
 }
