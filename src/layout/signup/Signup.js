@@ -106,7 +106,7 @@ class Signup extends Component {
             console.log(response)
             if(response.message === 'User added successfully!'){
                 this.setState({userCreated: true, redirect: true})
-                this.props.userCreated()
+                this.props.userCreated(response.user)
                 //setTimeout(() => this.setState({redirect: true}), 500)
             }
         })
@@ -160,7 +160,7 @@ class Signup extends Component {
                     <input onChange={(e) => this.handleChange(e)} value={this.state.state} name="age" type="number" />
                     {this.showBtn(0)}
                 </div>
-                {this.state.redirect ? <Redirect to="/dashboard" /> : null}
+                {this.state.redirect ? <Redirect to="/app/welcome-user" /> : null}
             </div>
         )
     }
@@ -169,7 +169,7 @@ class Signup extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         hideFooter: () => dispatch({ type: "SIGNUP_VIEW" }),
-        userCreated: () => dispatch({ type: "NEW_USER_SIGNED" })
+        userCreated: userData => dispatch({ type: "NEW_USER_SIGNED" , payload: userData})
     }
 }
 

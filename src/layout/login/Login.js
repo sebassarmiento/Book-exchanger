@@ -62,7 +62,7 @@ class Login extends Component {
           <button onClick={() => this.handleLogin()} className="login-form-btn" >Log in</button>
           <p className="login-to-signup" >Don't have an account? <NavLink to="/signup" >Sign up</NavLink></p>
           {this.state.loginTry ? <div className="login-loader" ><div></div></div> : null}
-          {this.state.loginSuccess ? <Redirect to="/app/dashboard" /> : null}
+          {this.state.loginSuccess ? <Redirect to="/app/feed" /> : null}
         </div>
       </div>
     )

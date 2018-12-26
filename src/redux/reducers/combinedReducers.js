@@ -15,7 +15,7 @@ const reducer =  (store = initialStore, action) => {
         case Actions.BACK_TO_HOME:
         return {...store, footer: true, signUp: false, login: false}
         case Actions.NEW_USER_SIGNED:
-        return {...store, signUp: false, logged: true}
+        return {...store, userData: {...action.payload}, signUp: false, logged: true}
         case Actions.LOGOUT:
         return {}
         default:

@@ -1,11 +1,13 @@
 .app-navbar{
     display: flex;
-    position: sticky;
+    position: fixed;
     background-color: rgb(240, 240, 240);
     height: 70px;
+    width: 100%;
     align-items: center;
     padding: 0px 12px;
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    z-index: 10;
 }
 
 .app-navbar img{
@@ -53,4 +55,9 @@
 .app-navbar-menu a:hover{
     border-bottom: 4px solid #2274A5;
     color: #2274A5;
+}
+
+.app-navbar-active{
+    border-bottom: 4px solid #2274A5 !important;
+    color: #2274A5 !important;
 }

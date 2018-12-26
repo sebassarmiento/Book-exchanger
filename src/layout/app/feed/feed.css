@@ -1,6 +1,9 @@
 .feed-container{
     display: grid;
     grid-template-columns: 1fr 5fr;
+    padding-top: 70px;
+    grid-row-gap: 12px;
+    grid-column-gap: 12px;
 }
 
 /* CATEGORIES COLUMN */
@@ -10,6 +13,8 @@
     font-weight: 300;
     padding: 12px;
     background-color: rgba(239, 241, 241, 0.514);
+    max-height: calc(100vh - 70px);
+    position: fixed;
 }
 
 .feed-container .feed-categories p{
@@ -36,10 +41,21 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+/* BOOK PREVIEW */
+
+.feedview-books .book-preview{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
 .feedview-books .book-preview p{
     margin: 4px 0px;
 }
 
-.feedview-books .book-preview h3{
+.feedview-books .book-preview .book-preview-title{
     margin: 4px 0px;
+    color: rgba(0, 0, 0, 0.726);
+    font-size: 1.17em;
+    font-weight: bold;
 }
