@@ -11,7 +11,7 @@ class NavbarApp extends Component {
         <div ><img src={Logo} height="32px" /><NavLink to="/app/dashboard" >Book exchanger</NavLink></div>
         <div></div>
         <div className="app-navbar-menu" >
-          <NavLink to="/app/dashboard" >New</NavLink>
+          <NavLink to="/app/feed" >New</NavLink>
           <NavLink to="/app/publish" >Publish</NavLink>
           <NavLink to="/app/profile" >{this.props.currentUsername}</NavLink>
           <NavLink onClick={() => this.props.logout()} to="/login" >Log out</NavLink>

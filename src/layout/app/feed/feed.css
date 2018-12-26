@@ -1,0 +1,45 @@
+.feed-container{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+/* CATEGORIES COLUMN */
+
+.feed-container .feed-categories{
+    font-size: 1em;
+    font-weight: 300;
+    padding: 12px;
+    background-color: rgba(239, 241, 241, 0.514);
+}
+
+.feed-container .feed-categories p{
+    margin: 12px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.247);
+    padding: 12px 8px;
+}
+
+.feed-container .feed-categories p:hover{
+    cursor: pointer;
+    color: #2274A5;
+    border-bottom: 1px solid #2274A5;
+}
+
+/* FEEDVIEW */
+
+.feed-container .feedview-container {
+    padding: 12px;
+}
+
+.feed-container .feedview-container .feedview-books{
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.feedview-books .book-preview p{
+    margin: 4px 0px;
+}
+
+.feedview-books .book-preview h3{
+    margin: 4px 0px;
+}

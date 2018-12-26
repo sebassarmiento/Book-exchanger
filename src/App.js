@@ -5,7 +5,7 @@ import Home from './layout/home/Home';
 import Footer from './components/footer/Footer';
 import Signup from './layout/signup/Signup';
 import { connect } from 'react-redux';
-import Dashboard from './layout/app/dashboard/Dashboard';
+import Feed from './layout/app/feed/Feed';
 import Login from './layout/login/Login';
 import NavbarApp from './components/navbarApp/NavbarApp';
 
@@ -28,7 +28,7 @@ class App extends Component {
             </Switch>
             :
             <Switch>
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/app/feed" component={Feed} />
             </Switch>
             }
             {this.props.footer ? <Footer /> : null}
