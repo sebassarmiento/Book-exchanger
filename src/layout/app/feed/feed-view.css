@@ -1,51 +1,47 @@
-.feed-container{
-    padding-top: 70px;
-}
-
-/* CATEGORIES COLUMN */
-
-.feed-container .feed-categories{
-    font-size: 1em;
-    font-weight: 300;
+.feedview-container {
     padding: 12px;
-    background-color: rgba(239, 241, 241, 0.514);
-    max-height: calc(100vh - 70px);
-    position: fixed;
-    width: 20vw;
-    height: calc(100vh - 70px);
+    width: 100%;
+    max-height: 100vh;
     box-sizing: border-box;
+    position: relative;
+    right: 0;
     overflow: scroll;
 }
 
-.feed-container .feed-categories p{
-    margin: 12px 0px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.247);
-    padding: 12px 8px;
-}
-
-.feed-container .feed-categories p:hover{
-    cursor: pointer;
-    color: #2274A5;
-    border-bottom: 1px solid #2274A5;
-}
-
-/* FEEDVIEW */
-
-.feed-container .feedview-container {
-    padding: 12px;
-    max-width: 80vw;
-    width: 100%;
-    box-sizing: border-box;
-    position: absolute;
-    right: 0;
-}
-
-.feed-container .feedview-container .feedview-books{
+.feedview-container .feedview-books{
     padding: 12px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 8px;
     grid-row-gap: 8px;
+}
+
+.feedview-loader{
+    position: absolute;
+    top: calc(50vh - 70px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 50px;
+    padding: 12px;
+}
+
+.feedview-loader div{
+    height: calc(100% - 8px);
+    width: calc(100% - 8px);
+    border-radius: 50%;
+    border: 4px solid rgba(228, 217, 217, 0.938);
+    border-top: 4px solid #2274A5;
+    animation: feedviewLoader 1s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
+}
+
+@keyframes feedviewLoader {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }
 
 /* BOOK PREVIEW */

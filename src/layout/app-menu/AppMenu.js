@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './app-menu.css';
 
 class AppMenu extends Component {
   render() {
     return (
-      <div className="feed-categories" >
+      <div className="app-menu" >
         <h1>Categories</h1>
         <p>Sport</p>
         <p>Clothes</p>

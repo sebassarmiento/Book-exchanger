@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import BookPreview from './BookPreview';
+import { connect } from 'react-redux';
+import './feed-view.css';
 
 class FeedView extends Component {
   constructor(props) {
@@ -7,7 +9,13 @@ class FeedView extends Component {
     this.state = {}
   }
   componentDidMount() {
-    fetch('http://localhost:3000/books/')
+    console.log('Here', this.props.token)
+    fetch('http://localhost:3000/books/', {
+      method: 'GET',
+      headers: {
+        'authorization': this.props.token
+      }
+    })
       .then(d => d.json())
       .then(res => {
         console.log(res)
@@ -19,13 +27,19 @@ class FeedView extends Component {
       <div className="feedview-container" >
         <h1>Latest books</h1>
         <div className="feedview-books" >
-          {this.state.data ? this.state.data.map(book => {
+          {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
             return (<BookPreview {...book} />)
-          }) : null}
+          }) : <div className="feedview-loader" ><div></div></div>}
         </div>
       </div>
     )
   }
 }
 
-export default FeedView;
+const mapStateToProps = store => {
+  return {
+    token: store.userData.token
+  }
+}
+
+export default connect(mapStateToProps)(FeedView);

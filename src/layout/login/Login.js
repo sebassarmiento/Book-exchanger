@@ -37,9 +37,9 @@ class Login extends Component {
     .then(res => {
       console.log(res)
       this.setState({loginTry: false})
-      if(res.message === 'Access granted'){
+      if(res.message === 'Auth successful'){
         this.setState({loginSuccess: true})
-        this.props.loginSuccess({...res.user})
+        this.props.loginSuccess({...res.user, token: res.token})
       } else {
         this.setState({invalidLogin: true})
       }

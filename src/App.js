@@ -5,9 +5,10 @@ import Home from './layout/home/Home';
 import Footer from './components/footer/Footer';
 import Signup from './layout/signup/Signup';
 import { connect } from 'react-redux';
-import Feed from './layout/app/feed/Feed';
 import Login from './layout/login/Login';
 import NavbarApp from './components/navbarApp/NavbarApp';
+import AppMenu from './layout/app-menu/AppMenu';
+import FeedView from './layout/app/feed/FeedView';
 
 class App extends Component {
   constructor(props) {
@@ -21,15 +22,18 @@ class App extends Component {
           <div>
             {this.props.logged ? <NavbarApp /> : <Navbar />}
             {!this.props.logged ?
-            <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/signup" exact component={Signup} />
-            <Route path="/login" exact component={Login} />
-            </Switch>
-            :
-            <Switch>
-            <Route path="/app/feed" component={Feed} />
-            </Switch>
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/signup" exact component={Signup} />
+                <Route path="/login" exact component={Login} />
+              </Switch>
+              :
+              <div className="app-layout" >
+                <AppMenu />
+                <Switch>
+                  <Route path="/app/feed" component={FeedView} />
+                </Switch>
+              </div>
             }
             {this.props.footer ? <Footer /> : null}
           </div>
