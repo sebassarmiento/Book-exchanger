@@ -10,7 +10,7 @@ class FeedView extends Component {
   }
   componentDidMount() {
     console.log('Here', this.props.token)
-    fetch('http://localhost:3000/books/', {
+    fetch('http://localhost:3000/app/books/', {
       method: 'GET',
       headers: {
         'authorization': this.props.token

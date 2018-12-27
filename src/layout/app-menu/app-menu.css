@@ -1,7 +1,51 @@
 .app-menu{
-    padding: 0.8em;
-    background-color: rgb(238, 238, 238);
-    z-index: -1;
+    background-color: #2274A5;
     box-sizing: border-box;
+    overflow: scroll;
     width: 100%;
+    color: white;
+}
+
+.app-menu .menu-item{
+    display: flex;
+    align-items: center;
+}
+
+.app-menu .menu-item i{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.app-menu .menu-item span{
+    flex: 10;
+}
+
+.app-menu h3{
+    padding: 0px 12px;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.app-menu a{
+    display: block;
+    width: 100%;
+    padding: 12px;
+    color: rgba(255, 255, 255, 0.87);
+    font-weight: 400;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
+.app-menu i{
+    color: orange;
+}
+
+.app-menu a:hover{
+    background-color: rgba(0, 0, 0, 0.171);
+    color: white;
+}
+
+.app-menu .menu-item{
+    font-weight: 500;
 }

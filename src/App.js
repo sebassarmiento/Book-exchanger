@@ -9,6 +9,7 @@ import Login from './layout/login/Login';
 import NavbarApp from './components/navbarApp/NavbarApp';
 import AppMenu from './layout/app-menu/AppMenu';
 import FeedView from './layout/app/feed/FeedView';
+import IndividualBook from './layout/app/book/individualBook';
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class App extends Component {
               <div className="app-layout" >
                 <AppMenu />
                 <Switch>
-                  <Route path="/app/feed" component={FeedView} />
+                  <Route path="/app/feed" exact component={FeedView} />
+                  <Route path="/app/books/id/:bookId" exact component={IndividualBook} />
                 </Switch>
               </div>
             }
