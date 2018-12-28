@@ -50,15 +50,41 @@
     align-items: center;
     justify-content: center;
     transition: all 0.5s;
-    border-bottom: 4px solid transparent;
+    position: relative;
 }
 
 .app-navbar-menu a:hover{
-    border-bottom: 4px solid #2274A5;
-    color: #2274A5;
+    color: #2274A5 !important;
 }
 
 .app-navbar-active{
-    border-bottom: 4px solid #2274A5 !important;
     color: #2274A5 !important;
+}
+
+.app-navbar-active::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: scale(1) !important;
+    height: 4px;
+    background-color: #2274A5;
+    transition: all 0.3s ease-in-out;
+}
+
+/* After */
+
+.app-navbar-menu a::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: scale(0, 1);
+    height: 4px;
+    background-color: #2274A5;
+    transition: all 0.3s ease-in-out;
+}
+
+.app-navbar-menu a:hover::after{
+    transform: scale(1);
 }
