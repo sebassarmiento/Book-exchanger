@@ -1,0 +1,24 @@
+.publish-container{
+    padding: 12px;
+    height: calc(100vh - 70px);
+    overflow: scroll;
+}
+
+.publish-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px;
+}
+
+.publish-form input{
+    margin: 0px;
+    background-color: rgba(34, 117, 165, 0.877);
+    padding: 12px;
+    border: none;
+    font-size: 1em;
+    color: white;
+    border: 2px solid rgba(0, 0, 0, 0.432);
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}

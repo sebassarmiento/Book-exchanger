@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './publish.css';
 
 class Publish extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Publish extends Component {
             <div className="publish-container" >
                 <h1>Publish a book!</h1>
                 <div className="publish-form" >
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.name} name="name" type="text" />
+                    <div><input onChange={(e) => this.handleChange(e)} value={this.state.name} name="name" type="text" /></div>
                     <input onChange={(e) => this.handleChange(e)} value={this.state.category} name="category" type="text" />
                     <input onChange={(e) => this.handleChange(e)} value={this.state.place} name="place" type="text" />
                     <input onChange={(e) => this.handleChange(e)} value={this.state.image} name="image" type="text" />
