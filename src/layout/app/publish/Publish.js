@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './publish.css';
+import { connect } from 'react-redux';
 
 class Publish extends Component {
     constructor(props) {
@@ -14,20 +15,39 @@ class Publish extends Component {
             pages: 0
         }
     }
-    handleChange(e){
-        this.setState({[e.target.name]: e.target.value})
+
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
     }
+
+    handlePublish() {
+        fetch('http://localhost:3000/app/books', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ...this.state, username: this.props.username })
+        })
+            .then(d => d.json())
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     render() {
         return (
             <div className="publish-container" >
-                <h1>Publish a book!</h1>
                 <div className="publish-form" >
-                    <div><input onChange={(e) => this.handleChange(e)} value={this.state.name} name="name" type="text" /></div>
+                    <h1>Publish a book!</h1>
+                    <input onChange={(e) => this.handleChange(e)} value={this.state.name} name="name" type="text" />
                     <input onChange={(e) => this.handleChange(e)} value={this.state.category} name="category" type="text" />
                     <input onChange={(e) => this.handleChange(e)} value={this.state.place} name="place" type="text" />
                     <input onChange={(e) => this.handleChange(e)} value={this.state.image} name="image" type="text" />
                     <input onChange={(e) => this.handleChange(e)} value={this.state.author} name="author" type="text" />
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.description} name="description" type="text" />
+                    <textarea onChange={(e) => this.handleChange(e)} value={this.state.description} name="description" ></textarea>
                     <input onChange={(e) => this.handleChange(e)} value={this.state.pages} name="pages" type="text" />
                 </div>
             </div>
@@ -35,4 +55,10 @@ class Publish extends Component {
     }
 }
 
-export default Publish;
+const mapStateToProps = store => {
+    return {
+        username: store.userData.username
+    }
+}
+
+export default connect(mapStateToProps)(Publish);

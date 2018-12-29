@@ -21,11 +21,48 @@
     flex: 10;
 }
 
+/* APP MENU HEADERS */
+
 .app-menu h3{
-    padding: 0px 12px;
+    padding: 12px;
     text-transform: uppercase;
+    margin: 0;
     font-size: 1em;
+    background-color: rgba(0, 0, 0, 0.363);
+    position: relative;
+    display: flex;
+    align-items: center;
 }
+
+.app-menu h3 i{
+    flex: 1;
+}
+
+.app-menu h3 i:hover{
+    cursor: pointer;
+}
+
+.app-menu h3::before{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.418);
+}
+
+.app-menu h3::after{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.418);
+}
+
+/* /// */
 
 .app-menu a{
     display: block;
@@ -48,4 +85,58 @@
 
 .app-menu .menu-item{
     font-weight: 500;
+}
+
+/* APP MENU ITEMS CONTAINER */
+
+.app-menu .menu-items-closed{
+    transform-origin: top;
+    max-height: 0px;
+    opacity: 0;
+    transition: all 0.8s;
+    transform: scale(1, 0);
+}
+
+.app-menu .menu-items-open{
+    max-height: 300px;
+    transition: all 0.8s;
+    opacity: 1;
+    transform-origin: top;
+    transform: scale(1);
+}
+
+/* APP CATEGORIES CONTAINER */
+
+.app-menu .categories-items-open{
+    max-height: 300px;
+    transition: all 0.8s;
+    opacity: 1;
+    transform-origin: top;
+    transform: scale(1);
+}
+
+.app-menu .categories-items-closed{
+    transform-origin: top;
+    max-height: 0px;
+    opacity: 0;
+    transition: all 0.8s;
+    transform: scale(1, 0);
+}
+
+/* APP SETTINGS CONTAINER */
+
+.app-menu .settings-items-open{
+    max-height: 300px;
+    transition: all 0.8s;
+    opacity: 1;
+    transform-origin: top;
+    transform: scale(1);
+}
+
+.app-menu .settings-items-closed{
+    transform-origin: top;
+    max-height: 0px;
+    opacity: 0;
+    transition: all 0.8s;
+    transform: scale(1, 0);
 }
