@@ -12,7 +12,7 @@ class AppMenu extends Component {
     }
   }
   render() {
-    let arrow = <i class="fas fa-caret-right"></i>
+    let arrow = <i className="fas fa-caret-right"></i>
     return (
       <div className="app-menu" >
         <h3><i onClick={() => this.setState({ menu: !this.state.menu })} className="fas fa-bars"></i>Menu</h3>

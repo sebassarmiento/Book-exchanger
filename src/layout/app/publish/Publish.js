@@ -21,20 +21,44 @@ class Publish extends Component {
     }
 
     handlePublish() {
+        this.setState({publishTry: true})
         fetch('http://localhost:3000/app/books', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ...this.state, username: this.props.username })
+            body: JSON.stringify({ ...this.state, username: this.props.username, date: Date.now() })
         })
             .then(d => d.json())
             .then(res => {
+                this.setState({publishTry: false})
                 console.log(res)
+                if(res.message === 'Book was added!'){
+                    this.setState({bookAdded: true})
+                } else {
+                    this.setState({publishFail: true})
+                }
             })
             .catch(err => {
                 console.log(err)
             })
+    }
+
+    publishButton(){
+        if(this.state.name.length > 1 
+            &&
+           this.state.category.length > 2 
+           &&
+           this.state.place.length > 2 
+           && 
+           this.state.author.length > 3 
+           && 
+           this.state.description.length > 3
+           ){
+            return <button onClick={() => this.handlePublish()} className="publish-btn" >{this.state.publishTry ? <div className="publish-loader" ><div></div><div></div><div></div></div> : "Publish"}</button>
+        } else {
+            return <button className="publish-btn-disabled" >Publish</button>
+        }
     }
 
     render() {
@@ -56,7 +80,7 @@ class Publish extends Component {
                         <p>{this.state.description}</p>
                     </div>
                 </div>
-                <button className="publish-btn" >Publish</button>
+                {this.publishButton()}
                 <h2>dasdasdasdas</h2>
             </div>
         )
