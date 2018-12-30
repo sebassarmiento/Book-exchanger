@@ -72,10 +72,25 @@
     font-weight: 400;
     box-sizing: border-box;
     transition: all 0.2s;
+    position: relative;
+}
+
+.app-menu a::after{
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.521);
+}
+
+.app-menu div a:nth-last-child(1)::after{
+    background-color: transparent;
 }
 
 .app-menu i{
-    color: orange;
+    color: white;
 }
 
 .app-menu a:hover{
@@ -83,8 +98,16 @@
     color: white;
 }
 
+.app-menu a:hover i{
+    color: orange;
+}
+
 .app-menu .menu-item{
     font-weight: 500;
+}
+
+.app-menu .menu-item i{
+    color: white;
 }
 
 /* APP MENU ITEMS CONTAINER */
@@ -98,7 +121,7 @@
 }
 
 .app-menu .menu-items-open{
-    max-height: 300px;
+    max-height: 126px;
     transition: all 0.8s;
     opacity: 1;
     transform-origin: top;
@@ -108,7 +131,7 @@
 /* APP CATEGORIES CONTAINER */
 
 .app-menu .categories-items-open{
-    max-height: 300px;
+    max-height: 252px;
     transition: all 0.8s;
     opacity: 1;
     transform-origin: top;
@@ -126,7 +149,7 @@
 /* APP SETTINGS CONTAINER */
 
 .app-menu .settings-items-open{
-    max-height: 300px;
+    max-height: 126px;
     transition: all 0.8s;
     opacity: 1;
     transform-origin: top;

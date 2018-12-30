@@ -40,16 +40,24 @@ class Publish extends Component {
     render() {
         return (
             <div className="publish-container" >
+                <h1>Publish a book!</h1>
                 <div className="publish-form" >
-                    <h1>Publish a book!</h1>
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.name} name="name" type="text" />
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.category} name="category" type="text" />
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.place} name="place" type="text" />
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.image} name="image" type="text" />
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.author} name="author" type="text" />
-                    <textarea onChange={(e) => this.handleChange(e)} value={this.state.description} name="description" ></textarea>
-                    <input onChange={(e) => this.handleChange(e)} value={this.state.pages} name="pages" type="text" />
+                    <div>
+                        <input onChange={(e) => this.handleChange(e)} value={this.state.name} name="name" placeholder="Name" type="text" />
+                        <input onChange={(e) => this.handleChange(e)} value={this.state.category} name="category" placeholder="Category" type="text" />
+                        <input onChange={(e) => this.handleChange(e)} value={this.state.place} name="place" placeholder="Location" type="text" />
+                        <input onChange={(e) => this.handleChange(e)} value={this.state.image} name="image" placeholder="Image" type="text" />
+                        <input onChange={(e) => this.handleChange(e)} value={this.state.author} name="author" placeholder="Author" type="text" />
+                        <textarea onChange={(e) => this.handleChange(e)} value={this.state.description} name="description" placeholder="Description" ></textarea>
+                        <input onChange={(e) => this.handleChange(e)} value={this.state.pages} name="pages" placeholder="Pages" type="text" />
+                    </div>
+                    <div>
+                        <img height={200} src={this.state.image} />
+                        <p>{this.state.description}</p>
+                    </div>
                 </div>
+                <button className="publish-btn" >Publish</button>
+                <h2>dasdasdasdas</h2>
             </div>
         )
     }

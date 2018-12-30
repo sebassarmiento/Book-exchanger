@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './individual-book.css';
+import { NavLink } from 'react-router-dom';
 
 class IndividualBook extends Component {
     constructor(props) {
@@ -20,25 +21,28 @@ class IndividualBook extends Component {
     render() {
         return (
             <div className="individual-book" >
-                <h1>IndividualBook</h1>
                 {this.state.data ?
-                    <div className="individual-book-info" >
+                    <React.Fragment>
+                        <div className="individual-book-info" >
                         <img src={this.state.data.image} />
                         <div className="individual-book-data" >
+                            <h6>In <NavLink to={`/app/books/${this.state.data.category}`} >{this.state.data.category}</NavLink></h6>
                             <h2>{this.state.data.name}</h2>
-                            <span>By {this.state.data.author || "Peter Mckinsey"}</span>
-                            <p>Category: {this.state.data.category}</p>
-                            <p>Description: {this.state.data.description}</p>
+                            <span>By {this.state.data.author}</span>
                             <p>Location: {this.state.data.place}</p>
                             <p>Pages: {this.state.data.pages}</p>
-                        </div>
-                        <div className="individual-book-interact" >
+                            <div className="individual-book-interact" >
                             <div>
                                 <button>I want this book</button>
                                 <button>Message the owner</button>
                             </div>
                         </div>
-                    </div>
+                        </div>
+                        </div>
+                        <div className="individual-book-description" >
+                        <p>Description:<br />{this.state.data.description}</p>
+                        </div>
+                    </React.Fragment>
                     :
                     null
                 }
