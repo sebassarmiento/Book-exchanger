@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './publish.css';
 import { connect } from 'react-redux';
+import ImagePlaceholder from '../../../img/image-placeholder.png';
 
 class Publish extends Component {
     constructor(props) {
@@ -65,7 +66,6 @@ class Publish extends Component {
     render() {
         return (
             <div className="publish-container" >
-                <h1>Publish a book!</h1>
                 <div className="publish-form" >
                     <div>
                         <input onChange={(e) => this.handleChange(e)} value={this.state.name} name="name" placeholder="Name" type="text" />
@@ -77,12 +77,19 @@ class Publish extends Component {
                         <input onChange={(e) => this.handleChange(e)} value={this.state.pages} name="pages" placeholder="Pages" type="text" />
                     </div>
                     <div>
-                        <img height={200} src={this.state.image} />
-                        <p>{this.state.description}</p>
+                        <div className="publish-preview" >
+                            <div><img height={240} src={this.state.image.length > 5 ? this.state.image : ImagePlaceholder} /></div>
+                            <div>
+                                <h4>{this.state.name}</h4>
+                                <p>{this.state.place}</p>
+                                <p>{this.state.author}</p>
+                            </div>
+                        </div>
+                        <div className="publish-preview-description" >{this.state.description}</div>
                     </div>
                 </div>
                 {this.publishButton()}
-                <h2>dasdasdasdas</h2>
+                <h2>{this.state.bookAdded ? "Book was added!" : ''}</h2>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './individual-book.css';
 import { NavLink } from 'react-router-dom';
+import timeAgo from '../../../utils/TimeAgo';
 
 class IndividualBook extends Component {
     constructor(props) {
@@ -32,6 +33,7 @@ class IndividualBook extends Component {
                                 <div className="i-b-data" >
                                     <div>
                                         <p>By {this.state.data.author}</p>
+                                        <p>{timeAgo(this.state.data.date)} ago</p>
                                         <p><strong>Location: </strong>{this.state.data.place}</p>
                                         <p><strong>Pages: </strong>{this.state.data.pages}</p>
                                         <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
