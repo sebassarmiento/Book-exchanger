@@ -16,6 +16,18 @@
     grid-row-gap: 8px;
 }
 
+@media screen and (max-width: 1200px){
+    .feedview-container .feedview-books{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .feedview-container .feedview-books{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 .feedview-loader{
     position: absolute;
     top: calc(50vh - 70px);
@@ -67,7 +79,7 @@
 
 .feedview-books .book-preview-img{
     margin: 24px 0px;
-    height: 25vh;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;

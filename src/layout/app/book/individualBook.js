@@ -23,25 +23,30 @@ class IndividualBook extends Component {
             <div className="individual-book" >
                 {this.state.data ?
                     <React.Fragment>
+                        <h5><NavLink to="/app/feed" >Books </NavLink>> <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h5>
                         <div className="individual-book-info" >
-                        <img src={this.state.data.image} />
-                        <div className="individual-book-data" >
-                            <h6>In <NavLink to={`/app/books/${this.state.data.category}`} >{this.state.data.category}</NavLink></h6>
-                            <h2>{this.state.data.name}</h2>
-                            <span>By {this.state.data.author}</span>
-                            <p>Location: {this.state.data.place}</p>
-                            <p>Pages: {this.state.data.pages}</p>
-                            <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
-                            <div className="individual-book-interact" >
+                            <img src={this.state.data.image} />
                             <div>
-                                <button>I want this book</button>
-                                <button>Message the owner</button>
+                                <h6>In <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h6>
+                                <h2>{this.state.data.name}</h2>
+                                <div className="i-b-data" >
+                                    <div>
+                                        <p>By {this.state.data.author}</p>
+                                        <p><strong>Location: </strong>{this.state.data.place}</p>
+                                        <p><strong>Pages: </strong>{this.state.data.pages}</p>
+                                        <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
+                                    </div>
+                                    <div className="i-b-interact" >
+                                        <div>
+                                            <button>I want this book</button>
+                                            <button>Message the owner</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            </div>
-                        </div>
                         </div>
                         <div className="individual-book-description" >
-                        <p>Description:<br />{this.state.data.description}</p>
+                            <p>{this.state.data.description}</p>
                         </div>
                     </React.Fragment>
                     :

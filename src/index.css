@@ -36,3 +36,15 @@ h1{
 .transparent{
   opacity: 0;
 }
+
+@media screen and (max-width: 1100px){
+  .app-layout{
+    grid-template-columns: 2fr 5fr;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .app-layout{
+    grid-template-columns: 2fr 4fr;
+  }
+}

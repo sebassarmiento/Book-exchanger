@@ -8,7 +8,8 @@ class AppMenu extends Component {
     this.state = {
       menu: true,
       categories: true,
-      settings: true
+      settings: true,
+      chat: true
     }
   }
   render() {
@@ -29,6 +30,12 @@ class AppMenu extends Component {
           <Link className="menu-item" to="/app/books/money" >{arrow}<span>Money</span></Link>
           <Link className="menu-item" to="/app/books/success" >{arrow}<span>Success</span></Link>
           <Link className="menu-item" to="/app/books/motivation" >{arrow}<span>Motivation</span></Link>
+        </div>
+        <h3><i onClick={() => this.setState({chat: !this.state.chat})} className="fas fa-comment"></i>Chat</h3>
+        <div className={this.state.chat ? "settings-items-open" : "settings-items-closed"} >
+          <Link className="menu-item" to="/app/configuration" >Chat 1</Link>
+          <Link className="menu-item" to="/app/configuration" >Chat 2</Link>
+          <Link className="menu-item" to="/app/configuration" >Chat 3</Link>
         </div>
         <h3><i onClick={() => this.setState({settings: !this.state.settings})} className="fas fa-cog"></i>Settings</h3>
         <div className={this.state.settings ? "settings-items-open" : "settings-items-closed"} >
