@@ -31,12 +31,13 @@ class IndividualBook extends Component {
                             <span>By {this.state.data.author}</span>
                             <p>Location: {this.state.data.place}</p>
                             <p>Pages: {this.state.data.pages}</p>
+                            <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
                             <div className="individual-book-interact" >
                             <div>
                                 <button>I want this book</button>
                                 <button>Message the owner</button>
                             </div>
-                        </div>
+                            </div>
                         </div>
                         </div>
                         <div className="individual-book-description" >

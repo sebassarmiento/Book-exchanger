@@ -21,22 +21,23 @@ class Publish extends Component {
     }
 
     handlePublish() {
-        this.setState({publishTry: true})
+        console.log(this.props.userId)
+        this.setState({ publishTry: true })
         fetch('http://localhost:3000/app/books', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ...this.state, username: this.props.username, date: Date.now() })
+            body: JSON.stringify({ ...this.state, username: this.props.username, userId: this.props.userId, date: Date.now() })
         })
             .then(d => d.json())
             .then(res => {
-                this.setState({publishTry: false})
+                this.setState({ publishTry: false })
                 console.log(res)
-                if(res.message === 'Book was added!'){
-                    this.setState({bookAdded: true})
+                if (res.message === 'Book was added!') {
+                    this.setState({ bookAdded: true })
                 } else {
-                    this.setState({publishFail: true})
+                    this.setState({ publishFail: true })
                 }
             })
             .catch(err => {
@@ -44,17 +45,17 @@ class Publish extends Component {
             })
     }
 
-    publishButton(){
-        if(this.state.name.length > 1 
+    publishButton() {
+        if (this.state.name.length > 1
             &&
-           this.state.category.length > 2 
-           &&
-           this.state.place.length > 2 
-           && 
-           this.state.author.length > 3 
-           && 
-           this.state.description.length > 3
-           ){
+            this.state.category.length > 2
+            &&
+            this.state.place.length > 2
+            &&
+            this.state.author.length > 3
+            &&
+            this.state.description.length > 3
+        ) {
             return <button onClick={() => this.handlePublish()} className="publish-btn" >{this.state.publishTry ? <div className="publish-loader" ><div></div><div></div><div></div></div> : "Publish"}</button>
         } else {
             return <button className="publish-btn-disabled" >Publish</button>
@@ -89,7 +90,8 @@ class Publish extends Component {
 
 const mapStateToProps = store => {
     return {
-        username: store.userData.username
+        username: store.userData.username,
+        userId: store.userData._id
     }
 }
 
