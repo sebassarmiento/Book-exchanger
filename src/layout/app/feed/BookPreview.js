@@ -11,7 +11,7 @@ class BookPreview extends Component {
         return (
             <div className="book-preview" >
                 <p>In <NavLink to={`/app/books/${this.props.category.toLowerCase()}`} >{this.props.category}</NavLink><span style={{float: 'right', fontSize: '0.9em'}} >{timeAgo(this.props.date)} ago</span></p>
-                <div onClick={() => this.setState({redirect: true})} className="book-preview-img" ><img src={this.props.image} /></div>
+                <div onClick={() => this.setState({redirect: true})} className="book-preview-img" ><img src={this.props.image} alt={this.props.image} /></div>
                 <NavLink className="book-preview-title" to={`/app/books/id/${this.props._id}`} >{this.props.name}</NavLink>
                 <p>Location: {this.props.place}</p>
                 <p>Pages: {this.props.pages}</p>

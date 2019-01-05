@@ -21,7 +21,7 @@ class NavbarApp extends Component {
   render() {
     return (
       <div className="app-navbar" >
-        <div ><img src={Logo} height="32px" /><NavLink to="/app/dashboard" >Book exchanger</NavLink></div>
+        <div ><img alt="brand-logo" src={Logo} height="32px" /><NavLink to="/app/dashboard" >Book exchanger</NavLink></div>
         <div></div>
         <div className="app-navbar-menu" >
           <NavLink name="feed" onClick={(e) => this.handleClick(e)} className={this.state.feed} to="/app/feed" >New</NavLink>

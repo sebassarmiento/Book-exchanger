@@ -26,7 +26,7 @@ class IndividualBook extends Component {
                     <React.Fragment>
                         <h5><NavLink to="/app/feed" >Books </NavLink>> <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h5>
                         <div className="individual-book-info" >
-                            <img src={this.state.data.image} />
+                            <img src={this.state.data.image} alt={this.state.data.name} />
                             <div>
                                 <h6>In <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h6>
                                 <h2>{this.state.data.name}</h2>

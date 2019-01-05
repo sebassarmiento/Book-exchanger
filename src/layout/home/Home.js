@@ -28,15 +28,15 @@ class Home extends Component {
             <Fade delay={1000} bottom cascade>
               <div className="home-instructions-1" >
                 <div>
-                  <img src={SearchIcon} />
+                  <img src={SearchIcon} alt="search-icon" />
                   <p>Search books in our library with more than 100.000 options to choose!</p>
                 </div>
                 <div>
-                  <img src={MessageIcon} />
+                  <img src={MessageIcon} alt="message-icon" />
                   <p>Let the owner know you are interested in one of his books. He will be able to see your profile and all your books.</p>
                 </div>
                 <div>
-                  <img src={DealIcon} />
+                  <img src={DealIcon} alt="deal-icon" />
                   <p>Hopefully now you got a deal with the owner and are ready to send him the book and receive yours!</p>
                 </div>
               </div>
@@ -53,17 +53,17 @@ class Home extends Component {
           <Fade delay={1000} bottom cascade>
             <div className="home-our-qualities" >
               <div>
-                <img src={MedalIcon} />
+                <img src={MedalIcon} alt="medal-icon" />
                 <h1>We are the best.</h1>
                 <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
               </div>
               <div>
-                <img src={BooksIcon} />
+                <img src={BooksIcon} alt="books-icon" />
                 <h1>+100.000 books.</h1>
                 <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
               </div>
               <div>
-                <img src={WalletIcon} />
+                <img src={WalletIcon} alt="wallet-icon" />
                 <h1>Save money.</h1>
                 <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
               </div>

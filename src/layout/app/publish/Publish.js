@@ -154,7 +154,7 @@ class Publish extends Component {
                     </div>
                     <div>
                         <div className="publish-preview" >
-                            <div><img height={240} src={this.state.image.length > 5 ? this.state.image : ImagePlaceholder} /></div>
+                            <div><img height={240} alt="book-preview" src={this.state.image.length > 5 ? this.state.image : ImagePlaceholder} /></div>
                             <div>
                                 <h4>{this.state.name}</h4>
                                 <p>{this.state.place}</p>
