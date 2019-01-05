@@ -6,11 +6,15 @@ import './feed-view.css';
 class FeedView extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {loadMore: true}
+    this.count = 0
   }
   componentDidMount() {
-    console.log('Here', this.props.token)
-    fetch('http://localhost:3000/app/books/', {
+    this.getData()
+  }
+  getData(more){
+    if(more)this.count += 10
+    fetch(`http://localhost:3000/app/books${this.count > 0 ? `/?search=${this.count}` : ''}`, {
       method: 'GET',
       headers: {
         'authorization': this.props.token
@@ -19,10 +23,21 @@ class FeedView extends Component {
       .then(d => d.json())
       .then(res => {
         console.log(res)
-        this.setState({ data: res })
+        if(this.state.data){
+          this.setState({data: [...this.state.data, ...res]})
+        } else {
+          this.setState({data: res})
+        }
+        if(res.length < 10){
+          this.setState({loadMore: false})
+        }
+      })
+      .catch(err => {
+        console.log(err)
       })
   }
   render() {
+    console.log(this.state.data)
     return (
       <div className="feedview-container" >
         <h1>Latest books</h1>
@@ -31,6 +46,7 @@ class FeedView extends Component {
             return (<BookPreview {...book} />)
           }) : <div className="feedview-loader" ><div></div></div>}
         </div>
+        {this.state.loadMore ? <p className="feedview-load-more" onClick={() => this.getData(1)} >Load more</p> : null}
       </div>
     )
   }
