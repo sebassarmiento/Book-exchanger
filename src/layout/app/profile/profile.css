@@ -1,0 +1,10 @@
+.profile-container{
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.profile-container .p-user-info{
+    background-color: red;
+    padding: 12px;
+}

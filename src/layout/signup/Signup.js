@@ -107,7 +107,6 @@ class Signup extends Component {
             if(response.message === 'User added successfully!'){
                 this.setState({userCreated: true, redirect: true})
                 this.props.userCreated(response.user)
-                //setTimeout(() => this.setState({redirect: true}), 500)
             }
         })
         .catch(err => {

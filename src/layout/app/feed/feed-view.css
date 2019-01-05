@@ -124,6 +124,12 @@
     color: rgba(0, 0, 0, 0.726);
     font-size: 1.17em;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: pre-line;
+    line-height: 1.1em;   
+    max-height: 2.2em;
 }
 
 .feedview-books .book-preview .book-preview-title:hover{

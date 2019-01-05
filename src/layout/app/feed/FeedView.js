@@ -43,7 +43,7 @@ class FeedView extends Component {
         <h1>Latest books</h1>
         <div className="feedview-books" >
           {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
-            return (<BookPreview {...book} />)
+            return (<BookPreview {...book} key={book._id} />)
           }) : <div className="feedview-loader" ><div></div></div>}
         </div>
         {this.state.loadMore ? <p className="feedview-load-more" onClick={() => this.getData(1)} >Load more</p> : null}

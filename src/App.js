@@ -11,6 +11,7 @@ import AppMenu from './layout/app-menu/AppMenu';
 import FeedView from './layout/app/feed/FeedView';
 import IndividualBook from './layout/app/book/individualBook';
 import Publish from './layout/app/publish/Publish';
+import Profile from './layout/app/profile/Profile';
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class App extends Component {
                   <Route path="/app/feed" exact component={FeedView} />
                   <Route path="/app/books/id/:bookId" exact component={IndividualBook} />
                   <Route path="/app/publish" exact component={Publish} />
+                  <Route path="/app/profile" exact component={Profile} />
                 </Switch>
               </div>
             }
