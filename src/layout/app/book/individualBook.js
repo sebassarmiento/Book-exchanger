@@ -3,6 +3,21 @@ import './individual-book.css';
 import { NavLink } from 'react-router-dom';
 import timeAgo from '../../../utils/TimeAgo';
 
+const BookRating = props => {
+    return (
+    <React.Fragment>
+    <div className="i-b-rating" >
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+    </div>
+    <small style={{marginLeft: 4}} >{props.ratings || 0} ratings</small>
+    </React.Fragment>
+    )
+}
+
 class IndividualBook extends Component {
     constructor(props) {
         super(props)
@@ -24,7 +39,7 @@ class IndividualBook extends Component {
             <div className="individual-book" >
                 {this.state.data ?
                     <React.Fragment>
-                        <h5><NavLink to="/app/feed" >Books </NavLink>> <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h5>
+                        <NavLink className="back-btn" to="/app/feed" ><h3><i className="fas fa-chevron-left"></i><small>Back</small></h3></NavLink>
                         <div className="individual-book-info" >
                             <img src={this.state.data.image} alt={this.state.data.name} />
                             <div>
@@ -37,6 +52,7 @@ class IndividualBook extends Component {
                                         <p><strong>Location: </strong>{this.state.data.place}</p>
                                         <p><strong>Pages: </strong>{this.state.data.pages}</p>
                                         <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
+                                        <BookRating />
                                     </div>
                                     <div className="i-b-interact" >
                                         <div>

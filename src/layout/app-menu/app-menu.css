@@ -2,7 +2,8 @@
     background-color: #2274A5;
     box-sizing: border-box;
     overflow: scroll;
-    width: 100%;
+    width: 260px;
+    min-width: 260px;
     color: white;
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import timeAgo from '../../../utils/TimeAgo';
+import './book-preview.css';
 
 class BookPreview extends Component {
     constructor(){

@@ -1,8 +1,28 @@
 .individual-book{
-    padding: 12px;
+    padding: 24px 12px;
     max-height: calc(100vh - 70px);
     overflow: scroll;
 }
+
+/* Back button */
+
+.individual-book .back-btn h3 {
+    color: rgba(0, 0, 0, 0.582);
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.individual-book .back-btn h3:hover{
+    cursor: pointer;
+    color: black;
+}
+
+.individual-book .back-btn h3 small{
+    margin-left: 4px;
+    font-weight: 400;
+}
+/* **** */
 
 .individual-book-info{
     display: flex;
@@ -12,7 +32,7 @@
 
 .individual-book-info img{
     height: 300px;
-    margin-right: 12px;
+    margin: 0px 12px;
     box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.479);
     border-radius: 2px;
 }
@@ -36,6 +56,19 @@
     display: flex;
     align-items: center;
 }
+
+/* Rating component */
+
+.i-b-rating{
+    display: flex;
+    padding: 4px;
+}
+
+.i-b-rating i:hover{
+    cursor: pointer;
+}
+
+/* **** */
 
 .individual-book-description{
     margin-top: 24px;
