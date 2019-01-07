@@ -34,6 +34,9 @@ class IndividualBook extends Component {
                 console.log(err)
             })
     }
+    handleAdd(){
+        this.setState({added: !this.state.added, unadd: !this.state.unadd})
+    }
     render() {
         return (
             <div className="individual-book" >
@@ -56,7 +59,10 @@ class IndividualBook extends Component {
                                     </div>
                                     <div className="i-b-interact" >
                                         <div>
-                                            <button>I want this book</button>
+                                            <button 
+                                            onMouseEnter={() => this.setState({added: true})}
+                                            onMouseLeave={() => this.setState({added: false})}
+                                            onClick={() => this.handleAdd()} >{this.state.unadd || this.state.added ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>} {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}</button>
                                             <button>Message the owner</button>
                                         </div>
                                     </div>

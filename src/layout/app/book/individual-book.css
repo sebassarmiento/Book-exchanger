@@ -90,6 +90,7 @@
     font-weight: bold;
     width: 100%;
     margin: 12px 0px;
+    min-width: 280px;
 }
 
 .i-b-data button:nth-child(1):hover{
