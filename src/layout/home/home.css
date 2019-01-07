@@ -39,9 +39,8 @@
 .home-second-container{
     background-color: rgb(245, 243, 243);
     margin: 0;
-    padding: 20vh 12px;
+    padding: 100px 12px;
     text-align: center;
-    height: 90vh;
     position: relative;
 }
 
@@ -82,10 +81,11 @@
 .home-third-container{
     background-color: #2274A5;
     margin: 0;
-    padding: 20vh 12px;
+    padding: 0px 12px;
+    padding-top: 100px;
+    padding-bottom: 60px;
     color: white;
     text-align: center;
-    height: 90vh;
 }
 
 .home-our-qualities{
@@ -133,9 +133,8 @@
 .home-fourth-container{
     background-color: rgb(245, 243, 243);
     margin: 0;
-    padding: 20vh 12px;
+    padding: 100px 12px;
     text-align: center;
-    height: 70vh;
     position: relative;
 }
 

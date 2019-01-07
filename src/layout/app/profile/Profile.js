@@ -17,7 +17,7 @@ class Profile extends Component {
         return (
             <div className="profile-container" >
                 <div className="p-user-info" >
-                    <img src={data && data.image ? data.image : userPlaceholder} height={200} />
+                    <img alt="user-image" src={data && data.image ? data.image : userPlaceholder} height={200} />
                     <h1>{data ? data.username : null}</h1>
                     <p><strong>Age: </strong>{data ? data.age : null}</p>
                     <p><strong>Location: </strong>{data ? data.location : null}</p>
