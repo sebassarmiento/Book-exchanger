@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import './individual-book.css';
 import { NavLink } from 'react-router-dom';
 import timeAgo from '../../../utils/TimeAgo';
+import { connect } from 'react-redux';
 
 const BookRating = props => {
     return (
     <React.Fragment>
     <div className="i-b-rating" >
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
+        <i className="far fa-star"></i>
+        <i className="far fa-star"></i>
+        <i className="far fa-star"></i>
+        <i className="far fa-star"></i>
+        <i className="far fa-star"></i>
     </div>
     <small style={{marginLeft: 4}} >{props.ratings || 0} ratings</small>
     </React.Fragment>
@@ -28,6 +29,12 @@ class IndividualBook extends Component {
             .then(d => d.json())
             .then(res => {
                 console.log(res)
+                console.log(res._id, this.props.userData.books.liked)
+                this.props.userData.books.liked.map(book => {
+                    if(book._id === res._id){
+                        this.setState({unadd: true})
+                    }
+                })
                 this.setState({ data: res })
             })
             .catch(err => {
@@ -36,6 +43,23 @@ class IndividualBook extends Component {
     }
     handleAdd(){
         this.setState({added: !this.state.added, unadd: !this.state.unadd})
+        fetch(`http://localhost:3000/app/users/wishlist/${this.props.userData._id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': this.props.userData.token
+            },
+            body: JSON.stringify({
+                book: this.state.data
+            })
+        })
+        .then(d => d.json())
+        .then(res => {
+            console.log(res)
+            if(res.message){
+                this.props.addToWishlist(res.user.books)
+            }
+        })
     }
     render() {
         return (
@@ -62,7 +86,10 @@ class IndividualBook extends Component {
                                             <button 
                                             onMouseEnter={() => this.setState({added: true})}
                                             onMouseLeave={() => this.setState({added: false})}
-                                            onClick={() => this.handleAdd()} >{this.state.unadd || this.state.added ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>} {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}</button>
+                                            onClick={() => this.handleAdd()} >
+                                            {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>} 
+                                            {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}
+                                            </button>
                                             <button>Message the owner</button>
                                         </div>
                                     </div>
@@ -81,4 +108,16 @@ class IndividualBook extends Component {
     }
 }
 
-export default IndividualBook;
+const mapStateToProps = store => {
+    return {
+        userData: store.userData
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addToWishlist: book => dispatch({ type: 'ADD_BOOK_TO_WISHLIST_IN_STORE', payload: book })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IndividualBook);

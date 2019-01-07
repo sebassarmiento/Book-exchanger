@@ -8,3 +8,5 @@ export const BACK_TO_HOME = 'BACK_TO_HOME';
 export const NEW_USER_SIGNED = "NEW_USER_SIGNED";
 
 export const LOGOUT = "LOGOUT";
+
+export const ADD_BOOK_TO_WISHLIST_IN_STORE = "ADD_BOOK_TO_WISHLIST_IN_STORE";
