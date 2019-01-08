@@ -4,19 +4,28 @@ import { NavLink } from 'react-router-dom';
 import timeAgo from '../../../utils/TimeAgo';
 import { connect } from 'react-redux';
 
-const BookRating = props => {
-    return (
-    <React.Fragment>
-    <div className="i-b-rating" >
-        <i className="far fa-star"></i>
-        <i className="far fa-star"></i>
-        <i className="far fa-star"></i>
-        <i className="far fa-star"></i>
-        <i className="far fa-star"></i>
-    </div>
-    <small style={{marginLeft: 4}} >{props.ratings || 0} ratings</small>
-    </React.Fragment>
-    )
+class BookRating extends Component {
+    constructor(props){
+        super(props)
+        this.state = {}
+    }
+    handleRate(){
+        this.setState({rated: this.state.stars})
+    }
+    render() {
+        return (
+            <React.Fragment>
+                <div className="i-b-rating" >
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 1})} className={`${this.state.stars > 0 || this.state.rated > 0 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 2})} className={`${this.state.stars > 1 || this.state.rated > 1 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 3})} className={`${this.state.stars > 2 || this.state.rated > 2 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 4})} className={`${this.state.stars > 3 || this.state.rated > 3 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 5})} className={`${this.state.stars > 4 || this.state.rated > 4 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                </div>
+                <small style={{ marginLeft: 4 }} >{this.props.ratings || 0} ratings</small>
+            </React.Fragment>
+        )
+    }
 }
 
 class IndividualBook extends Component {
@@ -31,8 +40,8 @@ class IndividualBook extends Component {
                 console.log(res)
                 console.log(res._id, this.props.userData.books.liked)
                 this.props.userData.books.liked.map(book => {
-                    if(book._id === res._id){
-                        this.setState({unadd: true})
+                    if (book._id === res._id) {
+                        this.setState({ unadd: true })
                     }
                 })
                 this.setState({ data: res })
@@ -41,8 +50,8 @@ class IndividualBook extends Component {
                 console.log(err)
             })
     }
-    handleAdd(){
-        this.setState({added: !this.state.added, unadd: !this.state.unadd})
+    handleAdd() {
+        this.setState({ added: !this.state.added, unadd: !this.state.unadd })
         fetch(`http://localhost:3000/app/users/wishlist/${this.props.userData._id}`, {
             method: 'POST',
             headers: {
@@ -53,13 +62,13 @@ class IndividualBook extends Component {
                 book: this.state.data
             })
         })
-        .then(d => d.json())
-        .then(res => {
-            console.log(res)
-            if(res.message){
-                this.props.addToWishlist(res.user.books)
-            }
-        })
+            .then(d => d.json())
+            .then(res => {
+                console.log(res)
+                if (res.message) {
+                    this.props.addToWishlist(res.user.books)
+                }
+            })
     }
     render() {
         return (
@@ -83,12 +92,12 @@ class IndividualBook extends Component {
                                     </div>
                                     <div className="i-b-interact" >
                                         <div>
-                                            <button 
-                                            onMouseEnter={() => this.setState({added: true})}
-                                            onMouseLeave={() => this.setState({added: false})}
-                                            onClick={() => this.handleAdd()} >
-                                            {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>} 
-                                            {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}
+                                            <button
+                                                onMouseEnter={() => this.setState({ added: true })}
+                                                onMouseLeave={() => this.setState({ added: false })}
+                                                onClick={() => this.handleAdd()} >
+                                                {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
+                                                {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}
                                             </button>
                                             <button>Message the owner</button>
                                         </div>

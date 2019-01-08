@@ -57,6 +57,10 @@
     align-items: center;
 }
 
+.i-b-interact i{
+    margin-right: 6px;
+}
+
 /* Rating component */
 
 .i-b-rating{
@@ -66,6 +70,10 @@
 
 .i-b-rating i:hover{
     cursor: pointer;
+}
+
+.rating-hover{
+    color: rgb(255,223,0);
 }
 
 /* **** */
