@@ -6,7 +6,7 @@ import './feed-view.css';
 class FeedView extends Component {
   constructor(props) {
     super(props)
-    this.state = {loadMore: true}
+    this.state = {}
     this.count = 0
   }
   componentDidMount() {
@@ -26,7 +26,7 @@ class FeedView extends Component {
         if(this.state.data){
           this.setState({data: [...this.state.data, ...res]})
         } else {
-          this.setState({data: res})
+          this.setState({data: res, loadMore: true})
         }
         if(res.length < 10){
           this.setState({loadMore: false})

@@ -1,5 +1,5 @@
 
-.feedview-books .book-preview{
+.book-preview{
     padding: 0;
     background-color: rgb(255, 255, 255);
     padding: 6px 12px;
@@ -8,21 +8,21 @@
     transition: all 0.4s;
 }
 
-.feedview-books .book-preview:hover{
+.book-preview:hover{
     box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.603);
 }
 
-.feedview-books .book-preview a{
+.book-preview a{
     color: rgba(0, 0, 0, 0.877);
     font-weight: bold;
 }
 
-.feedview-books .book-preview a:hover{
+.book-preview a:hover{
     cursor: pointer;
     text-decoration: underline;
 }
 
-.feedview-books .book-preview-img{
+.book-preview-img{
     margin: 24px 0px;
     height: 200px;
     display: flex;
@@ -30,34 +30,34 @@
     justify-content: center;
 }
 
-.feedview-books .book-preview-img:hover{
+.book-preview-img:hover{
     cursor: pointer;
 }
 
-.feedview-books .book-preview img{
+.book-preview img{
     height: 100%;
 }
 
-.feedview-books .book-preview p{
+.book-preview p{
     margin: 4px 0px;
     font-size: 0.9em;
 }
 
-.feedview-books .book-preview .book-preview-title{
+.book-preview .book-preview-title{
     margin: 4px 0px;
     color: rgba(0, 0, 0, 0.726);
     font-size: 1.17em;
     font-weight: bold;
 
     overflow: hidden;
-   text-overflow: ellipsis;
-   display: block;
-   line-height: 1em;        /* fallback */
-   max-height: 2em;
-   max-width: 200px;
+    text-overflow: ellipsis;
+    display: block;
+    line-height: 1.2em;        /* fallback */
+    max-height: 2.4em;
+    max-width: 200px;
 }
 
-.feedview-books .book-preview .book-preview-title:hover{
+.book-preview .book-preview-title:hover{
     color: rgba(0, 0, 0, 0.836);
     text-decoration: underline;
 }

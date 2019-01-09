@@ -41,7 +41,7 @@ class IndividualBook extends Component {
                 console.log(res._id, this.props.userData.books.liked)
                 this.props.userData.books.liked.map(book => {
                     if (book._id === res._id) {
-                        this.setState({ unadd: true })
+                        return this.setState({ unadd: true })
                     }
                 })
                 this.setState({ data: res })
