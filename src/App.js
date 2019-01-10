@@ -12,6 +12,7 @@ import FeedView from './layout/app/feed/FeedView';
 import IndividualBook from './layout/app/book/individualBook';
 import Publish from './layout/app/publish/Publish';
 import Profile from './layout/app/profile/Profile';
+import PublishBook from './components/publishBook/PublishBook';
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
                   <Route path="/app/profile" exact component={Profile} />
                   <Route path="/app/user/:userId" component={Profile} />
                 </Switch>
+                {this.props.publish ? <PublishBook /> : null}
               </div>
             }
             {this.props.footer ? <Footer /> : null}
@@ -54,7 +56,8 @@ class App extends Component {
 const mapStateToProps = store => {
   return {
     footer: store.footer,
-    logged: store.logged
+    logged: store.logged,
+    publish: store.publish
   }
 }
 

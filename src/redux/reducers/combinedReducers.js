@@ -1,7 +1,8 @@
 import * as Actions from '../actions';
 
 const initialStore = {
-    footer: true
+    footer: true,
+    publish: true
 }
 
 const reducer =  (store = initialStore, action) => {
@@ -18,6 +19,10 @@ const reducer =  (store = initialStore, action) => {
         return {...store, userData: {...action.payload}, signUp: false, logged: true}
         case Actions.ADD_BOOK_TO_WISHLIST_IN_STORE:
         return {...store, userData: {...store.userData, books: action.payload} }
+        case Actions.CLOSE_PUBLISH_FORM:
+        return {...store, publish: false}
+        case Actions.OPEN_PUBLISH_FORM:
+        return {...store, publish: true}
         case Actions.LOGOUT:
         return {}
         default:

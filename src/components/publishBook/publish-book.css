@@ -1,0 +1,58 @@
+.publish-book-container{
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.p-b-background{
+    background-color: rgba(0, 0, 0, 0.445);
+    height: 100%;
+    width: 100%;
+    animation: showPublishBG 0.4s ease-in-out;
+}
+
+@keyframes showPublishBG {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+.p-b-background-out{
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+}
+
+/* Form */
+
+.p-b-form{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 100%;
+    background-color: rgb(240, 240, 240);
+    box-sizing: border-box;
+    padding: 12px;
+    animation: showPublishForm 0.5s ease;
+}
+
+@keyframes showPublishForm {
+    0%{
+        transform: translateX(500px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+.p-b-form i:hover{
+    cursor: pointer;
+}
+
+.p-b-form-closed{
+    transition: all 0.4s;
+    transform: translateX(500px);
+}

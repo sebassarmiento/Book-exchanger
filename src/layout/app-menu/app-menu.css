@@ -97,6 +97,7 @@
 .app-menu a:hover{
     background-color: rgba(0, 0, 0, 0.171);
     color: white;
+    cursor: pointer;
 }
 
 .app-menu a:hover i{

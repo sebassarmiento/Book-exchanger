@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './app-menu.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class AppMenu extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class AppMenu extends Component {
         <h3><i onClick={() => this.setState({ menu: !this.state.menu })} className="fas fa-bars"></i>Menu</h3>
         <div className={this.state.menu ? "menu-items-open" : "menu-items-closed"} >
           <Link className="menu-item" to="/app/feed" ><i className="fas fa-home"></i><span>Home</span></Link>
-          <Link className="menu-item" to="/app/publish" ><i className="fas fa-book"></i><span>Publish book</span></Link>
+          <a className="menu-item" onClick={() => this.props.publish()} ><i className="fas fa-book"></i><span>Publish book</span></a>
           <Link className="menu-item" to="/app/profile" ><i className="fas fa-user"></i><span>My Profile</span></Link>
         </div>
         <h3><i onClick={() => this.setState({categories: !this.state.categories})} className="fas fa-ellipsis-h"></i>Categories</h3>
@@ -48,4 +49,10 @@ class AppMenu extends Component {
   }
 }
 
-export default AppMenu;
+const mapDispatchToProps = dispatch => {
+  return {
+    publish: () => dispatch({ type: 'OPEN_PUBLISH_FORM' })
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AppMenu);
