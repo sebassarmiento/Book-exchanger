@@ -5,24 +5,50 @@ import timeAgo from '../../../utils/TimeAgo';
 import { connect } from 'react-redux';
 
 class BookRating extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {}
     }
-    handleRate(){
-        this.setState({rated: this.state.stars})
+    componentDidMount() {
+        let rating = 0
+        if (this.props.rating.length > 0) {
+            rating = this.props.rating.reduce((a, b) => ({ rating: a.rating + b.rating })).rating / this.props.rating.length
+        }
+        console.log(rating)
+        this.setState({ rated: rating })
+    }
+    handleRate() {
+        this.setState({ rated: this.state.stars })
+        fetch(`http://localhost:3000/app/books/${this.props.bookId}/rating`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: this.props.currentUser,
+                rating: this.state.stars
+            })
+        })
+            .then(d => d.json())
+            .then(res => {
+                console.log('ACAAAAAAAA', res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     render() {
+        console.log("ESTAS SON MIS PROPS", this.props)
         return (
             <React.Fragment>
                 <div className="i-b-rating" >
-                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 1})} className={`${this.state.stars > 0 || this.state.rated > 0 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
-                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 2})} className={`${this.state.stars > 1 || this.state.rated > 1 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
-                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 3})} className={`${this.state.stars > 2 || this.state.rated > 2 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
-                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 4})} className={`${this.state.stars > 3 || this.state.rated > 3 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
-                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({stars: 0})} onMouseEnter={() => this.setState({stars: 5})} className={`${this.state.stars > 4 || this.state.rated > 4 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 1 })} className={`${this.state.stars > 0 || this.state.rated > 0 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 2 })} className={`${this.state.stars > 1 || this.state.rated > 1 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 3 })} className={`${this.state.stars > 2 || this.state.rated > 2 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 4 })} className={`${this.state.stars > 3 || this.state.rated > 3 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
+                    <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 5 })} className={`${this.state.stars > 4 || this.state.rated > 4 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
                 </div>
-                <small style={{ marginLeft: 4 }} >{this.props.ratings || 0} ratings</small>
+                <small style={{ marginLeft: 4 }} >{this.props.rating.length || 0} ratings</small>
             </React.Fragment>
         )
     }
@@ -88,7 +114,7 @@ class IndividualBook extends Component {
                                         <p><strong>Location: </strong>{this.state.data.place}</p>
                                         <p><strong>Pages: </strong>{this.state.data.pages}</p>
                                         <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
-                                        <BookRating />
+                                        <BookRating bookId={this.state.data._id} rating={this.state.data.ratings} currentUser={this.props.userData._id} />
                                     </div>
                                     <div className="i-b-interact" >
                                         <div>
