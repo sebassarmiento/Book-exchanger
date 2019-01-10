@@ -39,6 +39,7 @@ class App extends Component {
                   <Route path="/app/books/id/:bookId" exact component={IndividualBook} />
                   <Route path="/app/publish" exact component={Publish} />
                   <Route path="/app/profile" exact component={Profile} />
+                  <Route path="/app/user/:userId" component={Profile} />
                 </Switch>
               </div>
             }

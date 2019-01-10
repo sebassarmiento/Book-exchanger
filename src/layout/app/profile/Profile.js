@@ -11,7 +11,13 @@ class Profile extends Component {
         this.state = {}
     }
     componentDidMount() {
-        this.setState({ data: this.props.userData })
+        let url = this.props.location.pathname !== '/app/profile' ? this.props.location.pathname : `/app/user/${this.props.userData._id}`
+        fetch(`http://localhost:3000${url}`)
+        .then(d => d.json())
+        .then(res => {
+            console.log('ACA',res)
+            this.setState({ data: res })
+        })
     }
     handleRedirect(id){
         this.setState({redirect: id})
@@ -25,16 +31,15 @@ class Profile extends Component {
                     <img alt="user-image" src={data && data.image ? data.image : userPlaceholder} height={200} />
                     <h1>{data ? data.username : null}</h1>
                     <p>{data ? data.age : null} years old</p>
-                    <p><strong>Located in </strong>{data ? data.location : null}</p>
                 </div>
                 <div className="p-user-books" >
-                    <h4>Books published by {data ? data.username : null}</h4>
+                    <h4>Published - {data ? data.books.published.length : null}</h4>
                     <div className="p-user-books-published" >
                         {data && data.books.published.length > 0 ? data.books.published.map(book => {
                             return (<img src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
                         }) : data ? <p className="no-data" >No books published yet.</p> : null}
                     </div>
-                    <h4>Books liked by {data ? data.username : null}</h4>
+                    <h4>Liked - {data ? data.books.liked.length : null}</h4>
                     <div className="p-user-books-liked" >
                         {data && data.books.liked.length > 0 ? data.books.liked.map(book => {
                             return (<img src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)

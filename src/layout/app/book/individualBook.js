@@ -52,7 +52,7 @@ class IndividualBook extends Component {
     }
     handleAdd() {
         this.setState({ added: !this.state.added, unadd: !this.state.unadd })
-        fetch(`http://localhost:3000/app/users/wishlist/${this.props.userData._id}`, {
+        fetch(`http://localhost:3000/app/user/wishlist/${this.props.userData._id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
