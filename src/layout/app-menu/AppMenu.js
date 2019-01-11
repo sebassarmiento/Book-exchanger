@@ -7,10 +7,7 @@ class AppMenu extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      menu: true,
-      categories: true,
-      settings: true,
-      chat: true
+      menu: true
     }
   }
   render() {

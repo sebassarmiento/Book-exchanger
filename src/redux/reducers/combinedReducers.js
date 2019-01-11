@@ -1,8 +1,7 @@
 import * as Actions from '../actions';
 
 const initialStore = {
-    footer: true,
-    publish: true
+    footer: true
 }
 
 const reducer =  (store = initialStore, action) => {

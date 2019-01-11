@@ -35,6 +35,7 @@
     font-size: 1em;
     font-weight: 200;
     transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
 }
 
 .feedview-load-more:hover{

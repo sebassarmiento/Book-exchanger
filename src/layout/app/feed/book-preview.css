@@ -23,7 +23,7 @@
 }
 
 .book-preview-img{
-    margin: 24px 0px;
+    margin: 12px 0px;
     height: 200px;
     display: flex;
     align-items: center;
@@ -39,8 +39,9 @@
 }
 
 .book-preview p{
-    margin: 4px 0px;
-    font-size: 0.9em;
+    margin: 0px;
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.63);
 }
 
 .book-preview .book-preview-title{
