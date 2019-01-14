@@ -3,6 +3,7 @@ import './individual-book.css';
 import { NavLink } from 'react-router-dom';
 import timeAgo from '../../../utils/TimeAgo';
 import { connect } from 'react-redux';
+import LayoutLoader from '../../../utils/loaders/LayoutLoader';
 
 class BookRating extends Component {
     constructor(props) {
@@ -60,6 +61,7 @@ class IndividualBook extends Component {
         this.state = {}
     }
     componentDidMount() {
+        this.setState({fetchingData: true})
         fetch(`http://localhost:3000${this.props.location.pathname}`)
             .then(d => d.json())
             .then(res => {
@@ -70,7 +72,7 @@ class IndividualBook extends Component {
                         return this.setState({ unadd: true })
                     }
                 })
-                this.setState({ data: res })
+                this.setState({ data: res , fetchingData: false})
             })
             .catch(err => {
                 console.log(err)
@@ -138,6 +140,7 @@ class IndividualBook extends Component {
                     :
                     null
                 }
+                {this.state.fetchingData ? <LayoutLoader /> : null}
             </div>
         )
     }

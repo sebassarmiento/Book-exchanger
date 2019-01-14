@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './profile.css';
 import userPlaceholder from '../../../img/placeholder.user.png';
 import { Redirect } from 'react-router-dom';
+import LayoutLoader from '../../../utils/loaders/LayoutLoader';
 
 
 class Profile extends Component {
@@ -27,30 +28,30 @@ class Profile extends Component {
     handleRedirect(id) {
         this.setState({ redirect: id })
     }
-    handleScroll(r, x){
-        let scrollComponent = x ? this.publishedScroll : this.likedScroll
+    handleScroll(rightArrow, x){
+        let scrolledComponent = x ? this.publishedScroll : this.likedScroll
 
         let scrollCount = x ? this.scrollPublished : this.scrollLiked
 
-        let maxScroll = scrollComponent.current.scrollWidth - scrollComponent.current.clientWidth
+        let maxScroll = scrolledComponent.current.scrollWidth - scrolledComponent.current.clientWidth
 
-        if(r && scrollComponent.current.scrollLeft !== maxScroll && !this.interval){
+        if(rightArrow && scrolledComponent.current.scrollLeft !== maxScroll && !this.interval){
             x ? this.scrollPublished += 400 : this.scrollLiked += 400
             this.interval = setInterval(() => {
-                scrollComponent.current.scrollLeft += 3
+                scrolledComponent.current.scrollLeft += 3
                 console.log('Se ejecuta', scrollCount, this.scrollPublishedas)
-                if(scrollComponent.current.scrollLeft === maxScroll || scrollComponent.current.scrollLeft > (x ? this.scrollPublished : this.scrollLiked)){
+                if(scrolledComponent.current.scrollLeft === maxScroll || scrolledComponent.current.scrollLeft > (x ? this.scrollPublished : this.scrollLiked)){
                     clearInterval(this.interval)
                     this.interval = null
                     console.log('Se para')
                 }
             }, 1)
-        } else if(!r && scrollComponent.current.scrollLeft !== 0 && !this.interval) {
+        } else if(!rightArrow && scrolledComponent.current.scrollLeft !== 0 && !this.interval) {
             x ? this.scrollPublished -= 400 : this.scrollLiked -= 400
             this.interval = setInterval(() => {
-                scrollComponent.current.scrollLeft -= 3
+                scrolledComponent.current.scrollLeft -= 3
                 console.log('Se ejecuta', this.scrollPublished)
-                if(scrollComponent.current.scrollLeft === 0 || scrollComponent.current.scrollLeft < ((x ? this.scrollPublished : this.scrollLiked))){
+                if(scrolledComponent.current.scrollLeft === 0 || scrolledComponent.current.scrollLeft < ((x ? this.scrollPublished : this.scrollLiked))){
                     clearInterval(this.interval)
                     this.interval = null
                     console.log('Se para')
@@ -71,23 +72,23 @@ class Profile extends Component {
                 <div className="p-user-books" >
                     <div className="p-user-scroll" >
                         <h4>Published - {data ? data.books.published.length : null}</h4>
-                        <i onClick={() => this.handleScroll(null, 1)} className="fas fa-angle-left"></i>
+                        {data && data.books.published.length > 5 ? <i onClick={() => this.handleScroll(null, 1)} className="fas fa-angle-left"></i> : null}
                         <div ref={this.publishedScroll} className="p-user-books-published" >
                             {data && data.books.published.length > 0 ? data.books.published.map(book => {
                                 return (<img src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
-                            }) : data ? <p className="no-data" >No books published yet.</p> : null}
+                            }) : data ? <p className="no-data" >No books published yet.</p> : <LayoutLoader />}
                         </div>
-                        <i onClick={() => this.handleScroll(1, 1)} className="fas fa-angle-right"></i>
+                        {data && data.books.published.length > 5 ? <i onClick={() => this.handleScroll(1, 1)} className="fas fa-angle-right"></i> : null}
                     </div>
                     <div className="p-user-scroll" >
                         <h4>Liked - {data ? data.books.liked.length : null}</h4>
-                        <i onClick={() => this.handleScroll()} className="fas fa-angle-left"></i>
+                        {data && data.books.liked.length > 5 ?<i onClick={() => this.handleScroll()} className="fas fa-angle-left"></i> : null}
                         <div ref={this.likedScroll} className="p-user-books-liked" >
                             {data && data.books.liked.length > 0 ? data.books.liked.map(book => {
                                 return (<img src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
-                            }) : data ? <p className="no-data" >No books liked yet.</p> : null}
+                            }) : data ? <p className="no-data" >No books liked yet.</p> : <LayoutLoader />}
                         </div>
-                        <i onClick={() => this.handleScroll(1)} className="fas fa-angle-right"></i>
+                        {data && data.books.liked.length > 5 ? <i onClick={() => this.handleScroll(1)} className="fas fa-angle-right"></i> : null}
                     </div>
                 </div>
                 {this.state.redirect ? <Redirect to={`/app/books/id/${this.state.redirect}`} /> : null}

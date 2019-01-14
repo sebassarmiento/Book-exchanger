@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+a:visited{
+  color: rgba(0, 0, 0, 0.712);
+}
+
 h1{
   font-size: 1.2em;
 }

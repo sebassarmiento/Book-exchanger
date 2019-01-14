@@ -1,0 +1,18 @@
+.layout-loader{
+    position: absolute;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.233);
+    border-top: 3px solid #2274A5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60px;
+    width: 60px;
+    animation: layoutLoader 1s linear infinite;
+}
+
+@keyframes layoutLoader {
+    0%{transform: translate(-50%, -50%) rotate(0deg)}
+    100%{transform: translate(-50%, -50%) rotate(360deg)}
+}
