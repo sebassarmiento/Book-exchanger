@@ -36,6 +36,10 @@ h1{
   opacity: 0;
 }
 
+.blur{
+  filter: blur(1px);
+}
+
 *:focus{
   outline: none;
 }
