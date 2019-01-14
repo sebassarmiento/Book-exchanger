@@ -42,7 +42,7 @@ class Home extends Component {
               </div>
             </Fade>
             <Flip delay={1750} left>
-            <NavLink to='/signup' className="blue-btn" >Join now!</NavLink>
+            <NavLink to='/signup' className="join-now-btn" >Join now!</NavLink>
             </Flip>
           </div>
         </div>

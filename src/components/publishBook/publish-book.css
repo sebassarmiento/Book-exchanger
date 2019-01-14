@@ -192,6 +192,7 @@
     box-sizing: border-box;
     border: 1px solid rgb(0, 163, 204);
     position: relative;
+    border-radius: 1px;
 }
 
 .p-b-form .p-b-select::before{
@@ -360,9 +361,9 @@
     padding: 12px;
     padding-right: 60px;
     background-color: rgba(255, 0, 0, 0.137);
-    border: 1px solid red;
+    border: 1px solid rgba(170, 0, 0, 0.267);
     border-radius: 2px;
-    color: red;
+    color: rgb(161, 0, 0);
     font-weight: 100;
     position: absolute;
     box-sizing: border-box;
@@ -374,7 +375,7 @@
 
 .p-b-invalid-form i{
     color: white;
-    background-color: rgba(255, 0, 0, 0.774);
+    background-color: rgba(221, 0, 0, 0.562);
     border-radius: 50%;
     height: 30px;
     width: 30px;

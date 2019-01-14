@@ -1,10 +1,12 @@
 .app-menu{
-    background-color: #2274A5;
+    background-color: rgb(255, 255, 255);
     box-sizing: border-box;
     overflow: scroll;
     width: 260px;
     min-width: 260px;
-    color: white;
+    color: rgb(255, 255, 255);
+    box-shadow: 2px 0px 2px 0px rgba(168, 159, 168, 0.623);
+    z-index: 1;
 }
 
 .app-menu .menu-item{
@@ -29,7 +31,7 @@
     text-transform: uppercase;
     margin: 0;
     font-size: 1em;
-    background-color: rgba(0, 0, 0, 0.363);
+    background-color: rgb(0, 163, 204);
     position: relative;
     display: flex;
     align-items: center;
@@ -43,16 +45,6 @@
     cursor: pointer;
 }
 
-.app-menu h3::before{
-    content: '';
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.418);
-}
-
 .app-menu h3::after{
     content: '';
     position: absolute;
@@ -60,7 +52,7 @@
     width: 100%;
     bottom: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.418);
+    background-color: rgb(255, 255, 255);
 }
 
 /* /// */
@@ -69,8 +61,8 @@
     display: block;
     width: 100%;
     padding: 12px;
-    color: rgba(255, 255, 255, 0.87);
-    font-weight: 400;
+    color: rgba(0, 0, 0, 0.63);
+    font-weight: 300;
     box-sizing: border-box;
     transition: all 0.2s;
     position: relative;
@@ -86,30 +78,36 @@
     background-color: rgba(255, 255, 255, 0.521);
 }
 
-.app-menu div a:nth-last-child(1)::after{
-    background-color: transparent;
-}
-
 .app-menu i{
     color: white;
 }
 
 .app-menu a:hover{
-    background-color: rgba(0, 0, 0, 0.171);
-    color: white;
+    background-color: rgba(0, 0, 0, 0.082);
     cursor: pointer;
 }
 
 .app-menu a:hover i{
-    color: orange;
+    color: black;
 }
 
 .app-menu .menu-item{
     font-weight: 500;
+    position: relative;
 }
 
 .app-menu .menu-item i{
-    color: white;
+    color: rgba(0, 0, 0, 0.582);
+}
+
+.app-menu .menu-item:hover::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 5px;
+    background-color: rgb(34, 165, 84);
 }
 
 /* APP MENU ITEMS CONTAINER */
