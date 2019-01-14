@@ -1,0 +1,49 @@
+.book-carousel {
+    position: relative;
+}
+
+.book-carousel i:hover{
+    color: rgba(0, 0, 0, 0.726);
+    font-size: 3em;
+}
+
+.book-carousel .fa-angle-left{
+    position: absolute;
+    top: calc(50% + 16px);
+    left: -12px;
+    z-index: 100;
+    transform: translate(50%, -50%);
+    color: rgba(0, 0, 0, 0.527);
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.book-carousel .fa-angle-right{
+    position: absolute;
+    top: calc(50% + 16px);
+    right: -12px;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    color: rgba(0, 0, 0, 0.527);
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.carousel-books {
+    padding: 12px 0px;
+    grid-gap: 12px;
+    display: flex;
+    overflow-x: scroll;
+    transition: all 1s;
+    min-height: 200px;
+    width: 95%;
+    margin: 0px auto;
+}

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import timeAgo from '../../../utils/TimeAgo';
 import { connect } from 'react-redux';
 import LayoutLoader from '../../../utils/loaders/LayoutLoader';
+import BookCarousel from './components/BookCarousel';
 
 class BookRating extends Component {
     constructor(props) {
@@ -134,8 +135,14 @@ class IndividualBook extends Component {
                             </div>
                         </div>
                         <div className="individual-book-description" >
-                            <p>{this.state.data.description}</p>
+                            <h4>Description</h4>
+                            <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
                         </div>
+                        <div className="individual-book-comments" >
+                            <h4>Comments</h4>
+                            <p>{this.state.data.comments ? this.state.data.comments : "No comments yet."}</p>
+                        </div>
+                        <BookCarousel url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />
                     </React.Fragment>
                     :
                     null

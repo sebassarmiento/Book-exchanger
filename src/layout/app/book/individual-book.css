@@ -82,7 +82,18 @@
 
 .individual-book-description{
     margin-top: 24px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.individual-book h4{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.404);
+    margin: 0;
+    padding: 12px 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.individual-book-description p, .individual-book-comments p{
+    padding: 12px;
+    margin: 0;
 }
 
 /* BUTTONS */

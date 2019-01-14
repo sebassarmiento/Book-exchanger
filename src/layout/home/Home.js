@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../home/home.css';
-import '../../utils/buttons/buttons.css';
 import SearchIcon from '../../img/search.png';
 import MessageIcon from '../../img/chat.png';
 import DealIcon from '../../img/deal.png';
