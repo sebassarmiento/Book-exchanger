@@ -3,6 +3,7 @@ import './login.css';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import Input from '../../utils/inputs/input';
 
 class Login extends Component {
   constructor(props) {
@@ -54,14 +55,8 @@ class Login extends Component {
       <div className="login-container" >
         <div className={`login-form ${this.state.loginTry ? "blur" : ''}`} >
           <h1>Login</h1>
-          <div className="login-input" >
-            <input autoComplete="off" required id="email-login" name="email" onChange={(e) => this.handleChange(e)} value={this.state.email} type="text" />
-            <label htmlFor="email-login" >Email</label>
-          </div>
-          <div className="login-input" >
-            <input autoComplete="off" required id="password-login" name="password" onChange={(e) => this.handleChange(e)} value={this.state.password} type="password" />
-            <label htmlFor="password-login" >Password</label>
-          </div>
+          <Input value={this.state.email} handleChange={(e) => this.handleChange(e)} label="Email" type="text" />
+          <Input value={this.state.password} handleChange={(e) => this.handleChange(e)} label="Password" type="password" />
           <p className={this.state.invalidLogin ? "invalid-login" : "invalid-login-hidden"} >Invalid email or password.</p>
           <button onClick={() => this.handleLogin()} className="login-form-btn" >Log in</button>
           <p className="login-to-signup" >Don't have an account? <NavLink to="/signup" >Sign up</NavLink></p>

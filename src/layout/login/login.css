@@ -6,6 +6,7 @@
     justify-content: center;
     animation: signupFormEnter1 0.5s ease-in-out;
     position: relative;
+    z-index: 0;
 }
 
 .login-form{
@@ -36,55 +37,6 @@
 .login-to-signup a{
     color: #2274A5;
 }
-
-/* Inputs */
-
-.login-form .login-input{
-    position: relative;
-    margin: 0px;
-    margin-top: 24px;
-}
-
-.login-input input{
-    display: block;
-    box-sizing: border-box;
-    padding: 8px 4px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.219);
-    font-size: 1em;
-    position: relative;
-    width: 100%;
-    margin: 12px 0px;
-    z-index: 1;
-    transition: all 0.3s ease;
-}
-
-.login-input input + label {
-    transition: all 1s;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 12px 4px;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-}
-
-.login-input input:focus, .login-input input:valid{
-    border-bottom: 2px solid rgb(0, 163, 204);
-}
-
-.login-input input:focus + label, .login-input input:valid + label {
-    transform: translate(0, -20px);
-    font-size: 0.8em;
-    color: rgb(0, 163, 204);
-}
-
-/*****/
 
 .login-form-btn{
     background-color: rgb(255, 135, 55);

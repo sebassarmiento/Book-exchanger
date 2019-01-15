@@ -170,7 +170,7 @@
 
 .home-faq div{
     margin: 0px 12px;
-    padding: 12px;
+    padding: 24px;
     width: 300px;
     height: 300px;
     box-sizing: border-box;
@@ -183,16 +183,10 @@
     display: flex;
     align-items: center;
     box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.3);
-}
-
-.home-faq div span{
-    transition: all 0.3s;
+    cursor: pointer;
 }
 
 .home-faq div:hover{
-}
-
-.home-faq div:hover span{
-    cursor: pointer;
-    transform: scale(1.1);
+    background-color: rgb(34, 117, 165);
+    color: white;
 }
