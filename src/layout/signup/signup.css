@@ -4,22 +4,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .signup-container .signup-form{
     background-color: rgb(240, 240, 240);
     width: 400px;
     padding: 24px;
+    padding-bottom: 12px;
     box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.3);
     position: relative;
-}
-
-.signup-container div:nth-child(1){
-    animation: signupFormEnter1 0.5s ease-in-out;
-}
-
-.signup-container div:nth-child(2){
-    animation: signupFormEnter2 0.5s ease-in-out;
+    animation: signupFormEnter2 1s ease-in-out;
 }
 
 .signup-container h1{
@@ -60,7 +55,7 @@
 }
 
 .signup-user-created{
-    transition: all 0.4s cubic-bezier(0.93,-0.79, 1, 0.76);
+    transition: all 0.4s cubic-bezier(0.93,-0.69, 1, 0.96);
     transform: scale(0);
     width: 400px;
     z-index: 1;
@@ -76,12 +71,18 @@
 
 .signup-to-login{
     text-align: center;
-    margin: 0px;
-    padding-top: 12px;
+    font-size: 0.8em;
+    margin: 12px;
 }
 
 .signup-to-login a{
     color: #2274A5;
+}
+
+.small-text{
+    font-size: 0.6em;
+    padding: 0px 12px;
+    text-align: center;
 }
 
 /* VALID/INVALID TEXTS */
@@ -109,7 +110,7 @@
     color: white;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
-    margin: 24px 0px;
+    margin: 0px;
     margin-bottom: 0px;
     width: 100%;
     transition: all 0.4s;
@@ -117,6 +118,7 @@
 
 .signup-form-next-btn:hover{
     cursor: pointer;
+    background-color: rgb(218, 111, 40);
 }
 
 .signup-form-next-btn-disabled{
@@ -128,7 +130,7 @@
     color: white;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
-    margin: 24px 0px;
+    margin: 0px;
     margin-bottom: 0px;
     width: 100%;
     transition: all 0.4s;
@@ -182,12 +184,12 @@
 
 @keyframes signupFormEnter2{
     0%{
-        opacity: 0;
-        transform: scale(0.2);
+        opacity: 0.6;
+        filter: blur(20px);
     }
     100%{
         opacity: 1;
-        transform: scale(1);
+        filter: blur(0px);
     }
 }
 

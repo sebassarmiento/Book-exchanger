@@ -197,13 +197,14 @@ class Signup extends Component {
                     </div>
                     <div className="select-container" >
                         <select name="gender" value={this.state.gender} onChange={(e) => this.handleChange(e)} >
-                            <option value="" disabled defaultValue>Choose your location</option>
+                            <option value="" disabled defaultValue>Choose your gender</option>
                             <option value="Male" >Male</option>
                             <option value="Female" >Female</option>
                             <option value="Other" >Other</option>
                         </select>
                     </div>
                     {this.showBtn(0)}
+                    <p className="small-text" >By clicking sign up you agree to our terms of services and policy.</p>
                 </div>
                 {this.state.redirect ? <Redirect to="/app/welcome-user" /> : null}
                 {this.state.signUpTry ? <React.Fragment><div className="signup-try-loader" ></div><p className="signup-try-loader-text" >Creating user...</p></React.Fragment> : null}
