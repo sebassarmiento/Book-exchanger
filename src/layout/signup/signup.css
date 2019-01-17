@@ -1,5 +1,6 @@
 .signup-container{
-    background: radial-gradient(rgb(59, 183, 255), #2274A5);
+    /*background: radial-gradient(rgb(59, 183, 255), #2274A5);*/
+    background: radial-gradient( rgb(153, 151, 151), rgb(68, 67, 67));
     height: 100vh;
     display: flex;
     align-items: center;
@@ -7,14 +8,18 @@
     overflow: hidden;
 }
 
-.signup-container .signup-form{
+.signup-container .signup-form, .signup-container .signup-form-2{
     background-color: rgb(240, 240, 240);
     width: 400px;
     padding: 24px;
     padding-bottom: 12px;
     box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.3);
     position: relative;
-    animation: signupFormEnter2 1s ease-in-out;
+    animation: signupFormEnter1 0.5s ease-in-out;
+}
+
+.signup-form-2{
+    animation: signupFormEnter2 0.6s cubic-bezier(0.575, 0.585, 0.52, 1.2) !important;
 }
 
 .signup-container h1{
@@ -55,8 +60,9 @@
 }
 
 .signup-user-created{
-    transition: all 0.4s cubic-bezier(0.93,-0.69, 1, 0.96);
+    transition: all 0.5s cubic-bezier(0.93,-0.69, 1, 0.96);
     transform: scale(0);
+    opacity: 0;
     width: 400px;
     z-index: 1;
 }
@@ -111,7 +117,7 @@
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
     margin: 0px;
-    margin-bottom: 0px;
+    margin-top: 12px;
     width: 100%;
     transition: all 0.4s;
 }
@@ -131,7 +137,7 @@
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
     margin: 0px;
-    margin-bottom: 0px;
+    margin-top: 12px;
     width: 100%;
     transition: all 0.4s;
 }
@@ -171,18 +177,36 @@
 
 /* ANIMATIONS */
 
-@keyframes signupFormEnter1{
+@keyframes signupFormEnter2{
     0%{
         opacity: 0;
-        transform: scale(2);
+        filter: blur(20px);
+        transform: translateX(10px) rotate(10deg);
     }
     100%{
         opacity: 1;
-        transform: scale(1);
+        filter: blur(0px);
+        transform: translateX(0px) rotate(0deg);
     }
 }
 
-@keyframes signupFormEnter2{
+/* 
+
+0%{
+        opacity: 0;
+        transform: translate(0px, -60px) rotate(-30deg) scale(0.4);
+    }
+    70%{
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(0deg) scale(1.1);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    */
+
+@keyframes signupFormEnter1{
     0%{
         opacity: 0.6;
         filter: blur(20px);

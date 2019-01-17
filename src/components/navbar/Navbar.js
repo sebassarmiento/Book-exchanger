@@ -16,7 +16,7 @@ class Navbar extends Component {
   }
 
   handleScroll() {
-    if (window.scrollY > 400) {
+    if (window.scrollY > 500) {
       this.setState({ scrolled: true })
     } else {
       this.setState({ scrolled: false })

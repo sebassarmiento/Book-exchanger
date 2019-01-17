@@ -20,10 +20,14 @@
     align-items: center;
     justify-content: center;
     font-size: 1.17em;
-    font-weight: bold;
+    font-weight: 600;
+    transition: all 0.3s;
+    letter-spacing: -1px;
+    word-spacing: 0px;
 }
 
 .navbar .brand:hover{
+    color: white !important;
     cursor: pointer;
 }
 
@@ -32,18 +36,21 @@
 }
 
 .navbar.scrolled{
-    background-color: rgb(245, 243, 243);
+    background-color: rgb(68, 67, 67);
 }
 
 .navbar.scrolled a{
-    color: rgba(0, 0, 0, 0.733) !important;
+    color: rgba(243, 239, 239, 0.863) !important;
 }
 
 .navbar .navbar-btns{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Roboto', sans-serif;
 }
+
+/* Log in btn */
 
 .navbar .navbar-btns a:nth-child(1){
     padding: 12px 24px;
@@ -53,18 +60,105 @@
     transition: all 0.2s ease-in-out;
 }
 
+.navbar .navbar-btns a:nth-child(1):hover{
+    color: rgb(13, 177, 218);
+    color: white !important;
+}
+
+
+.navbar .navbar-btns a:nth-child(1)::before{
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-top: 2px solid rgb(13, 177, 218);
+    border-bottom: 2px solid rgb(13, 177, 218);
+    border-radius: 2px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0, 1);
+}
+
+.navbar .navbar-btns a:nth-child(1):hover::before{
+    transform: scale(1);
+}
+
+.navbar .navbar-btns a:nth-child(1)::after{
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-left: 2px solid rgb(13, 177, 218);
+    border-right: 2px solid rgb(13, 177, 218);
+    border-radius: 2px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out 0.2s;
+    transform: scale(1, 0);
+}
+
+.navbar .navbar-btns a:nth-child(1):hover::after{
+    transform: scale(1);
+}
+
+/* Sign up btn */
+
 .navbar .navbar-btns a:nth-child(2){
-    padding: 12px 24px;
-    border: 2px solid #2274A5;
-    border-radius: 4px;
+    padding: 10px 24px;
+    border: 2px solid rgb(13, 177, 218);
+    border-radius: 2px;
     margin-left: 6px;
     position: relative;
     transition: all 0.2s ease-in-out;
     box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.788) !important;
+    z-index: 1;
+    color: rgb(13, 177, 218) !important;
+    color: white !important;
 }
 
 .navbar .navbar-btns a:nth-child(2):hover{
-    background-color: #2274A5;
     color: white !important;
+}
+
+.navbar .navbar-btns a:nth-child(2)::before{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    height: calc(100% + 4px);
+    width: calc(100% + 4px);
+    background-color: rgb(13, 177, 218);
+    background: radial-gradient(rgb(121, 210, 233), rgb(13, 177, 218));
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0.5);
+    transform-origin: center;
+    z-index: -1;
+    opacity: 0;
+    border-radius: 50%;
+}
+
+.navbar .navbar-btns a:nth-child(2):hover::before{
+    transform: scale(1);
+    opacity: 1;
+    border-radius: 2px;
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.432);
+}
+
+.navbar.scrolled .navbar-btns a:nth-child(2):hover{
+    color: white !important;
+}
+
+.navbar.scrolled .navbar-btns a:nth-child(2):hover::before{
+    color: white !important;
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.247);
 }
 
