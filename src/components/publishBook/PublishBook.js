@@ -45,6 +45,7 @@ class PublishBook extends Component {
                     setTimeout(() => {
                         this.props.closePublish()
                     }, 1000)
+                    this.props.notify('success', 'Book was published successfully!')
                 }
             })
             .catch(err => {
@@ -156,7 +157,8 @@ class PublishBook extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        closePublish: () => dispatch({ type: "CLOSE_PUBLISH_FORM" })
+        closePublish: () => dispatch({ type: "CLOSE_PUBLISH_FORM" }),
+        notify: (category, message) => dispatch({ type: 'NOTIFICATION', payload: {category, message} })
     }
 }
 

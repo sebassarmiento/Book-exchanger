@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './notification.css';
+import { connect } from 'react-redux';
 
 class Notification extends Component {
     constructor(props) {
@@ -15,6 +16,11 @@ class Notification extends Component {
             return <i className="far fa-check-circle"></i>
         }
     }
+    componentDidMount(){
+        setTimeout(() => {
+            this.props.closeNotification()
+        }, 5000)
+    }
     render() {
         return (
             <div className="notification" >
@@ -25,4 +31,10 @@ class Notification extends Component {
     }
 }
 
-export default Notification;
+const mapDispatchToProps = dispatch => {
+    return {
+        closeNotification: () => dispatch({ type: 'NOTIFICATION_CLOSE' })
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Notification);

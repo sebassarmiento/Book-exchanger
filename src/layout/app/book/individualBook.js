@@ -20,7 +20,7 @@ class BookRating extends Component {
         this.setState({ rated: rating })
     }
     handleRate() {
-        this.setState({ rated: this.state.stars })
+        this.setState({ rated: this.state.stars, ratingCount: true })
         fetch(`http://localhost:3000/app/books/${this.props.bookId}/rating`, {
             method: 'POST',
             headers: {
@@ -34,6 +34,7 @@ class BookRating extends Component {
             .then(d => d.json())
             .then(res => {
                 console.log('ACAAAAAAAA', res)
+                this.props.notify('success', 'Book rating was added!')
             })
             .catch(err => {
                 console.log(err)
@@ -50,7 +51,7 @@ class BookRating extends Component {
                     <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 4 })} className={`${this.state.stars > 3 || this.state.rated > 3 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
                     <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 5 })} className={`${this.state.stars > 4 || this.state.rated > 4 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
                 </div>
-                <small style={{ marginLeft: 4 }} >{this.props.rating.length || 0} ratings</small>
+                <small style={{ marginLeft: 4 }} >{(this.props.rating.length || 0) + (this.state.ratingCount ? 1 : 0)} ratings</small>
             </React.Fragment>
         )
     }
@@ -131,7 +132,12 @@ class IndividualBook extends Component {
                                         <p><strong>Location: </strong>{this.state.data.place}</p>
                                         <p><strong>Pages: </strong>{this.state.data.pages}</p>
                                         <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
-                                        <BookRating bookId={this.state.data._id} rating={this.state.data.ratings} currentUser={this.props.userData._id} />
+                                        <BookRating 
+                                        notify={(category, message) => this.props.notify(category, message)} 
+                                        bookId={this.state.data._id} 
+                                        rating={this.state.data.ratings} 
+                                        currentUser={this.props.userData._id} 
+                                        />
                                     </div>
                                     <div className="i-b-interact" >
                                         <div>
