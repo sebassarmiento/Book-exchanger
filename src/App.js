@@ -13,6 +13,7 @@ import IndividualBook from './layout/app/book/individualBook';
 import Publish from './layout/app/publish/Publish';
 import Profile from './layout/app/profile/Profile';
 import PublishBook from './components/publishBook/PublishBook';
+import Notification from './components/notification/Notification';
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends Component {
                   <Route path="/app/user/:userId" component={Profile} />
                 </Switch>
                 {this.props.publish ? <PublishBook /> : null}
+                {this.props.notification ? <Notification {...this.props.notification} /> : null}
               </div>
             }
             {this.props.footer ? <Footer /> : null}
@@ -57,7 +59,8 @@ const mapStateToProps = store => {
   return {
     footer: store.footer,
     logged: store.logged,
-    publish: store.publish
+    publish: store.publish,
+    notification: store.notification
   }
 }
 

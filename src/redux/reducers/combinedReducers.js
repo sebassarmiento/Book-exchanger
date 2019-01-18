@@ -1,7 +1,8 @@
 import * as Actions from '../actions';
 
 const initialStore = {
-    footer: true
+    footer: true,
+    notification: {category: 'success', message: 'Book rating added!'}
 }
 
 const reducer =  (store = initialStore, action) => {
@@ -22,6 +23,8 @@ const reducer =  (store = initialStore, action) => {
         return {...store, publish: false}
         case Actions.OPEN_PUBLISH_FORM:
         return {...store, publish: true}
+        case Actions.NOTIFICATION:
+        return {...store, notification: { category: action.payload.category, message: action.payload.message }}
         case Actions.LOGOUT:
         return {}
         default:

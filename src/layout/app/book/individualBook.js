@@ -108,6 +108,7 @@ class IndividualBook extends Component {
             .then(res => {
                 console.log(res)
                 if (res.message) {
+                    this.props.notify('success', 'Book rating added!')
                     this.props.addToWishlist(res.user.books)
                 }
             })
@@ -174,7 +175,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addToWishlist: book => dispatch({ type: 'ADD_BOOK_TO_WISHLIST_IN_STORE', payload: book })
+        addToWishlist: book => dispatch({ type: 'ADD_BOOK_TO_WISHLIST_IN_STORE', payload: book }),
+        notify: (category, message) => dispatch({ type: 'NOTIFICATION', payload: { category, message } })
     }
 }
 
