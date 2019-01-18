@@ -94,8 +94,14 @@ class IndividualBook extends Component {
             })
     }
     handleAdd() {
-        this.setState({ added: !this.state.added, unadd: !this.state.unadd })
-        fetch(`http://localhost:3000/app/user/wishlist/${this.props.userData._id}`, {
+        this.setState({ added: !this.state.added, unadd: !this.state.unadd, adding: true })
+        if(!this.state.unadd){
+            this.props.notify('success', 'Book added to wishlist!')
+        } else {
+            this.props.notify('success', 'Book removed from wishlist!')
+        }
+        if(!this.state.adding){
+            fetch(`http://localhost:3000/app/user/wishlist/${this.props.userData._id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -108,11 +114,12 @@ class IndividualBook extends Component {
             .then(d => d.json())
             .then(res => {
                 console.log(res)
-                if (res.message) {
-                    this.props.notify('success', 'Book rating added!')
+                this.setState({adding: false})
+                if (res.message && res.user) {
                     this.props.addToWishlist(res.user.books)
                 }
             })
+        }
     }
     render() {
         return (

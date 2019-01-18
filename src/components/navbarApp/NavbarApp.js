@@ -21,7 +21,6 @@ class NavbarApp extends Component {
   }
 
   render() {
-    console.log('Renders')
     return (
       <div className="app-navbar" >
         <div ><img alt="brand-logo" src={Logo} height="32px" /><NavLink to="/app/feed" >Book exchanger</NavLink></div>

@@ -94,6 +94,12 @@
 .individual-book-description p, .individual-book-comments p{
     padding: 12px;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.67;
+    font-weight: 400;
+    color: #4a4a4a;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "kern", "liga", "pnum";
 }
 
 /* BUTTONS */

@@ -16,7 +16,8 @@
 }
 
 .app-navbar a{
-    color: rgba(0, 0, 0, 0.699);
+    color: #4a4a4a;
+    transition: all 0.3s ease-in-out;
 }
 
 .app-navbar div:nth-child(1){
@@ -24,11 +25,19 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    font-weight: bold;
     font-size: 1.17em;
     padding: 24px;
     box-sizing: border-box;
+    font-weight: 600;
+    transition: all 0.3s;
+    letter-spacing: -1px;
+    word-spacing: 0px;
+    cursor: pointer;
 }
+.app-navbar div:nth-child(1):hover a{
+    color: black;
+}
+
 
 /* Settings */
 

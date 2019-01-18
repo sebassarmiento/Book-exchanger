@@ -101,7 +101,7 @@ class Signup extends Component {
                 password: this.state.password,
                 username: this.state.username,
                 gender: this.state.gender,
-                age: this.state.age
+                location: this.state.location
             })
         })
             .then(d => d.json())

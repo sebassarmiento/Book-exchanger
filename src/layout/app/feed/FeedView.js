@@ -9,13 +9,15 @@ class FeedView extends Component {
     super(props)
     this.state = {}
     this.count = 0
+    this.location = this.props.location.pathname
   }
   componentDidMount() {
+    console.log('ACAAAAAAAAA', this.props.match.params)
     this.getData()
   }
   getData(more){
     if(more)this.count += 10
-    fetch(`http://localhost:3000/app/books${this.count > 0 ? `/?search=${this.count}` : ''}`, {
+    fetch(`http://localhost:3000/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`, {
       method: 'GET',
       headers: {
         'authorization': this.props.token

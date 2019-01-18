@@ -16,7 +16,7 @@ class PublishBook extends Component {
             pages: 0
         }
     }
-    handleClick() {
+    handleClose() {
         this.setState({ closed: true })
         setTimeout(() => {
             this.props.closePublish()
@@ -41,11 +41,10 @@ class PublishBook extends Component {
             .then(res => {
                 console.log(res)
                 if(res.message === 'Book was added!'){
-                    this.setState({bookPublished: true})
+                    this.handleClose()
                     setTimeout(() => {
-                        this.props.closePublish()
-                    }, 1000)
-                    this.props.notify('success', 'Book was published successfully!')
+                        this.props.notify('success', 'Book was published successfully!')
+                    }, 400)
                 }
             })
             .catch(err => {
@@ -60,9 +59,9 @@ class PublishBook extends Component {
         console.log(this.state)
         return (
             <div className="publish-book-container" >
-                <div onClick={() => this.handleClick()} className={`p-b-background ${this.state.closed ? 'p-b-background-out' : null}`} ></div>
+                <div onClick={() => this.handleClose()} className={`p-b-background ${this.state.closed ? 'p-b-background-out' : null}`} ></div>
                 <div className={`p-b-form ${this.state.closed ? 'p-b-form-closed' : null}`} >
-                    <i onClick={() => this.handleClick()} className="fas fa-times"></i>
+                    <i onClick={() => this.handleClose()} className="fas fa-times"></i>
                     <h2>Publish a new book</h2>
                     <div className="p-b-grid" >
                         <div className="p-b-input" ><input onChange={(e) => this.handleChange(e)} autoComplete="off" required name="name" type="text" /><label htmlFor="name">Name</label></div>

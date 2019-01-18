@@ -22,12 +22,12 @@ class AppMenu extends Component {
         </div>
         <h3><i onClick={() => this.setState({categories: !this.state.categories})} className="fas fa-ellipsis-h"></i>Categories</h3>
         <div className={this.state.categories ? "categories-items-open" : "categories-items-closed"} >
-          <Link className="menu-item" to="/app/books/sport" >{arrow}<span>Sport</span></Link>
-          <Link className="menu-item" to="/app/books/clothes" >{arrow}<span>Clothes</span></Link>
-          <Link className="menu-item" to="/app/books/self-improvement" >{arrow}<span>Self-improvement</span></Link>
-          <Link className="menu-item" to="/app/books/money" >{arrow}<span>Money</span></Link>
-          <Link className="menu-item" to="/app/books/success" >{arrow}<span>Success</span></Link>
-          <Link className="menu-item" to="/app/books/motivation" >{arrow}<span>Motivation</span></Link>
+          <Link className="menu-item" to="/app/books/category/sport" >{arrow}<span>Sport</span></Link>
+          <Link className="menu-item" to="/app/books/category/clothes" >{arrow}<span>Clothes</span></Link>
+          <Link className="menu-item" to="/app/books/category/self-improvement" >{arrow}<span>Self-improvement</span></Link>
+          <Link className="menu-item" to="/app/books/category/money" >{arrow}<span>Money</span></Link>
+          <Link className="menu-item" to="/app/books/category/success" >{arrow}<span>Success</span></Link>
+          <Link className="menu-item" to="/app/books/category/motivation" >{arrow}<span>Motivation</span></Link>
         </div>
         <h3><i onClick={() => this.setState({chat: !this.state.chat})} className="fas fa-comment"></i>Chat</h3>
         <div className={this.state.chat ? "settings-items-open" : "settings-items-closed"} >
