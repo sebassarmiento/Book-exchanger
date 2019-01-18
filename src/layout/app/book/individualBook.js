@@ -60,9 +60,22 @@ class IndividualBook extends Component {
     constructor(props) {
         super(props)
         this.state = {}
+        this.route = ''
     }
     componentDidMount() {
-        this.setState({fetchingData: true})
+        this.getData()
+        this.route = this.props.location.pathname
+    }
+    componentDidUpdate(){
+        console.log(this.route, this.props.location.pathname)
+        if(this.route !== this.props.location.pathname){
+            console.log('Fetching data!')
+            this.route = this.props.location.pathname
+            this.getData()
+        }
+    }
+    getData(){
+        this.setState({fetchingData: true, data: null})
         fetch(`http://localhost:3000${this.props.location.pathname}`)
             .then(d => d.json())
             .then(res => {
@@ -142,7 +155,7 @@ class IndividualBook extends Component {
                             <h4>Comments</h4>
                             <p>{this.state.data.comments ? this.state.data.comments : "No comments yet."}</p>
                         </div>
-                        <BookCarousel url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />
+                        <BookCarousel redirect={() => this.forceUpdate()} url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />
                     </React.Fragment>
                     :
                     null

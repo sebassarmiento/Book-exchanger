@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LayoutLoader from '../../../../utils/loaders/LayoutLoader';
 import './book-carousel.css';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class BookCarousel extends Component {
     constructor(props){
@@ -50,6 +51,7 @@ export default class BookCarousel extends Component {
     }
     handleRedirect(id){
         this.setState({redirect: id})
+        this.props.redirect()
     }
     render() {
         const { data } = this.state
@@ -63,7 +65,7 @@ export default class BookCarousel extends Component {
                     }) : <LayoutLoader />}
                 </div>
                 {data && data.length > 5 ? <i onClick={() => this.handleScroll(1)} className="fas fa-angle-right"></i> : null}
-                {this.state.redirect ? <Redirect push to={`/app/books/id/${this.state.redirect}`} /> : null}
+                {this.state.redirect ? <Redirect to={`/app/books/id/${this.state.redirect}`} /> : null}
             </div>
         )
     }
