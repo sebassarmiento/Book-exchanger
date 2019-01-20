@@ -1,6 +1,6 @@
 .app-navbar{
     display: flex;
-    background-color: rgb(240, 240, 240);
+    background-color: #008a8a;
     height: 70px;
     width: 100%;
     align-items: center;
@@ -16,7 +16,7 @@
 }
 
 .app-navbar a{
-    color: #4a4a4a;
+    color: white;
     transition: all 0.3s ease-in-out;
 }
 
@@ -32,12 +32,107 @@
     transition: all 0.3s;
     letter-spacing: -1px;
     word-spacing: 0px;
-    cursor: pointer;
 }
 .app-navbar div:nth-child(1):hover a{
-    color: black;
+    color: white;
 }
 
+/* Menu opener */
+
+.menu-closed{
+    height: 30px;
+    width: 30px;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    transform: translateY(1px);
+}
+
+.menu-closed span:nth-child(1){
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 24px;
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease-in-out;
+}
+
+.menu-closed span:nth-child(2){
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 24px;
+    border-radius: 2px;
+    top: calc(50% - 8px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease-in-out;
+}
+
+.menu-closed span:nth-child(3){
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 24px;
+    border-radius: 2px;
+    top: calc(50% + 8px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease-in-out;
+}
+
+.menu-open{
+    height: 30px;
+    width: 30px;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    transform: translateY(1px);
+}
+
+.menu-open span:nth-child(1){
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 24px;
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) scale(0.2, 1);
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+}
+
+.menu-open span:nth-child(2){
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 24px;
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: all 0.4s ease-in-out;
+}
+
+.menu-open span:nth-child(3){
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 24px;
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transition: all 0.4s ease-in-out;
+}
 
 /* Settings */
 
@@ -46,14 +141,14 @@
     align-items: center;
     height: 100%;
     width: 200px;
-    justify-content: center;
+    justify-content: flex-end;
     padding: 24px;
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
-    position: relative;
 }
 
 .app-navbar .navbar-settings i{
+    color: rgb(228, 228, 228);
     padding: 12px;
     transition: all 0.4s ease;
 }
@@ -63,21 +158,27 @@
     cursor: pointer;
 }
 
-.app-navbar .navbar-menu-open{
+.navbar-menu{
     position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    transform: translateY(100%) scale(1);
+    top: 70px;
+    right: 0px;
+    width: 200px;
+    transform-origin: right;
+    transform: scale(1);
     transition: all 0.5s;
     opacity: 1;
     box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.336);
-    background-color: rgb(240, 240, 240);
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    background-color: white;
+    color: #008a8a;
+    z-index: 1;
+    animation: showNavbarMenu 0.5s cubic-bezier(0.475, 0.885, 0.32, 1.275);
 }
 
-.app-navbar .navbar-menu-open h4{
+.navbar-menu.navbar-menu-closed{
+    transform: translateY(-100%);
+}
+
+.navbar-menu h4{
     box-sizing: border-box;
     border-top: 1px solid rgba(0, 0, 0, 0.226);
     margin: 0px;
@@ -86,26 +187,17 @@
     font-weight: 500;
 }
 
-.app-navbar .navbar-menu-open h4:hover{
+.navbar-menu h4:hover{
     background-color: rgba(0, 0, 0, 0.075);
     cursor: pointer;
 }
 
-
-.app-navbar .navbar-menu-closed{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-height: 100px;
-    opacity: 0;
-    padding: 0px !important;
-    opacity: 0;
-    transform: translateY(0px) scale(0);
-    transition: all 0.5s;
+@keyframes showNavbarMenu {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0px);
+    }
 }
 
-.app-navbar .navbar-menu-closed h4{
-    text-align: center;
-    transform: scale(0);
-}

@@ -7,6 +7,15 @@
     color: rgb(255, 255, 255);
     box-shadow: 2px 0px 2px 0px rgba(168, 159, 168, 0.623);
     z-index: 1;
+    position: absolute;
+    transform-origin: left;
+    animation: showAppMenu 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    min-height: calc(100vh - 70px);
+}
+
+.app-menu.app-menu-closed{
+    transform: translateX(-100%);
 }
 
 .app-menu .menu-item{
@@ -162,4 +171,16 @@
     opacity: 0;
     transition: all 0.8s;
     transform: scale(1, 0);
+}
+
+
+/* Animations */
+
+@keyframes showAppMenu {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0px);
+    }
 }

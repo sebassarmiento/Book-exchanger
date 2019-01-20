@@ -13,7 +13,7 @@ class AppMenu extends Component {
   render() {
     let arrow = <i className="fas fa-caret-right"></i>
     return (
-      <div className="app-menu" >
+      <div className={`app-menu ${this.props.appMenu.status === 'closing' ? 'app-menu-closed' : null}`} >
         <h3><i onClick={() => this.setState({ menu: !this.state.menu })} className="fas fa-bars"></i>Menu</h3>
         <div className={this.state.menu ? "menu-items-open" : "menu-items-closed"} >
           <Link className="menu-item" to="/app/feed" ><i className="fas fa-home"></i><span>Home</span></Link>
@@ -46,10 +46,16 @@ class AppMenu extends Component {
   }
 }
 
+const mapStateToProps = store => {
+  return {
+    appMenu: store.appMenu
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     publish: () => dispatch({ type: 'OPEN_PUBLISH_FORM' })
   }
 }
 
-export default connect(null, mapDispatchToProps)(AppMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(AppMenu);
