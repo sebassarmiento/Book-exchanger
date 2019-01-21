@@ -56,7 +56,7 @@ class PublishBook extends Component {
         }
     }
     render() {
-        console.log(this.state)
+        console.log(this.state, this.state.location)
         return (
             <div className="publish-book-container" >
                 <div onClick={() => this.handleClose()} className={`p-b-background ${this.state.closed ? 'p-b-background-out' : null}`} ></div>

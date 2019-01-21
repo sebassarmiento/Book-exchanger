@@ -136,7 +136,7 @@ class IndividualBook extends Component {
                                     <div>
                                         <p>By {this.state.data.author}</p>
                                         <p>Published {timeAgo(this.state.data.date)} ago</p>
-                                        <p><strong>Location: </strong>{this.state.data.place}</p>
+                                        <p><strong>Location: </strong>{this.state.data.location}</p>
                                         <p><strong>Pages: </strong>{this.state.data.pages}</p>
                                         <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
                                         <BookRating 

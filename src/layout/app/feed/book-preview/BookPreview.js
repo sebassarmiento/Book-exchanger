@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
-import timeAgo from '../../../utils/TimeAgo';
+import timeAgo from '../../../../utils/TimeAgo';
 import './book-preview.css';
 
 class BookPreview extends Component {
@@ -9,7 +9,6 @@ class BookPreview extends Component {
         this.state = {}
     }
     render() {
-        const pv = this.props.profileView
         return (
             <div className="book-preview" >
                 <p>In <NavLink to={`/app/books/${this.props.category.toLowerCase()}`} >{this.props.category}</NavLink><span style={{float: 'right', fontSize: '0.9em'}} >{timeAgo(this.props.date)} ago</span></p>

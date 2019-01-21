@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BookPreview from './BookPreview';
+import BookPreview from './book-preview/BookPreview';
 import { connect } from 'react-redux';
 import './feed-view.css';
 import LayoutLoader from '../../../utils/loaders/LayoutLoader';
