@@ -1,14 +1,10 @@
 import * as Actions from '../actions';
 
 const initialStore = {
-    footer: false,
+    footer: true,
     appMenu: {
         status: 'closed'
-    },
-    userData: {
-        username: "Sebastian22"
-    },
-    logged: true
+    }
 }
 
 const reducer =  (store = initialStore, action) => {
@@ -40,7 +36,7 @@ const reducer =  (store = initialStore, action) => {
         case Actions.APP_MENU_CLOSE:
         return {...store, appMenu: {...store.appMenu, status: 'closed'}}
         case Actions.LOGOUT:
-        return {}
+        return {...initialStore}
         default:
         return {...store}
     }
