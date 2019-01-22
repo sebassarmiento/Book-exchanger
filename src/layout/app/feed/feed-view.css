@@ -1,11 +1,11 @@
 .feedview-container {
-    padding: 12px;
+    padding: 0px;
     width: 100%;
     max-height: 100vh;
     box-sizing: border-box;
     position: relative;
     right: 0;
-    background-color: #00979c65;
+    background-color: #00979c41;
     display: flex;
     overflow: hidden;
 }
@@ -19,9 +19,11 @@
     overflow: scroll;
     background-color: rgb(255, 255, 255);
     box-sizing: border-box;
+    min-height: calc(100% - 62px);
     max-height: 500px;
     border-radius: 2px;
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.308);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.404);
+    position: relative;
 }
 
 @media screen and (max-width: 1100px){
@@ -54,7 +56,9 @@
 
 .feedview-column-2{
     margin: 0px;
-    margin-left: 12px;
     max-height: calc(100vh - 94px);
     overflow: hidden;
+    padding: 12px;
+    padding-left: 6px;
+    width: 100%;
 }
