@@ -17,8 +17,8 @@ class FeedView extends Component {
     console.log('ACAAAAAAAAA', this.props.match.params)
     this.getData()
   }
-  getData(more){
-    if(more)this.count += 10
+  getData(more) {
+    if (more) this.count += 10
     fetch(`http://localhost:3000/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`, {
       method: 'GET',
       headers: {
@@ -28,13 +28,13 @@ class FeedView extends Component {
       .then(d => d.json())
       .then(res => {
         console.log(res)
-        if(this.state.data){
-          this.setState({data: [...this.state.data, ...res]})
+        if (this.state.data) {
+          this.setState({ data: [...this.state.data, ...res] })
         } else {
-          this.setState({data: res, loadMore: true})
+          this.setState({ data: res, loadMore: true })
         }
-        if(res.length < 10){
-          this.setState({loadMore: false})
+        if (res.length < 10) {
+          this.setState({ loadMore: false })
         }
       })
       .catch(err => {
@@ -46,12 +46,14 @@ class FeedView extends Component {
     return (
       <div className="feedview-container" >
         <BookSearch />
-        <div className="feedview-books" >
-        <StatusBar />
-          {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
-            return (<BookPreview {...book} key={book._id} />)
-          }) : <LayoutLoader />}
-                  {this.state.loadMore ? <p className="feedview-load-more" onClick={() => this.getData(1)} >Load more</p> : null}
+        <div className="feedview-column-2" >
+          <StatusBar />
+          <div className="feedview-books" >
+            {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
+              return (<BookPreview {...book} key={book._id} />)
+            }) : <LayoutLoader />}
+            {this.state.loadMore ? <p className="feedview-load-more" onClick={() => this.getData(1)} >Load more</p> : null}
+          </div>
         </div>
       </div>
     )
