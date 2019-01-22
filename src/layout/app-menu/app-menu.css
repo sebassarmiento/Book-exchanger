@@ -5,13 +5,20 @@
     width: 260px;
     min-width: 260px;
     color: rgb(255, 255, 255);
-    box-shadow: 2px 0px 2px 0px rgba(168, 159, 168, 0.623);
+    box-shadow: 2px 0px 10px 5px rgba(172, 172, 172, 0.623);
     z-index: 1;
     position: absolute;
     transform-origin: left;
     animation: showAppMenu 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
     min-height: calc(100vh - 70px);
+}
+
+.app-menu-title{
+    color: #00ae9f;
+    padding: 12px;
+    margin: 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.281);
 }
 
 .app-menu.app-menu-closed{
@@ -31,37 +38,6 @@
 
 .app-menu .menu-item span{
     flex: 10;
-}
-
-/* APP MENU HEADERS */
-
-.app-menu h3{
-    padding: 12px;
-    text-transform: uppercase;
-    margin: 0;
-    font-size: 1em;
-    background-color: rgb(0, 163, 204);
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.app-menu h3 i{
-    flex: 1;
-}
-
-.app-menu h3 i:hover{
-    cursor: pointer;
-}
-
-.app-menu h3::after{
-    content: '';
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    background-color: rgb(255, 255, 255);
 }
 
 /* /// */
@@ -117,60 +93,6 @@
     height: 100%;
     width: 5px;
     background-color: rgb(34, 165, 84);
-}
-
-/* APP MENU ITEMS CONTAINER */
-
-.app-menu .menu-items-closed{
-    transform-origin: top;
-    max-height: 0px;
-    opacity: 0;
-    transition: all 0.8s;
-    transform: scale(1, 0);
-}
-
-.app-menu .menu-items-open{
-    max-height: 126px;
-    transition: all 0.8s;
-    opacity: 1;
-    transform-origin: top;
-    transform: scale(1);
-}
-
-/* APP CATEGORIES CONTAINER */
-
-.app-menu .categories-items-open{
-    max-height: 252px;
-    transition: all 0.8s;
-    opacity: 1;
-    transform-origin: top;
-    transform: scale(1);
-}
-
-.app-menu .categories-items-closed{
-    transform-origin: top;
-    max-height: 0px;
-    opacity: 0;
-    transition: all 0.8s;
-    transform: scale(1, 0);
-}
-
-/* APP SETTINGS CONTAINER */
-
-.app-menu .settings-items-open{
-    max-height: 126px;
-    transition: all 0.8s;
-    opacity: 1;
-    transform-origin: top;
-    transform: scale(1);
-}
-
-.app-menu .settings-items-closed{
-    transform-origin: top;
-    max-height: 0px;
-    opacity: 0;
-    transition: all 0.8s;
-    transform: scale(1, 0);
 }
 
 
