@@ -65,7 +65,7 @@ class Profile extends Component {
         return (
             <div className="profile-container" >
                 <div className="p-user-info" >
-                    <img alt="user-image" src={data && data.image ? data.image : userPlaceholder} height={200} />
+                    <img alt="user" src={data && data.image ? data.image : userPlaceholder} height={200} />
                     <h1>{data ? data.username : null}</h1>
                     <p>{data ? data.age : null} years old</p>
                 </div>
@@ -75,7 +75,7 @@ class Profile extends Component {
                         {data && data.books.published.length > 5 ? <div className="left-arrow-container" ><i onClick={() => this.handleScroll(null, 1)} className="fas fa-angle-left"></i></div> : null}
                         <div ref={this.publishedScroll} className="p-user-books-published" >
                             {data && data.books.published.length > 0 ? data.books.published.map(book => {
-                                return (<img key={book._id} src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
+                                return (<img alt="book-preview" key={book._id} src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
                             }) : data ? <p className="no-data" >No books published yet.</p> : <LayoutLoader />}
                         </div>
                         {data && data.books.published.length > 5 ? <div className="right-arrow-container" ><i onClick={() => this.handleScroll(1, 1)} className="fas fa-angle-right"></i></div> : null}
@@ -85,7 +85,7 @@ class Profile extends Component {
                         {data && data.books.liked.length > 5 ? <div className="left-arrow-container" ><i onClick={() => this.handleScroll()} className="fas fa-angle-left"></i></div> : null}
                         <div ref={this.likedScroll} className="p-user-books-liked" >
                             {data && data.books.liked.length > 0 ? data.books.liked.map(book => {
-                                return (<img key={book._id} src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
+                                return (<img alt="book-preview" key={book._id} src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
                             }) : data ? <p className="no-data" >No books liked yet.</p> : <LayoutLoader />}
                         </div>
                         {data && data.books.liked.length > 5 ? <div className="right-arrow-container" ><i onClick={() => this.handleScroll(1)} className="fas fa-angle-right"></i></div> : null}

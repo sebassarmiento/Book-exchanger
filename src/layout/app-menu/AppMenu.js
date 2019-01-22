@@ -17,7 +17,7 @@ class AppMenu extends Component {
         <h3><i onClick={() => this.setState({ menu: !this.state.menu })} className="fas fa-bars"></i>Menu</h3>
         <div className={this.state.menu ? "menu-items-open" : "menu-items-closed"} >
           <Link className="menu-item" to="/app/feed" ><i className="fas fa-home"></i><span>Home</span></Link>
-          <a className="menu-item" onClick={() => this.props.publish()} ><i className="fas fa-book"></i><span>Publish book</span></a>
+          <a href="#" className="menu-item" onClick={() => this.props.publish()} ><i className="fas fa-book"></i><span>Publish book</span></a>
           <Link className="menu-item" to="/app/profile" ><i className="fas fa-user"></i><span>My Profile</span></Link>
         </div>
         <h3><i onClick={() => this.setState({categories: !this.state.categories})} className="fas fa-ellipsis-h"></i>Categories</h3>

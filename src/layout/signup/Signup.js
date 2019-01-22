@@ -129,6 +129,7 @@ class Signup extends Component {
             <div className="signup-container" >
                 <div className={this.state.next ? "hidden" : "signup-form"} >
                     <h1>Sign up</h1>
+                    {emailChecker}
                     <Input value={this.state.email} handleChange={(e) => this.handleChange(e)} label="Email" type="text" />
                     <Input value={this.state.password} handleChange={(e) => this.handleChange(e)} label="Password" type="password" />
                     <Input value={this.state.confirm} handleChange={(e) => this.handleChange(e)} label="Confirm" type="password" />

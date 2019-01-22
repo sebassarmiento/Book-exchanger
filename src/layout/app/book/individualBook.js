@@ -67,16 +67,16 @@ class IndividualBook extends Component {
         this.getData()
         this.route = this.props.location.pathname
     }
-    componentDidUpdate(){
+    componentDidUpdate() {
         console.log(this.route, this.props.location.pathname)
-        if(this.route !== this.props.location.pathname){
+        if (this.route !== this.props.location.pathname) {
             console.log('Fetching data!')
             this.route = this.props.location.pathname
             this.getData()
         }
     }
-    getData(){
-        this.setState({fetchingData: true, data: null})
+    getData() {
+        this.setState({ fetchingData: true, data: null })
         fetch(`http://localhost:3000${this.props.location.pathname}`)
             .then(d => d.json())
             .then(res => {
@@ -87,7 +87,7 @@ class IndividualBook extends Component {
                         return this.setState({ unadd: true })
                     }
                 })
-                this.setState({ data: res , fetchingData: false})
+                this.setState({ data: res, fetchingData: false })
             })
             .catch(err => {
                 console.log(err)
@@ -95,69 +95,63 @@ class IndividualBook extends Component {
     }
     handleAdd() {
         this.setState({ added: !this.state.added, unadd: !this.state.unadd, adding: true })
-        if(!this.state.unadd){
+        if (!this.state.unadd) {
             this.props.notify('success', 'Book added to wishlist!')
         } else {
             this.props.notify('success', 'Book removed from wishlist!')
         }
-        if(!this.state.adding){
+        if (!this.state.adding) {
             fetch(`http://localhost:3000/app/user/wishlist/${this.props.userData._id}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': this.props.userData.token
-            },
-            body: JSON.stringify({
-                book: this.state.data
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': this.props.userData.token
+                },
+                body: JSON.stringify({
+                    book: this.state.data
+                })
             })
-        })
-            .then(d => d.json())
-            .then(res => {
-                console.log(res)
-                this.setState({adding: false})
-                if (res.message && res.user) {
-                    this.props.addToWishlist(res.user.books)
-                }
-            })
+                .then(d => d.json())
+                .then(res => {
+                    console.log(res)
+                    this.setState({ adding: false })
+                    if (res.message && res.user) {
+                        this.props.addToWishlist(res.user.books)
+                    }
+                })
         }
     }
     render() {
         return (
             <div className="individual-book" >
+                <NavLink className="back-btn" to="/app/feed" ><h3><i className="fas fa-chevron-left"></i><small>Back</small></h3></NavLink>
                 {this.state.data ?
-                    <React.Fragment>
-                        <NavLink className="back-btn" to="/app/feed" ><h3><i className="fas fa-chevron-left"></i><small>Back</small></h3></NavLink>
+                    <div className="book-grid">
                         <div className="individual-book-info" >
                             <img src={this.state.data.image} alt={this.state.data.name} />
                             <div>
                                 <h6>In <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h6>
                                 <h2>{this.state.data.name}</h2>
-                                <div className="i-b-data" >
-                                    <div>
-                                        <p>By {this.state.data.author}</p>
-                                        <p>Published {timeAgo(this.state.data.date)} ago</p>
-                                        <p><strong>Location: </strong>{this.state.data.location}</p>
-                                        <p><strong>Pages: </strong>{this.state.data.pages}</p>
-                                        <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
-                                        <BookRating 
-                                        notify={(category, message) => this.props.notify(category, message)} 
-                                        bookId={this.state.data._id} 
-                                        rating={this.state.data.ratings} 
-                                        currentUser={this.props.userData._id} 
-                                        />
-                                    </div>
-                                    <div className="i-b-interact" >
-                                        <div>
-                                            <button
-                                                onMouseEnter={() => this.setState({ added: true })}
-                                                onMouseLeave={() => this.setState({ added: false })}
-                                                onClick={() => this.handleAdd()} >
-                                                {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
-                                                {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}
-                                            </button>
-                                            <button>Message the owner</button>
-                                        </div>
-                                    </div>
+                                <p>By {this.state.data.author}</p>
+                                <p>Published {timeAgo(this.state.data.date)} ago</p>
+                                <p><strong>Location: </strong>{this.state.data.location}</p>
+                                <p><strong>Pages: </strong>{this.state.data.pages}</p>
+                                <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
+                                <BookRating
+                                    notify={(category, message) => this.props.notify(category, message)}
+                                    bookId={this.state.data._id}
+                                    rating={this.state.data.ratings}
+                                    currentUser={this.props.userData._id}
+                                />
+                                <div className="i-b-btns" >
+                                    <button
+                                        onMouseEnter={() => this.setState({ added: true })}
+                                        onMouseLeave={() => this.setState({ added: false })}
+                                        onClick={() => this.handleAdd()} >
+                                        {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
+                                        {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}
+                                    </button>
+                                    <button>Message the owner</button>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +164,7 @@ class IndividualBook extends Component {
                             <p>{this.state.data.comments ? this.state.data.comments : "No comments yet."}</p>
                         </div>
                         <BookCarousel redirect={() => this.forceUpdate()} url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />
-                    </React.Fragment>
+                    </div>
                     :
                     null
                 }

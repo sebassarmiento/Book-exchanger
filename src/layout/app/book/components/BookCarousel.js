@@ -60,7 +60,7 @@ export default class BookCarousel extends Component {
                 {data && data.length > 5 ? <i onClick={() => this.handleScroll()} className="fas fa-angle-left"></i> : null}
                 <div ref={this.otherBooks} className="carousel-books" >
                     {data && data.length > 0 ? data.map(book => {
-                        return (<img key={book._id} src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
+                        return (<img alt="book-preview" key={book._id} src={book.image} className="profile-book-preview" onClick={() => this.handleRedirect(book._id)} />)
                     }) : <LayoutLoader />}
                 </div>
                 {data && data.length > 5 ? <i onClick={() => this.handleScroll(1)} className="fas fa-angle-right"></i> : null}

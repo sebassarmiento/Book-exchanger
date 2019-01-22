@@ -45,6 +45,11 @@ class PublishBook extends Component {
                         setTimeout(() => {
                             this.props.notify('success', 'Book was published successfully!')
                         }, 400)
+                    } else {
+                        this.handleClose()
+                        setTimeout(() => {
+                            this.props.notify('error', 'Error publishing book. Try again later.')
+                        }, 400)
                     }
                 })
                 .catch(err => {

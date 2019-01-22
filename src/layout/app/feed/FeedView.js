@@ -3,6 +3,8 @@ import BookPreview from './book-preview/BookPreview';
 import { connect } from 'react-redux';
 import './feed-view.css';
 import LayoutLoader from '../../../utils/loaders/LayoutLoader';
+import BookSearch from './book-search/BookSearch';
+import StatusBar from './status-bar/StatusBar';
 
 class FeedView extends Component {
   constructor(props) {
@@ -43,13 +45,14 @@ class FeedView extends Component {
     console.log(this.state.data)
     return (
       <div className="feedview-container" >
-        <h1>Latest books</h1>
+        <BookSearch />
         <div className="feedview-books" >
+        <StatusBar />
           {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
             return (<BookPreview {...book} key={book._id} />)
           }) : <LayoutLoader />}
+                  {this.state.loadMore ? <p className="feedview-load-more" onClick={() => this.getData(1)} >Load more</p> : null}
         </div>
-        {this.state.loadMore ? <p className="feedview-load-more" onClick={() => this.getData(1)} >Load more</p> : null}
       </div>
     )
   }
