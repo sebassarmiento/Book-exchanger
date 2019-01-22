@@ -1,13 +1,9 @@
 import * as Actions from '../actions';
 
 const initialStore = {
-    footer: false,
+    footer: true,
     appMenu: {
         status: 'closed'
-    },
-    logged: true,
-    userData: {
-        username: "Sebastian"
     }
 }
 

@@ -20,7 +20,7 @@
     background-color: rgb(255, 255, 255);
     box-sizing: border-box;
     min-height: calc(100% - 62px);
-    max-height: 500px;
+    max-height: calc(100% - 62px);
     border-radius: 2px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.404);
     position: relative;
@@ -30,28 +30,39 @@
     .feedview-container .feedview-books{
         grid-template-columns: 1fr 1fr 1fr;
     }
+    .feedview-load-more{
+        grid-column-start: 1 !important;
+        grid-column-end: 4 !important;
+    }
 }
 
 @media screen and (max-width: 900px){
     .feedview-container .feedview-books{
         grid-template-columns: 1fr 1fr;
     }
+    .feedview-load-more{
+        grid-column-start: 1 !important;
+        grid-column-end: 3 !important;
+    }
 }
 
 .feedview-load-more{
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin: 0px;
     width: 100%;
-    text-align: center;
     padding: 12px;
+    text-align: center;
     font-size: 1em;
     font-weight: 200;
     transition: all 0.2s ease-in-out;
     box-sizing: border-box;
+    position: relative;
 }
 
 .feedview-load-more:hover{
     cursor: pointer;
     color: #2274A5;
-    text-decoration: underline;
 }
 
 .feedview-column-2{
@@ -61,4 +72,5 @@
     padding: 12px;
     padding-left: 6px;
     width: 100%;
+    position: relative;
 }
