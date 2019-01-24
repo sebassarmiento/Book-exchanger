@@ -51,18 +51,24 @@
     grid-column-end: 6;
     margin: 0px;
     width: 100%;
-    padding: 12px;
     text-align: center;
-    font-size: 1em;
-    font-weight: 200;
     transition: all 0.2s ease-in-out;
     box-sizing: border-box;
     position: relative;
+    z-index: 1;
 }
 
-.feedview-load-more:hover{
+.feedview-load-more i{
+    background-color: #20926c;
+    padding: 12px;
+    color: white;
+    border-radius: 50%;
     cursor: pointer;
-    color: #2274A5;
+    transition: all 0.1s ease-in-out;
+}
+
+.feedview-load-more i:hover{
+    transform: scale(1.1);
 }
 
 .feedview-column-2{

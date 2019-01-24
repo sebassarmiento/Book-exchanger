@@ -52,7 +52,7 @@ class FeedView extends Component {
             {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
               return (<BookPreview {...book} key={book._id} />)
             }) : <LayoutLoader />}
-                      {this.state.loadMore ? <p className="feedview-load-more" onClick={() => this.getData(1)} >Load more</p> : null}
+                      {this.state.loadMore ? <span className="feedview-load-more" ><i className="fas fa-plus" onClick={() => this.getData(1)} ></i></span> : null}
           </div>
         </div>
       </div>

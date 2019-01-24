@@ -124,46 +124,51 @@ class IndividualBook extends Component {
     render() {
         return (
             <div className="individual-book" >
-                <NavLink className="back-btn" to="/app/feed" ><h3><i className="fas fa-chevron-left"></i><small>Back</small></h3></NavLink>
+                {/*<NavLink className="back-btn" to="/app/feed" ><h3><i className="fas fa-chevron-left"></i><small>Back</small></h3></NavLink>*/}
                 {this.state.data ?
                     <div className="book-grid">
-                        <div className="individual-book-info" >
+                        <div className="book-info" >
                             <img src={this.state.data.image} alt={this.state.data.name} />
                             <div>
                                 <h6>In <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h6>
                                 <h2>{this.state.data.name}</h2>
-                                <p>By {this.state.data.author}</p>
-                                <p>Published {timeAgo(this.state.data.date)} ago</p>
-                                <p><strong>Location: </strong>{this.state.data.location}</p>
-                                <p><strong>Pages: </strong>{this.state.data.pages}</p>
+                                <p>{this.state.data.author}</p>
+                                <p><i className="fas fa-map-marker" ></i> {this.state.data.location}</p>
+                                <p>{this.state.data.pages} pages.</p>
                                 <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
+                                <button className="wishlist-btn"
+                                    onMouseEnter={() => this.setState({ added: true })}
+                                    onMouseLeave={() => this.setState({ added: false })}
+                                    onClick={() => this.handleAdd()} >
+                                    {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
+                                    {this.state.unadd ? " Remove from wishlist" : " Add to wishlist"}
+                                </button>
                                 <BookRating
                                     notify={(category, message) => this.props.notify(category, message)}
                                     bookId={this.state.data._id}
                                     rating={this.state.data.ratings}
                                     currentUser={this.props.userData._id}
                                 />
-                                <div className="i-b-btns" >
-                                    <button
-                                        onMouseEnter={() => this.setState({ added: true })}
-                                        onMouseLeave={() => this.setState({ added: false })}
-                                        onClick={() => this.handleAdd()} >
-                                        {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
-                                        {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}
-                                    </button>
-                                    <button>Message the owner</button>
-                                </div>
+                            </div>
+                            <div className="book-description" >
+                                <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
                             </div>
                         </div>
-                        <div className="individual-book-description" >
-                            <h4>Description</h4>
-                            <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
-                        </div>
-                        <div className="individual-book-comments" >
+                        <div className="book-comments" >
                             <h4>Comments</h4>
                             <p>{this.state.data.comments ? this.state.data.comments : "No comments yet."}</p>
                         </div>
-                        <BookCarousel redirect={() => this.forceUpdate()} url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />
+                        <div className="i-b-btns" >
+                                <button
+                                    onMouseEnter={() => this.setState({ added: true })}
+                                    onMouseLeave={() => this.setState({ added: false })}
+                                    onClick={() => this.handleAdd()} >
+                                    {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
+                                    {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}
+                                </button>
+                                <button>Message the owner</button>
+                            </div>
+                        {/*<BookCarousel redirect={() => this.forceUpdate()} url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />*/}
                     </div>
                     :
                     null
