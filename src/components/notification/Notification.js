@@ -24,8 +24,8 @@ class Notification extends Component {
     render() {
         return (
             <div className="notification" >
-                <p>{this.props.message}</p>
                 {this.icon()}
+                <p>{this.props.message}</p>
             </div>
         )
     }

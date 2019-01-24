@@ -5,6 +5,7 @@ import timeAgo from '../../../utils/TimeAgo';
 import { connect } from 'react-redux';
 import LayoutLoader from '../../../utils/loaders/LayoutLoader';
 import BookCarousel from './components/BookCarousel';
+import BookChat from './chat/BookChat';
 
 class BookRating extends Component {
     constructor(props) {
@@ -154,10 +155,7 @@ class IndividualBook extends Component {
                                 <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
                             </div>
                         </div>
-                        <div className="book-comments" >
-                            <h4>Comments</h4>
-                            <p>{this.state.data.comments ? this.state.data.comments : "No comments yet."}</p>
-                        </div>
+                        <BookChat />
                         <div className="i-b-btns" >
                                 <button
                                     onMouseEnter={() => this.setState({ added: true })}

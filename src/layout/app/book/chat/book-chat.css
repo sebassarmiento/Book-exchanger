@@ -1,0 +1,115 @@
+.book-message{
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.432);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+}
+
+.book-message h4{
+    margin: 0px;
+}
+
+.book-message h4 small{
+    font-weight: 100;
+}
+
+.book-message .messages{
+    height: 100%;
+    overflow: scroll;
+    margin: 12px 0px;
+    padding: 0px 12px;
+}
+
+.book-message .send-message{
+    display: flex;
+    margin: 8px 0px;
+    margin-top: 0px;
+    align-items: center;
+}
+
+.book-message input {
+    position: relative;
+    margin-top: auto;
+    padding: 8px;
+    border: 1px solid #4a4a4a8e;
+    border-radius: 2px;
+    font-family: 'Helvetica';
+    font-size: 0.9em;
+    font-weight: lighter;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    margin-right: 6px;
+}
+
+.book-message button{
+    background-color: #299b6f;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    font-size: 0.9em;
+    padding: 9px 12px;
+    cursor: pointer;
+}
+
+.book-message .messages div{
+    margin: 6px 0px;
+    padding: 0px;
+    display: flex;
+    position: relative;
+}
+
+.book-message .messages .user{
+    justify-content: flex-end;
+}
+
+.book-message .messages .user p{
+    background-color: #299b6f;
+    padding: 12px;
+    border-radius: 12px;
+    display: inline-block;
+    margin: 0px;
+    justify-self: flex-end;
+    color: white;
+    position: relative;
+}
+
+.book-message .messages .owner p{
+    background-color: #e0e0e0;
+    padding: 12px;
+    border-radius: 12px;
+    display: inline-block;
+    margin: 0px;
+}
+
+.book-message .messages .user::after{
+    content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-left-color: #299b6f;
+	border-right: 0;
+	border-bottom: 0;
+	margin-right: -10px;
+}
+
+.book-message .messages .owner p::after{
+    content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-right-color: #e0e0e0;
+	border-left: 0;
+	border-bottom: 0;
+	margin-left: -10px;
+}
