@@ -19,6 +19,8 @@ const reducer =  (store = initialStore, action) => {
         return {...store, footer: true, signUp: false, login: false}
         case Actions.NEW_USER_SIGNED:
         return {...store, userData: {...action.payload}, signUp: false, logged: true}
+        case Actions.CHAT_CREATED:
+        return {...store, userData: {...store.userData, chats: [...store.userData.chats, action.payload ]}}
         case Actions.ADD_BOOK_TO_WISHLIST_IN_STORE:
         return {...store, userData: {...store.userData, books: action.payload} }
         case Actions.CLOSE_PUBLISH_FORM:

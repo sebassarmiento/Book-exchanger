@@ -153,7 +153,7 @@ class IndividualBook extends Component {
                                 <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
                             </div>
                         </div>
-                        <BookChat currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
+                        <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
                         <div className="i-b-btns" >
                                 <button
                                     onMouseEnter={() => this.setState({ added: true })}

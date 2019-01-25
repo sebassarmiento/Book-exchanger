@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './book-chat.css';
+import { connect } from 'react-redux';
 
 class BookChat extends Component {
     constructor() {
@@ -10,18 +11,47 @@ class BookChat extends Component {
     }
 
     componentDidMount() {
-        this.setState({ messages: this.props.messages })
+        console.log(this.props.userData.chats, this.props.bookOwnerId)
+        let chatId = this.props.userData.chats.find(c => c.userId === this.props.bookOwnerId)
+        if (chatId) {
+            console.log('Mi chat id!', chatId)
+            this.setState({ chatId: chatId.chatId })
+            fetch(`http://localhost:3000/app/chats/${chatId.chatId}`)
+                .then(d => d.json())
+                .then(res => {
+                    console.log('Chat existe!', res)
+                    this.setState({ messages: res.messages })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        } else {
+            fetch('http://localhost:3000/app/chats/newChat', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    users: [this.props.currentUserId, this.props.bookOwnerId]
+                })
+            })
+                .then(d => d.json())
+                .then(res => {
+                    console.log('Chat fue creado!', res)
+                    this.setState({ messages: res.messages, chatId: res._id })
+                    this.props.chatCreated(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
     }
 
     handleClick(e) {
         let messages = this.state.messages.length > 0 ? this.state.messages : null
         if (this.state.newMessage.length > 0) {
-            if(messages){
-                this.setState({ messages: [ ...messages, { userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' })
-            } else {
-                this.setState({ messages: [{ userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' })
-            }
-            fetch('http://localhost:3000/app/users/:userId/chats', {
+            console.log("Agregamos msg al chat existente")
+            fetch('http://localhost:3000/app/chats/' + this.state.chatId, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -32,11 +62,17 @@ class BookChat extends Component {
             })
                 .then(d => d.json())
                 .then(res => {
-                    console.log(res)
+                    console.log('Mensaje agregado', res)
                 })
                 .catch(err => {
-                    console.log(err)
+                    console.log('Error', err)
                 })
+            if (messages) {
+                this.setState({ messages: [...messages, { userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' })
+                // If chat history exist, we just push the new messages
+            } else {
+                this.setState({ messages: [{ userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' })
+            }
         }
     }
 
@@ -45,7 +81,6 @@ class BookChat extends Component {
     }
 
     className(id) {
-        console.log('ACACACAc', id, this.props.bookOwnerId, this.props.currentUserId)
         switch (id) {
             case this.props.bookOwnerId:
                 return 'owner'
@@ -57,17 +92,18 @@ class BookChat extends Component {
     }
 
     render() {
+        console.log('ACAMISTATE', this.state)
         return (
             <div className="book-message" >
                 <h4>{this.props.title} <br /><small>{this.props.subtitle}</small></h4>
                 <div className="messages" >
-                    {this.state.messages ? this.state.messages.map(msg => {
+                    {this.state.messages && this.state.messages.length > 0 ? this.state.messages.map(msg => {
                         return (
-                            <div className={this.className(msg.userId)} >
+                            <div key={msg.text} className={this.className(msg.userId)} >
                                 <p >{msg.text}</p>
                             </div>
                         )
-                    }) : null}
+                    }) : <p>No messages to show.</p>}
                 </div>
                 <div className="send-message" >
                     <input onChange={(e) => this.handleChange(e)} value={this.state.newMessage} type="text" />
@@ -78,4 +114,16 @@ class BookChat extends Component {
     }
 }
 
-export default BookChat;
+const mapStateToProps = store => {
+    return {
+        userData: store.userData
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        chatCreated: chat => dispatch({ type: 'CHAT_CREATED', payload: { userId: chat.users[1], chatId: chat._id } })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookChat);

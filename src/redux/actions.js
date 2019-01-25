@@ -9,6 +9,8 @@ export const NEW_USER_SIGNED = "NEW_USER_SIGNED";
 
 export const LOGOUT = "LOGOUT";
 
+export const CHAT_CREATED = 'CHAT_CREATED';
+
 export const ADD_BOOK_TO_WISHLIST_IN_STORE = "ADD_BOOK_TO_WISHLIST_IN_STORE";
 
 export const OPEN_PUBLISH_FORM = 'OPEN_PUBLISH_FORM';

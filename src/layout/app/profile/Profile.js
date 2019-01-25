@@ -94,7 +94,7 @@ class Profile extends Component {
                     </div>
                 </div>
                 <div className="profile-chat" >
-                    <Chat currentUserId={this.props.userData._id} bookOwnerId={data ? data._id : null} messages={this.messages} title={`Chat with ${data ? data.username : null}`} subtitle="You can arrange the exchange of books." />
+                    {!data ? null : <Chat currentUserId={this.props.userData._id} bookOwnerId={data._id} title={`Chat with ${data.username}`} subtitle="You can arrange the exchange of books." />}
                 </div>
                 {this.state.redirect ? <Redirect to={`/app/books/id/${this.state.redirect}`} /> : null}
             </div>
