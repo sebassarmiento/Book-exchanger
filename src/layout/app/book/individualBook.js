@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 import timeAgo from '../../../utils/TimeAgo';
 import { connect } from 'react-redux';
 import LayoutLoader from '../../../utils/loaders/LayoutLoader';
-import BookCarousel from './components/BookCarousel';
-import BookChat from './chat/BookChat';
+import BookCarousel from './bookCarousel/BookCarousel';
+import BookChat from '../../../components/chat/BookChat';
 
 class BookRating extends Component {
     constructor(props) {
@@ -42,7 +42,6 @@ class BookRating extends Component {
             })
     }
     render() {
-        console.log("ESTAS SON MIS PROPS", this.props)
         return (
             <React.Fragment>
                 <div className="i-b-rating" >
@@ -63,13 +62,13 @@ class IndividualBook extends Component {
         super(props)
         this.state = {}
         this.route = ''
+        this.messages = [{text: 'Hey men i like your book!', userId: '5c3384e3f728c50d5a46984e'}, {text: 'Thanks man, i like yours of Harry Potter', userId: '5c30e27d6d273619c7ffa122'}, {text: 'Awesome lets exchange them!', userId: '5c3384e3f728c50d5a46984e'}]
     }
     componentDidMount() {
         this.getData()
         this.route = this.props.location.pathname
     }
     componentDidUpdate() {
-        console.log(this.route, this.props.location.pathname)
         if (this.route !== this.props.location.pathname) {
             console.log('Fetching data!')
             this.route = this.props.location.pathname
@@ -81,14 +80,13 @@ class IndividualBook extends Component {
         fetch(`http://localhost:3000${this.props.location.pathname}`)
             .then(d => d.json())
             .then(res => {
-                console.log(res)
                 console.log(res._id, this.props.userData.books.liked)
                 this.props.userData.books.liked.map(book => {
                     if (book._id === res._id) {
                         return this.setState({ unadd: true })
                     }
                 })
-                this.setState({ data: res, fetchingData: false })
+                this.setState({ data: {...res, messages: this.messages}, fetchingData: false })
             })
             .catch(err => {
                 console.log(err)
@@ -155,7 +153,7 @@ class IndividualBook extends Component {
                                 <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
                             </div>
                         </div>
-                        <BookChat />
+                        <BookChat currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
                         <div className="i-b-btns" >
                                 <button
                                     onMouseEnter={() => this.setState({ added: true })}

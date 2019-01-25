@@ -4,6 +4,7 @@ import './profile.css';
 import userPlaceholder from '../../../img/placeholder.user.png';
 import { Redirect } from 'react-router-dom';
 import LayoutLoader from '../../../utils/loaders/LayoutLoader';
+import Chat from '../../../components/chat/BookChat';
 
 
 class Profile extends Component {
@@ -15,6 +16,7 @@ class Profile extends Component {
         this.interval = null
         this.scrollPublished = 0
         this.scrollLiked = 0
+        this.messages = [{userId: '5c3384e3f728c50d5a46984e', text: 'Hey there! wanna exchange some books?'},{userId: '5c30e4076d273619c7ffa123', text: 'Sure men lets do it!'}]
     }
     componentDidMount() {
         let url = this.props.location.pathname !== '/app/profile' ? this.props.location.pathname : `/app/user/${this.props.userData._id}`
@@ -61,7 +63,7 @@ class Profile extends Component {
     }
     render() {
         const { data } = this.state
-        console.log(data)
+        console.log('HEREHERE',data)
         return (
             <div className="profile-container" >
                 <div className="p-user-info" >
@@ -90,6 +92,9 @@ class Profile extends Component {
                         </div>
                         {data && data.books.liked.length > 5 ? <div className="right-arrow-container" ><i onClick={() => this.handleScroll(1)} className="fas fa-angle-right"></i></div> : null}
                     </div>
+                </div>
+                <div className="profile-chat" >
+                    <Chat currentUserId={this.props.userData._id} bookOwnerId={data ? data._id : null} messages={this.messages} title={`Chat with ${data ? data.username : null}`} subtitle="You can arrange the exchange of books." />
                 </div>
                 {this.state.redirect ? <Redirect to={`/app/books/id/${this.state.redirect}`} /> : null}
             </div>

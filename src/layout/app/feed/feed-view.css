@@ -64,7 +64,7 @@
     color: white;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.2s cubic-bezier(0.075, 0.885, 0.52, 1.475);
 }
 
 .feedview-load-more i:hover{
