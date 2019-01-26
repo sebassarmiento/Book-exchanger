@@ -153,18 +153,12 @@ class IndividualBook extends Component {
                                 <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
                             </div>
                         </div>
-                        <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
-                        <div className="i-b-btns" >
-                                <button
-                                    onMouseEnter={() => this.setState({ added: true })}
-                                    onMouseLeave={() => this.setState({ added: false })}
-                                    onClick={() => this.handleAdd()} >
-                                    {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
-                                    {this.state.unadd ? "Remove from wishlist" : "Add to wishlist"}
-                                </button>
-                                <button>Message the owner</button>
-                            </div>
-                        {/*<BookCarousel redirect={() => this.forceUpdate()} url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />*/}
+                        <div className="book-chat" >
+                            <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
+                        </div>
+                        {/*<div className="other-books" >
+                            <BookCarousel redirect={() => this.forceUpdate()} url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />
+                        </div>*/}
                     </div>
                     :
                     null

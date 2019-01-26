@@ -6,6 +6,7 @@
     flex-direction: column;
     height: 100%;
     box-sizing: border-box;
+    position: relative;
 }
 
 .book-message h4{
@@ -114,4 +115,16 @@
 	border-left: 0;
 	border-bottom: 0;
 	margin-left: -10px;
+}
+
+.no-messages{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0px;
+    color: rgba(0, 0, 0, 0.349);
 }

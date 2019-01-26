@@ -69,7 +69,6 @@ class BookChat extends Component {
                 })
             if (messages) {
                 this.setState({ messages: [...messages, { userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' })
-                // If chat history exist, we just push the new messages
             } else {
                 this.setState({ messages: [{ userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' })
             }
@@ -103,7 +102,7 @@ class BookChat extends Component {
                                 <p >{msg.text}</p>
                             </div>
                         )
-                    }) : <p>No messages to show.</p>}
+                    }) : <p className="no-messages" >No messages to show.</p>}
                 </div>
                 <div className="send-message" >
                     <input onChange={(e) => this.handleChange(e)} value={this.state.newMessage} type="text" />

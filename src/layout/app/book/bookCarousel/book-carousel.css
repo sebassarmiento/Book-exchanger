@@ -1,9 +1,15 @@
 .book-carousel {
     position: relative;
     background-color: white;
-    border-radius: 4px;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.384);
-    margin: 12px;
+    margin: 0px;
+    padding: 12px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.book-carousel h4{
+    margin: 0px;
 }
 
 .book-carousel i:hover{
@@ -48,6 +54,6 @@
     overflow-x: scroll;
     transition: all 1s;
     min-height: 200px;
-    width: 95%;
-    margin: 0px auto;
+    width: 100%;
+    margin: 0px;
 }
