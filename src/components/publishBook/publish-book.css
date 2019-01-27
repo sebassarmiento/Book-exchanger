@@ -118,7 +118,7 @@
 }
 
 .p-b-form input:focus, .p-b-form input:valid {
-    border-bottom: 2px solid rgb(0, 163, 204);
+    border-bottom: 2px solid #008a8a;
 }
 
 .p-b-form input + label {
@@ -138,7 +138,7 @@
 .p-b-form input:focus + label, .p-b-form input:valid + label {
     transform: translate(0, -20px);
     font-size: 0.8em;
-    color: rgb(0, 163, 204);
+    color: #008a8a;
 }
 
 /* Textarea */
@@ -162,7 +162,7 @@
 }
 
 .p-b-form textarea:focus, .p-b-form textarea:valid {
-    border: 2px solid rgb(0, 163, 204);
+    border: 2px solid #008a8a;
 }
 
 .p-b-form textarea + label {
@@ -181,7 +181,7 @@
     transform: translate(4px, -12px);
     font-size: 0.8em;
     padding: 4px;
-    color: rgb(0, 163, 204);
+    color: #008a8a;
     z-index: 100;
 }
 
@@ -190,7 +190,7 @@
     padding: 0;
     margin: 12px 0px;
     box-sizing: border-box;
-    border: 1px solid rgb(0, 163, 204);
+    border: 1px solid #008a8a;
     position: relative;
     border-radius: 1px;
 }
@@ -200,7 +200,7 @@
     position: absolute;
     height: 100%;
     width: 42px;
-    background-color: rgb(0, 163, 204);
+    background-color: #008a8a;
     top: 0;
     right: 0;
     pointer-events: none;
@@ -242,8 +242,8 @@
     font-size: 1em;
     font-weight: 400;
     background-color: transparent;
-    color: rgb(0, 163, 204);
-    border: 2px solid rgb(0, 163, 204);
+    color: #008a8a;
+    border: 2px solid #008a8a;
     border-radius: 2px;
     position: relative;
     z-index: 2;
@@ -258,7 +258,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(0, 163, 204);
+    background-color: #008a8a;
     transition: all 0.3s;
     transform-origin: center;
     transform: scale(0.4);
@@ -295,7 +295,7 @@
     height: 100px;
     width: 100px;
     border: 5px solid transparent;
-    border-top: 5px solid rgb(0, 163, 204);
+    border-top: 5px solid #008a8a;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: publishLoader 1.4s cubic-bezier(0.865, 0.14, 0.34, 0.865) infinite;

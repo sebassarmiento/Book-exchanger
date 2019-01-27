@@ -37,10 +37,11 @@
 /* Filter options */
 
 .book-filters .filter-options{
-    background-color: transparent;
+    max-height: 45%;
+    overflow: scroll;
 }
 
-.book-filters .filter-options h6{
+.book-filters h6{
     margin: 6px 0px;
 }
 
@@ -54,4 +55,18 @@
     padding: 6px 0px;
     color: rgba(0, 0, 0, 0.637);
     font-size: 0.8em;
+}
+
+.filters-applied{
+    padding: 0px;
+    overflow-wrap: normal;
+}
+
+.filter-applied{
+    margin: 2px;
+    background-color: rgba(0, 0, 0, 0.11);
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-size: 0.8em;
+    display: inline-block;
 }

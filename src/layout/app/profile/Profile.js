@@ -93,9 +93,9 @@ class Profile extends Component {
                         {data && data.books.liked.length > 5 ? <div className="right-arrow-container" ><i onClick={() => this.handleScroll(1)} className="fas fa-angle-right"></i></div> : null}
                     </div>
                 </div>
-                <div className="profile-chat" >
-                    {!data ? null : <Chat currentUserId={this.props.userData._id} bookOwnerId={data._id} title={`Chat with ${data.username}`} subtitle="You can arrange the exchange of books." />}
-                </div>
+                {data && this.props.userData._id !== data._id ? <div className="profile-chat" >
+                    <Chat currentUserId={this.props.userData._id} bookOwnerId={data._id} title={`Chat with ${data.username}`} subtitle="You can arrange the exchange of books." />
+                </div> : null}
                 {this.state.redirect ? <Redirect to={`/app/books/id/${this.state.redirect}`} /> : null}
             </div>
         )

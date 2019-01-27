@@ -153,9 +153,10 @@ class IndividualBook extends Component {
                                 <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
                             </div>
                         </div>
+                        {this.state.data.userId !== this.props.userData._id ? 
                         <div className="book-chat" >
                             <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
-                        </div>
+                        </div> : null}
                         {/*<div className="other-books" >
                             <BookCarousel redirect={() => this.forceUpdate()} url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />
                         </div>*/}

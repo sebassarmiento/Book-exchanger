@@ -59,7 +59,8 @@
 
 .book-message .messages div{
     margin: 0px;
-    padding: 6px 0px;
+    padding: 0px;
+    padding-bottom: 6px;
     display: flex;
     position: relative;
 }
