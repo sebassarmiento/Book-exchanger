@@ -18,6 +18,7 @@ class FeedView extends Component {
     this.getData()
   }
   getData(more) {
+    if(this.state.data)this.setState({fetching: true})
     if (more) this.count += 10
     fetch(`http://localhost:3000/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`, {
       method: 'GET',
@@ -28,6 +29,7 @@ class FeedView extends Component {
       .then(d => d.json())
       .then(res => {
         console.log(res)
+        this.setState({fetching: false})
         if (this.state.data) {
           this.setState({ data: [...this.state.data, ...res] })
         } else {
@@ -52,7 +54,8 @@ class FeedView extends Component {
             {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
               return (<BookPreview {...book} key={book._id} />)
             }) : <LayoutLoader />}
-                      {this.state.loadMore ? <span className="feedview-load-more" ><i className="fas fa-plus" onClick={() => this.getData(1)} ></i></span> : null}
+            {this.state.fetching ? <span className="fetching-books" ></span> : null}
+            {this.state.loadMore && !this.state.fetching ? <span className="feedview-load-more" ><i className="fas fa-plus" onClick={() => this.getData(1)} ></i></span> : null}
           </div>
         </div>
       </div>
