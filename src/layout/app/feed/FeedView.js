@@ -43,13 +43,16 @@ class FeedView extends Component {
         console.log(err)
       })
   }
+  queryData(data){
+    this.setState({ data, loadMore: false })
+  }
   render() {
     console.log(this.state.data)
     return (
       <div className="feedview-container" >
-        <BookSearch />
+        <BookSearch updateData={data => this.queryData(data)} />
         <div className="feedview-column-2" >
-          <StatusBar />
+          <StatusBar data={this.state.data} />
           <div className="feedview-books" >
             {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
               return (<BookPreview {...book} key={book._id} />)
