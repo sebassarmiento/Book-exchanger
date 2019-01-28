@@ -10,7 +10,7 @@ class StatusBar extends Component {
     if(this.props.books){
       if(this.props.query){
         if(this.props.books.length === 0){
-          return `No results for ${this.props.query}`
+          return `No results for '${this.props.query}'`
         } else {
           return `${this.props.count} Results for '${this.props.query}'`
         }
@@ -20,17 +20,20 @@ class StatusBar extends Component {
       }
     }
   }
+  handleChange(e){
+    this.props.sort(e.target.value)
+  }
   render() {
-    console.log('MIS PROPS JAJA', this.props)
     return (
       <div className="status-bar" >
         <p>{this.text()}</p>
         <div>
           <label>Sort by </label>
-          <select>
-            <option>Date</option>
-            <option>Ratings</option>
-            <option>User</option>
+          <select onChange={(e) => this.handleChange(e)} >
+            <option value="old" >From old to new</option>
+            <option value="new" >From new to old</option>
+            <option value="more" >More ratings</option>
+            <option value="less" >Less ratings</option>
           </select>
         </div>
       </div>

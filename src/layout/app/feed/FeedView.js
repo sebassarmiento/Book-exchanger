@@ -46,13 +46,33 @@ class FeedView extends Component {
   queryData(data, query){
     this.setState({ data, query, loadMore: false, count: data ? data.length : null })
   }
+  sortData(alg){
+    let data = this.state.data
+    switch(alg){
+      case 'old':
+      data.sort((a, b) => a.date - b.date)
+      break;
+      case 'new':
+      data.sort((a, b) => b.date - a.date)
+      break;
+      case 'less':
+      data.sort((a, b) => a.ratings.length - b.ratings.length)
+      break;
+      case 'more':
+      data.sort((a, b) => b.ratings.length - a.ratings.length)
+      break;
+      default:
+      return null
+    }
+    this.setState({data})
+  }
   render() {
     console.log(this.state.data)
     return (
       <div className="feedview-container" >
         <BookSearch updateData={(data, query) => this.queryData(data, query)} />
         <div className="feedview-column-2" >
-          <StatusBar query={this.state.query} books={this.state.data} count={this.state.count} />
+          <StatusBar sort={(alg) => this.sortData(alg)} query={this.state.query} books={this.state.data} count={this.state.count} />
           <div className="feedview-books" >
             {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
               return (<BookPreview {...book} key={book._id} />)
