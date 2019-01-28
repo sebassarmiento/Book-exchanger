@@ -37,7 +37,7 @@
 /* Filter options */
 
 .book-filters .filter-options{
-    max-height: 45%;
+    max-height: 30%;
     overflow: scroll;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .book-filters .option input{
-    margin-right: 12px;
+    margin: 0px 12px;
 }
 
 .book-filters .option{
@@ -60,6 +60,8 @@
 .filters-applied{
     padding: 0px;
     overflow-wrap: normal;
+    max-height: 30%;
+    overflow: scroll;
 }
 
 .filter-applied{
@@ -69,4 +71,17 @@
     padding: 2px 4px;
     font-size: 0.8em;
     display: inline-block;
+}
+
+.search-btn{
+    display: inline;
+    margin: 12px 0px;
+    padding: 12px;
+    background-color: #00979c;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 2px;
 }

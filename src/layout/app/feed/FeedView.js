@@ -14,17 +14,14 @@ class FeedView extends Component {
     this.location = this.props.location.pathname
   }
   componentDidMount() {
-    console.log('ACAAAAAAAAA', this.props.match.params)
     this.getData()
   }
   componentDidUpdate(){
     if(this.state.data && this.state.data.length === this.state.count && this.state.loadMore){
-      console.log('Se borra load more', this.state)
       this.setState({loadMore: false})
     }
   }
   getData(more) {
-    console.log('ACAMIAMIGO', `http://localhost:3000/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`)
     if(this.state.data)this.setState({fetching: true})
     if (more) this.count += 10
     fetch(`http://localhost:3000/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`, {
@@ -35,7 +32,6 @@ class FeedView extends Component {
     })
       .then(d => d.json())
       .then(res => {
-        console.log('ESTA ES MI RESPUESTA',res)
         this.setState({fetching: false, count: res.count})
         if (this.state.data) {
           this.setState({ data: [...this.state.data, ...res.data]})
@@ -48,7 +44,6 @@ class FeedView extends Component {
       })
   }
   queryData(data, query){
-    console.log('Mi query', query)
     this.setState({ data, query, loadMore: false, count: data ? data.length : null })
   }
   render() {
@@ -64,6 +59,7 @@ class FeedView extends Component {
             }) : <LayoutLoader />}
             {this.state.fetching ? <span className="fetching-books" ></span> : null}
             {this.state.loadMore && !this.state.fetching ? <span className="feedview-load-more" ><i className="fas fa-plus" onClick={() => this.getData(1)} ></i></span> : null}
+            {this.state.data && this.state.data.length === 0 ? <p className="no-books-to-show" >No books to show.</p> : null}
           </div>
         </div>
       </div>
