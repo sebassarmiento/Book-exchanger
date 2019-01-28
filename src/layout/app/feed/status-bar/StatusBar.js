@@ -12,11 +12,11 @@ class StatusBar extends Component {
         if(this.props.books.length === 0){
           return `No results for '${this.props.query}'`
         } else {
-          return `${this.props.count} Results for '${this.props.query}'`
+          return (<p>Showing {this.props.books.length} results for '<strong>{this.props.query}</strong>'</p>)
         }
   
       } else {
-        return `Showing ${this.props.books.length} of ${this.props.count}`
+        return `Showing ${this.props.books.length} of ${this.props.count} books`
       }
     }
   }

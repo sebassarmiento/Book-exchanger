@@ -18,23 +18,18 @@ class BookSearch extends Component {
         let arr = []
         for (let prop in this.state) {
             if (this.state[prop]) {
-                console.log(prop, 'is true', this.state[prop])
-                if(prop !== 'query')arr.push(prop)
-            } else {
-                console.log(prop, 'is false', this.state[prop])
+                if (prop !== 'query') arr.push(prop)
             }
         }
         return arr
     }
 
     handleSearch() {
-        console.log("ACACACACA", this.state.query)
         if (this.state.query.length > 0) {
             this.props.updateData(null)
             fetch(`http://localhost:3000/app/books/search?name=${this.state.query}`)
                 .then(d => d.json())
                 .then(res => {
-                    console.log('Query data', res)
                     this.props.updateData(res, this.state.query)
                 })
                 .catch(err => {
@@ -46,8 +41,11 @@ class BookSearch extends Component {
     render() {
         return (
             <div className="book-filters" >
-                <h4>Search books<button className="search-btn" onClick={() => this.handleSearch()} >Search</button></h4>
-                <input autoComplete="off" name="query" onChange={(e) => this.handleQueryInput(e)} value={this.state.query} className="search-bar" placeholder="search" type="text" />
+                <h4>Search books</h4>
+                <div className="search-bar" >
+                    <input autoComplete="off" name="query" onChange={(e) => this.handleQueryInput(e)} value={this.state.query} type="text" />
+                    <i className="fas fa-search" onClick={() => this.handleSearch()} ></i>
+                </div>
                 <h5>Filter by Category</h5>
                 <div className="filter-options" >
                     <div className="option" >
