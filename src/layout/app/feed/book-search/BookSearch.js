@@ -32,7 +32,7 @@ class BookSearch extends Component {
         .then(d => d.json())
         .then(res => {
             console.log('Query data', res)
-            this.props.updateData(res)
+            this.props.updateData(res, this.state.query)
         })
         .catch(err => {
             console.log(err)

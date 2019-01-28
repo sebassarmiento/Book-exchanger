@@ -17,7 +17,14 @@ class FeedView extends Component {
     console.log('ACAAAAAAAAA', this.props.match.params)
     this.getData()
   }
+  componentDidUpdate(){
+    if(this.state.data && this.state.data.length === this.state.count && this.state.loadMore){
+      console.log('Se borra load more', this.state)
+      this.setState({loadMore: false})
+    }
+  }
   getData(more) {
+    console.log('ACAMIAMIGO', `http://localhost:3000/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`)
     if(this.state.data)this.setState({fetching: true})
     if (more) this.count += 10
     fetch(`http://localhost:3000/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`, {
@@ -28,31 +35,29 @@ class FeedView extends Component {
     })
       .then(d => d.json())
       .then(res => {
-        console.log(res)
-        this.setState({fetching: false})
+        console.log('ESTA ES MI RESPUESTA',res)
+        this.setState({fetching: false, count: res.count})
         if (this.state.data) {
-          this.setState({ data: [...this.state.data, ...res] })
+          this.setState({ data: [...this.state.data, ...res.data]})
         } else {
-          this.setState({ data: res, loadMore: true })
-        }
-        if (res.length < 10) {
-          this.setState({ loadMore: false })
+          this.setState({ data: res.data, loadMore: true })
         }
       })
       .catch(err => {
         console.log(err)
       })
   }
-  queryData(data){
-    this.setState({ data, loadMore: false })
+  queryData(data, query){
+    console.log('Mi query', query)
+    this.setState({ data, query, loadMore: false, count: data ? data.length : null })
   }
   render() {
     console.log(this.state.data)
     return (
       <div className="feedview-container" >
-        <BookSearch updateData={data => this.queryData(data)} />
+        <BookSearch updateData={(data, query) => this.queryData(data, query)} />
         <div className="feedview-column-2" >
-          <StatusBar data={this.state.data} />
+          <StatusBar query={this.state.query} books={this.state.data} count={this.state.count} />
           <div className="feedview-books" >
             {this.state.data && this.state.data.constructor === Array ? this.state.data.map(book => {
               return (<BookPreview {...book} key={book._id} />)
