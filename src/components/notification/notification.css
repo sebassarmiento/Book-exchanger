@@ -1,12 +1,13 @@
 .notification{
     position: absolute;
     top: 10px;
-    left: calc(50% - 150px);
+    left: calc(50% - 15vw);
     height: 50px;
-    min-width: 300px;
+    min-width: 30vw;
+    max-width: 30vw;
     display: flex;
-    background-color: transparent;
     align-items: center;
+    justify-content: center;
     border-radius: 2px;
     font-weight: bold;
     animation: showNotification 5.1s ease-in-out;

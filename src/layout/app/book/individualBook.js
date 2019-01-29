@@ -94,11 +94,6 @@ class IndividualBook extends Component {
     }
     handleAdd() {
         this.setState({ added: !this.state.added, unadd: !this.state.unadd, adding: true })
-        if (!this.state.unadd) {
-            this.props.notify('success', 'Book added to wishlist!')
-        } else {
-            this.props.notify('success', 'Book removed from wishlist!')
-        }
         if (!this.state.adding) {
             fetch(`http://localhost:3000/app/user/wishlist/${this.props.userData._id}`, {
                 method: 'POST',
@@ -115,7 +110,9 @@ class IndividualBook extends Component {
                     console.log(res)
                     this.setState({ adding: false })
                     if (res.message && res.user) {
+                        console.log('ENTRA!')
                         this.props.addToWishlist(res.user.books)
+                        this.props.notify('success', res.message)
                     }
                 })
         }
