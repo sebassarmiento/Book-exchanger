@@ -75,10 +75,6 @@
     margin: 0px;
 }
 
-.i-b-btns{
-    background-color: #fff131;
-}
-
 .book-info .wishlist-btn{
     display: block;
     border: none;
@@ -86,7 +82,7 @@
     padding: 12px 24px;
     font-family: 'Roboto', sans-serif;
     color: white;
-    background-color: #2fa35f;
+    background-color: var(--color2);
     font-size: 1em;
     cursor: pointer;
     margin: 6px 0px;

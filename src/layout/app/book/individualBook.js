@@ -77,9 +77,11 @@ class IndividualBook extends Component {
     }
     getData() {
         this.setState({ fetchingData: true, data: null })
+        console.log('MI URL ', this.props.location.pathname)
         fetch(`http://localhost:3000${this.props.location.pathname}`)
             .then(d => d.json())
             .then(res => {
+                console.log('ENTRA POR ACA', res)
                 console.log(res._id, this.props.userData.books.liked)
                 this.props.userData.books.liked.map(book => {
                     if (book._id === res._id) {
@@ -89,7 +91,7 @@ class IndividualBook extends Component {
                 this.setState({ data: {...res, messages: this.messages}, fetchingData: false })
             })
             .catch(err => {
-                console.log(err)
+                console.log('Error',err)
             })
     }
     handleAdd() {

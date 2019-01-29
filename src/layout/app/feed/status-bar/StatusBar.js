@@ -30,8 +30,8 @@ class StatusBar extends Component {
         <div>
           <label>Sort by </label>
           <select onChange={(e) => this.handleChange(e)} >
-            <option value="old" >From old to new</option>
             <option value="new" >From new to old</option>
+            <option value="old" >From old to new</option>
             <option value="more" >More ratings</option>
             <option value="less" >Less ratings</option>
           </select>

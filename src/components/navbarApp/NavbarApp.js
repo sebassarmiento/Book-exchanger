@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './navbar-app.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import Logo from '../../img/bookshelf.png';
 import { connect } from 'react-redux';
 
@@ -76,8 +76,9 @@ class NavbarApp extends Component {
           <NavLink to="/app/feed" >Book exchanger</NavLink>
         </div>
         <div className="navbar-settings" >
+          <i onClick={() => this.props.publishForm()} className="fas fa-plus"></i>
           <i className="fas fa-bell">{this.notifications()}</i>
-          <i className="fas fa-user"></i>
+          <NavLink to="/app/profile" ><i className="fas fa-user"></i></NavLink>
           <i onClick={() => this.handleSettings()} className="fas fa-cog"></i>
         </div>
       </div>
@@ -92,7 +93,8 @@ const mapDispatchToProps = dispatch => {
     logout: () => dispatch({ type: "LOGOUT" }),
     openMenu: () => dispatch({ type: "APP_MENU_OPEN" }),
     closingMenu: () => dispatch({ type: "APP_MENU_CLOSING" }),
-    closeMenu: () => dispatch({ type: "APP_MENU_CLOSE" })
+    closeMenu: () => dispatch({ type: "APP_MENU_CLOSE" }),
+    publishForm: () => dispatch({ type: "OPEN_PUBLISH_FORM" })
   }
 }
 

@@ -10,7 +10,6 @@ import NavbarApp from './components/navbarApp/NavbarApp';
 import AppMenu from './layout/app-menu/AppMenu';
 import FeedView from './layout/app/feed/FeedView';
 import IndividualBook from './layout/app/book/individualBook';
-import Publish from './layout/app/publish/Publish';
 import Profile from './layout/app/profile/Profile';
 import PublishBook from './components/publishBook/PublishBook';
 import Notification from './components/notification/Notification';
@@ -39,7 +38,6 @@ class App extends Component {
                 <Switch>
                   <Route path="/app/feed" exact component={FeedView} />
                   <Route path="/app/books/id/:bookId" exact component={IndividualBook} />
-                  <Route path="/app/publish" exact component={Publish} />
                   <Route path="/app/profile" exact component={Profile} />
                   <Route path="/app/user/:userId" component={Profile} />
                 </Switch>

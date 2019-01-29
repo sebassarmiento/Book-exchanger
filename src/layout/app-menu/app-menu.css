@@ -19,6 +19,7 @@
     padding: 12px;
     margin: 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.281);
+    border-top: 1px solid rgba(0, 0, 0, 0.281);
 }
 
 .app-menu.app-menu-closed{
@@ -38,6 +39,13 @@
 
 .app-menu .menu-item span{
     flex: 10;
+}
+
+/* Wishlist container */
+
+.app-menu .wishlist{
+    max-height: 280px;
+    overflow: scroll;
 }
 
 /* /// */
@@ -81,6 +89,13 @@
     position: relative;
 }
 
+.app-menu .menu-item span{
+    max-width: 260px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .app-menu .menu-item i{
     color: rgba(0, 0, 0, 0.582);
 }
@@ -92,7 +107,7 @@
     left: 0;
     height: 100%;
     width: 5px;
-    background-color: rgb(34, 165, 84);
+    background-color: var(--color2);
 }
 
 

@@ -34,11 +34,11 @@
 }
 
 .input-container input:focus, .input-container input:valid{
-    border-bottom: 2px solid rgb(0, 163, 204);
+    border-bottom: 2px solid var(--color1);
 }
 
 .input-container input:focus + label, .input-container input:valid + label {
     transform: translate(0, -20px);
     font-size: 0.8em;
-    color: rgb(0, 163, 204);
+    color: var(--color1);
 }

@@ -23,7 +23,7 @@ class FeedView extends Component {
   }
   getData(more) {
     if(this.state.data)this.setState({fetching: true})
-    if (more) this.count += 10
+    if (more) this.count += 20
     fetch(`http://localhost:3000/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`, {
       method: 'GET',
       headers: {

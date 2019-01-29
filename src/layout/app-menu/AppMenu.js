@@ -11,7 +11,6 @@ class AppMenu extends Component {
     }
   }
   render() {
-    let arrow = <i className="fas fa-caret-right"></i>
     return (
       <div className={`app-menu ${this.props.appMenu.status === 'closing' ? 'app-menu-closed' : null}`} >
         <h1 className="app-menu-title" >Menu</h1>
@@ -19,6 +18,13 @@ class AppMenu extends Component {
           <Link className="menu-item" to="/app/feed" ><i className="fas fa-home"></i><span>Home</span></Link>
           <a href="#" className="menu-item" onClick={() => this.props.publish()} ><i className="fas fa-book"></i><span>Publish book</span></a>
           <Link className="menu-item" to="/app/profile" ><i className="fas fa-user"></i><span>My Profile</span></Link>
+          <Link className="menu-item" to="#" ><i className="fas fa-bell"></i><span>Notifications</span></Link>
+        </div>
+        <h1 className="app-menu-title" >Your wishlist</h1>
+        <div className="wishlist" >
+          {this.props.userData.books.liked.map(b => {
+            return (<Link className="menu-item" to={`/app/books/id/${b._id}`} ><i className="fas fa-home"></i><span>{b.name}</span></Link>)
+          })}
         </div>
       </div>
     )
@@ -27,7 +33,8 @@ class AppMenu extends Component {
 
 const mapStateToProps = store => {
   return {
-    appMenu: store.appMenu
+    appMenu: store.appMenu,
+    userData: store.userData
   }
 }
 

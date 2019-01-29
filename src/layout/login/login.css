@@ -1,5 +1,5 @@
 .login-container{
-    background: radial-gradient(rgb(59, 183, 255), #2274A5);
+    background: radial-gradient(var(--color2), var(--color1));
     height: 100vh;
     display: flex;
     align-items: center;
