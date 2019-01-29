@@ -150,13 +150,37 @@
 .app-navbar .navbar-settings i{
     color: rgb(228, 228, 228);
     padding: 12px;
-    transition: all 0.4s ease;
+    margin: 0px 6px;
+    transition: all 0.4s ease, color 0.2s;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.1em;
 }
 
 .app-navbar .navbar-settings i:hover{
-    transform: rotate(120deg);
-    cursor: pointer;
+    color: white;
 }
+
+.app-navbar .navbar-settings .fa-cog:hover{
+    transform: rotate(120deg);
+}
+
+.app-navbar .navbar-settings .fa-bell span{
+    position: absolute;
+    font-size: 0.8em;
+    background-color: rgb(255, 91, 31);
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    top: 0;
+    right: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Settings Menu */
 
 .navbar-menu{
     position: absolute;

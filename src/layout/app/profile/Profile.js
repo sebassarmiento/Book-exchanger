@@ -69,7 +69,10 @@ class Profile extends Component {
                 <div className="p-user-info" >
                     <img alt="user" src={data && data.image ? data.image : userPlaceholder} height={200} />
                     <h1>{data ? data.username : null}</h1>
+                    <p><i className="fas fa-map-marker" ></i> {data ? data.location : null}</p>
                     <p>{data ? data.age : null} years old</p>
+                    <p>{data ? data.email : null}</p>
+                    <p>{data && data.description ? data.description : "No description."}</p>
                 </div>
                 <div className="p-user-books" >
                     <div className="p-user-scroll" >

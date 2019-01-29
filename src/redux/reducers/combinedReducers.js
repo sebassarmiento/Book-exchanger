@@ -28,7 +28,11 @@ const reducer =  (store = initialStore, action) => {
         case Actions.OPEN_PUBLISH_FORM:
         return {...store, publish: true}
         case Actions.NOTIFICATION:
-        return {...store, notification: { category: action.payload.category, message: action.payload.message }}
+        let notification = { category: action.payload.category, message: action.payload.message }
+        return {
+            ...store, 
+            userData: {...store.userData, notifications: [...store.userData.notifications, notification]},
+            notification }
         case Actions.NOTIFICATION_CLOSE:
         return {...store, notification: null}
         case Actions.APP_MENU_OPEN:

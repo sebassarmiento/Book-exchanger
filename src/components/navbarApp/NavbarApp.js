@@ -57,6 +57,15 @@ class NavbarApp extends Component {
     }
   }
 
+  notifications(){
+    let notifications = this.props.userData.notifications
+    if(notifications.length !== 0){
+      return <span>{notifications.length}</span>
+    } else {
+      return null
+    }
+  }
+
   render() {
     const menu = this.state.menuOpened ? "menu-open" : "menu-closed"
     return (
@@ -67,6 +76,8 @@ class NavbarApp extends Component {
           <NavLink to="/app/feed" >Book exchanger</NavLink>
         </div>
         <div className="navbar-settings" >
+          <i className="fas fa-bell">{this.notifications()}</i>
+          <i className="fas fa-user"></i>
           <i onClick={() => this.handleSettings()} className="fas fa-cog"></i>
         </div>
       </div>
@@ -87,7 +98,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = store => {
   return {
-    currentUsername: store.userData.username,
+    userData: store.userData,
     appMenu: store.appMenu
   }
 }
