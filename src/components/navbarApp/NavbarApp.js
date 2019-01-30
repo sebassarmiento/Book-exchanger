@@ -84,7 +84,7 @@ class NavbarApp extends Component {
         </div>
         <div className="navbar-settings" >
           <i onClick={() => this.props.publishForm()} className="fas fa-plus"></i>
-          <i className="fas fa-bell">{this.notifications()}</i>
+          <i onClick={() => this.props.openNotifications()} className="fas fa-bell">{this.notifications()}</i>
           <NavLink to="/app/profile" ><i className="fas fa-user"></i></NavLink>
           <i onClick={() => this.handleSettings()} className="fas fa-cog"></i>
         </div>
@@ -101,7 +101,8 @@ const mapDispatchToProps = dispatch => {
     openMenu: () => dispatch({ type: "APP_MENU_OPEN" }),
     closingMenu: () => dispatch({ type: "APP_MENU_CLOSING" }),
     closeMenu: () => dispatch({ type: "APP_MENU_CLOSE" }),
-    publishForm: () => dispatch({ type: "OPEN_PUBLISH_FORM" })
+    publishForm: () => dispatch({ type: "OPEN_PUBLISH_FORM" }),
+    openNotifications: () => dispatch({ type: "OPEN_NOTIFICATIONS_VIEW" })
   }
 }
 

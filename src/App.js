@@ -13,6 +13,7 @@ import IndividualBook from './layout/app/book/individualBook';
 import Profile from './layout/app/profile/Profile';
 import PublishBook from './components/publishBook/PublishBook';
 import Notification from './components/notification/Notification';
+import NotificationsView from './components/notificationsView/Notifications';
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
                   <Route path="/app/profile" exact component={Profile} />
                   <Route path="/app/user/:userId" component={Profile} />
                 </Switch>
+                {this.props.notificationsView ? <NotificationsView /> : null}
                 {this.props.publish ? <PublishBook /> : null}
                 {this.props.notification ? <Notification {...this.props.notification} /> : null}
               </div>
@@ -59,7 +61,8 @@ const mapStateToProps = store => {
     logged: store.logged,
     publish: store.publish,
     notification: store.notification,
-    appMenu: store.appMenu
+    appMenu: store.appMenu,
+    notificationsView: store.notificationsView
   }
 }
 

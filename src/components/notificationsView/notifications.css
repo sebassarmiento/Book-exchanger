@@ -1,0 +1,75 @@
+.notifications-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.253);
+    animation: showNotificationsBg 0.6s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.notifications-bg.close-notifications{
+    opacity: 0;
+}
+
+.notifications-container{
+    background-color: rgb(235, 235, 235);
+    border-radius: 4px;
+    padding: 12px;
+    width: 40%;
+    max-height: 65vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: showNotifications 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.notifications-container h2{
+    margin: 0px;
+    padding: 12px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.397);
+    font-weight: normal;
+}
+.notifications-container h2 i{
+    float: right;
+    cursor: pointer;
+}
+
+.notifications-display{
+    max-height: 50vh;
+    overflow: scroll;
+}
+
+.n-v-notification{
+    display: flex;
+    margin: 2px 0px;
+    padding: 12px 0px;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.247);
+    cursor: pointer;
+}
+
+.n-v-notification i{
+    padding: 12px;
+    color: rgb(0, 160, 0);
+}
+
+@keyframes showNotifications {
+    0%{
+        transform: translate(-50%, -500px);
+    }
+    100%{
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes showNotificationsBg {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

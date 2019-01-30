@@ -35,6 +35,10 @@ const reducer =  (store = initialStore, action) => {
             notification }
         case Actions.NOTIFICATION_CLOSE:
         return {...store, notification: null}
+        case Actions.OPEN_NOTIFICATIONS_VIEW:
+        return {...store, notificationsView: true}
+        case Actions.CLOSE_NOTIFICATIONS_VIEW:
+        return {...store, notificationsView: false}
         case Actions.APP_MENU_OPEN:
         return {...store, appMenu: {...store.appMenu, status: 'open'}}
         case Actions.APP_MENU_CLOSING:
