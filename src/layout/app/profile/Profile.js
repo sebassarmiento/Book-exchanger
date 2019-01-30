@@ -86,7 +86,7 @@ class Profile extends Component {
                         {data && data.books.published.length > 5 ? <div className="right-arrow-container" ><i onClick={() => this.handleScroll(1, 1)} className="fas fa-angle-right"></i></div> : null}
                     </div>
                     <div className="p-user-scroll" >
-                        <h4>Liked - {data ? data.books.liked.length : null}</h4>
+                        <h4>Wishlist - {data ? data.books.liked.length : null}</h4>
                         {data && data.books.liked.length > 5 ? <div className="left-arrow-container" ><i onClick={() => this.handleScroll()} className="fas fa-angle-left"></i></div> : null}
                         <div ref={this.likedScroll} className="p-user-books-liked" >
                             {data && data.books.liked.length > 0 ? data.books.liked.map(book => {

@@ -41,15 +41,14 @@ class BookSearch extends Component {
     render() {
         return (
             <div className="book-filters" >
-                <h4>Search books</h4>
                 <div className="search-bar" >
-                    <input autoComplete="off" name="query" onChange={(e) => this.handleQueryInput(e)} value={this.state.query} type="text" />
+                    <input placeholder="Search books..." autoComplete="off" name="query" onChange={(e) => this.handleQueryInput(e)} value={this.state.query} type="text" />
                     <i className="fas fa-search" onClick={() => this.handleSearch()} ></i>
                 </div>
                 <h5>Filter by Category</h5>
                 <div className="filter-options" >
                     <div className="option" >
-                        <input name="drama" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <input name="drama" onChange={(e) => this.handleChange(e)} type="checkbox" />
                         <label htmlFor="cb-1" >Drama</label>
                     </div>
                     <div className="option" >
@@ -97,13 +96,100 @@ class BookSearch extends Component {
                         <label htmlFor="cb-4" >Cooking</label>
                     </div>
                 </div>
-                <div className="filters-applied" >
-                    <h5>Filters applied</h5>
-                    {this.filtersApplied().map(v => <span className="filter-applied" >{v}</span>)}
+                <h5>Filter by Location</h5>
+                <div className="filter-options" >
+                    <div className="option" >
+                        <input name="alabama" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <label >Alabama</label>
+                    </div>
+                    <div className="option" >
+                        <input name="alaska" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <label >Alaska</label>
+                    </div>
+                    <div className="option" >
+                        <input name="arizona" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <label >Arizona</label>
+                    </div>
+                    <div className="option" >
+                        <input name="arkansas" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <label >Arkansas</label>
+                    </div>
+                    <div className="option" >
+                        <input name="california" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <label >California</label>
+                    </div>
+                    <div className="option" >
+                        <input name="colorado" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <label >Colorado</label>
+                    </div>
+                    <div className="option" >
+                        <input name="connecticut" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <label >Connecticut</label>
+                    </div>
                 </div>
+                <h5>Filter by ratings</h5>
+                <div className="filter-options" >
+                    <div className="option" >
+                        <input type="checkbox" />
+                        <div className="rating-filter-option" >
+                            <i className="fas fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <span> & up</span>
+                        </div>
+                    </div>
+                    <div className="option" >
+                        <input type="checkbox" />
+                        <div className="rating-filter-option" >
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <span> & up</span>
+                        </div>
+                    </div>
+                    <div className="option" >
+                        <input type="checkbox" />
+                        <div className="rating-filter-option" >
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <span> & up</span>
+                        </div>
+                    </div>
+                    <div className="option" >
+                        <input type="checkbox" />
+                        <div className="rating-filter-option" >
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="far fa-star" ></i>
+                            <span> & up</span>
+                        </div>
+                    </div>
+                    <div className="option" >
+                        <input type="checkbox" />
+                        <div className="rating-filter-option" >
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <i className="fas fa-star" ></i>
+                            <span> & up</span>
+                        </div>
+                    </div>
+                </div>
+                <button className="apply-filters" >Apply filters</button>
             </div>
         )
     }
 }
+
 
 export default BookSearch;

@@ -1,6 +1,6 @@
 .app-navbar{
     display: flex;
-    background-color: var(--color1);
+    background: linear-gradient(to right, var(--color2), var(--color1));
     height: 70px;
     width: 100%;
     align-items: center;

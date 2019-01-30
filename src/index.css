@@ -44,13 +44,9 @@ h1{
   outline: none;
 }
 
-*::placeholder{
-  color: white;
-}
-
 /* Colors */
 
 :root{
   --color1: #008a8a;
-  --color2: #2fa35f;
+  --color2: #00af66;
 }

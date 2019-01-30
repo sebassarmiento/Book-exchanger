@@ -22,7 +22,7 @@
 /* Filter options */
 
 .book-filters .filter-options{
-    max-height: 30%;
+    max-height: 20%;
     overflow: scroll;
 }
 
@@ -31,13 +31,13 @@
 }
 
 .book-filters .option input{
-    margin: 0px 12px;
+    margin: 0px 6px;
 }
 
 .book-filters .option{
     display: flex;
     align-items: center;
-    padding: 6px 0px;
+    padding: 4px 0px;
     color: rgba(0, 0, 0, 0.637);
     font-size: 0.8em;
 }
@@ -45,7 +45,7 @@
 .filters-applied{
     padding: 0px;
     overflow-wrap: normal;
-    max-height: 30%;
+    max-height: 20%;
     overflow: scroll;
 }
 
@@ -56,6 +56,24 @@
     padding: 2px 4px;
     font-size: 0.8em;
     display: inline-block;
+}
+
+.apply-filters{
+    padding: 8px;
+    border: 1px solid #00979c;
+    border-radius: 2px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    color: #00979c;
+    margin-top: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.apply-filters:hover{
+    color: white;
+    background-color: #00979c;
 }
 
 /* Search Bar */
@@ -92,4 +110,10 @@
     border-radius: 2px;
     border-bottom-left-radius: 0px;
     border-top-left-radius: 0px;
+}
+
+/* Rating filters */
+
+.fas.fa-star{
+    color: rgb(255, 208, 0);
 }
