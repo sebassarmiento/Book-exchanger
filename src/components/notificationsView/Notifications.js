@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './notifications.css';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class Notifications extends Component {
     constructor(props){
@@ -14,6 +15,8 @@ class Notifications extends Component {
         }, 400)
     }
     handleClick(e, n){
+        console.log('MI NOTIFICATION', n)
+        this.setState({ redirect: `/app/books/id/${n.link}` })
         this.handleClose()
     }
     render() {
@@ -33,6 +36,7 @@ class Notifications extends Component {
                         })}
                     </div>
                 </div>
+                {this.state.redirect ? <Redirect to={this.state.redirect} /> : null}
             </div>
         )
     }

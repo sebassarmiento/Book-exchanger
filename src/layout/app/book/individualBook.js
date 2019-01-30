@@ -34,8 +34,8 @@ class BookRating extends Component {
         })
             .then(d => d.json())
             .then(res => {
-                console.log('ACAAAAAAAA', res)
-                this.props.notify('success', 'Book rating was added!')
+                console.log('ACAAAAAAAA EL RATING', res)
+                this.props.notify(res.notification)
             })
             .catch(err => {
                 console.log(err)
@@ -178,7 +178,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
     return {
         addToWishlist: book => dispatch({ type: 'ADD_BOOK_TO_WISHLIST_IN_STORE', payload: book }),
-        notify: (category, message) => dispatch({ type: 'NOTIFICATION', payload: { category, message } })
+        notify: notification => dispatch({ type: 'NOTIFICATION', payload: {...notification} })
     }
 }
 
