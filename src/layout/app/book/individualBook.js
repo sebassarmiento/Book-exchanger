@@ -111,10 +111,10 @@ class IndividualBook extends Component {
                 .then(res => {
                     console.log(res)
                     this.setState({ adding: false })
-                    if (res.message && res.user) {
+                    if (res.notification && res.user) {
                         console.log('ENTRA!')
                         this.props.addToWishlist(res.user.books)
-                        this.props.notify('success', res.message)
+                        this.props.notify(res.notification)
                     }
                 })
         }

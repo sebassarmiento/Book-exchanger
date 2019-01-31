@@ -66,8 +66,10 @@ class NavbarApp extends Component {
 
   notifications(){
     let notifications = this.props.userData.notifications
+    let count = 0;
     if(notifications.length !== 0){
-      return <span>{notifications.length}</span>
+      notifications.map(n => !n.opened ? count++ : null)
+      return count > 0 ? <span>{count}</span> : null
     } else {
       return null
     }
