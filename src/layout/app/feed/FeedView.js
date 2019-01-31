@@ -67,7 +67,7 @@ class FeedView extends Component {
     this.setState({data})
   }
   render() {
-    console.log(this.state.data)
+    console.log(this.state)
     return (
       <div className="feedview-container" >
         <BookSearch updateData={(data, query) => this.queryData(data, query)} />
