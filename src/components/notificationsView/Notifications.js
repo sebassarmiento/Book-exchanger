@@ -30,23 +30,25 @@ class Notifications extends Component {
         console.log(this.props.notifications)
         const closing = this.state.closing ? 'close-notifications' : ''
         return (
+            <React.Fragment>
             <div className={`notifications-bg ${closing}`} onClick={() => this.handleClose()} >
-                <div onClick={e => e.stopPropagation()} className="notifications-container" >
-                    <h2>Your notifications ({this.props.notifications.length}) <i onClick={() => this.handleClose()} className="fa fa-times" ></i></h2>
-                    <div className="notifications-display" >
-                        {this.props.notifications.slice(0).reverse().map(n => {
-                            return (
-                                <div onClick={(e) => this.handleClick(e, n)} className="n-v-notification" >
-                                    {!n.opened ? <span>New!</span> : null}
-                                    <i className="fa fa-check-circle" ></i>
-                                    <p>{n.message}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-                {this.state.redirect ? <Redirect to={this.state.redirect} /> : null}
             </div>
+            <div className={`notifications-container ${closing}`} >
+            <h2>Your notifications ({this.props.notifications.length}) <i onClick={() => this.handleClose()} className="fa fa-times" ></i></h2>
+            <div className="notifications-display" >
+                {this.props.notifications.slice(0).reverse().map(n => {
+                    return (
+                        <div onClick={(e) => this.handleClick(e, n)} className="n-v-notification" >
+                            {!n.opened ? <span>New!</span> : null}
+                            <i className="fa fa-check-circle" ></i>
+                            <p>{n.message}</p>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+        {this.state.redirect ? <Redirect to={this.state.redirect} /> : null}
+        </React.Fragment>
         )
     }
 }

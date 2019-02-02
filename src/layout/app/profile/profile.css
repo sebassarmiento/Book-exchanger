@@ -95,7 +95,7 @@
     border-left: 1px solid transparent;
     border-radius: 50%;
     background-color: #008a8a;
-    z-index: 100;
+    z-index: 8;
     transform: translate(-50%, -50%) rotate(45deg);
     cursor: pointer;
     transition: all 0.3s;
@@ -129,7 +129,7 @@
     border-left: 1px solid transparent;
     border-radius: 50%;
     background-color: #008a8a;
-    z-index: 100;
+    z-index: 8;
     transform: translate(50%, -50%) rotate(45deg);
     cursor: pointer;
     transition: all 0.3s;
