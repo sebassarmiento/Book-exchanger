@@ -1,7 +1,7 @@
 .book-filters{
     background-color: white;
     margin: 12px;
-    padding: 12px;
+    padding: 0px 12px;
     margin-right: 6px;
     min-height: calc(100vh - 94px);
     box-sizing: border-box;
@@ -22,8 +22,9 @@
 /* Filter options */
 
 .book-filters .filter-options{
-    max-height: 20%;
+    max-height: 40%;
     overflow: scroll;
+    width: 80%;
 }
 
 .book-filters h6{
@@ -45,7 +46,7 @@
 .filters-applied{
     padding: 0px;
     overflow-wrap: normal;
-    max-height: 20%;
+    max-height: 40%;
     overflow: scroll;
 }
 
@@ -59,7 +60,16 @@
 }
 
 .apply-filters{
-    padding: 8px;
+    background-color: white;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    position: sticky;
+    bottom: 0px;
+}
+
+.apply-filters button{
+    width: 100%;
+    padding: 10px;
     border: 1px solid #00979c;
     border-radius: 2px;
     font-family: 'Roboto', sans-serif;
@@ -71,7 +81,7 @@
     box-sizing: border-box;
 }
 
-.apply-filters:hover{
+.apply-filters button:hover{
     color: white;
     background-color: #00979c;
 }
@@ -80,6 +90,11 @@
 
 .search-bar {
     display: flex;
+    position: sticky;
+    top: 0px;
+    padding: 12px 0px;
+    background-color: white;
+    box-sizing: border-box;
 }
 
 .search-bar input{

@@ -20,7 +20,13 @@ class BookSearch extends Component {
         }
     }
     handleLocationChange(e) {
-        this.setState({ locationFilters: [...this.state.locationFilters, e.target.name] })
+        let index = this.state.locationFilters.findIndex(f => f === e.target.name)
+        if (index >= 0) {
+            let locationFiltersUpdated = this.state.locationFilters.filter(f => f !== this.state.locationFilters[index])
+            this.setState({ locationFilters: locationFiltersUpdated })
+        } else {
+            this.setState({ locationFilters: [...this.state.locationFilters, e.target.name] })
+        }
     }
 
     handleQueryInput(e) {
@@ -41,22 +47,26 @@ class BookSearch extends Component {
     }
 
     handleFilters() {
-        fetch(`http://localhost:3000/app/books/filters`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                categoryFilters: this.state.categoryFilters
+        if (this.state.categoryFilters.length > 0 || this.state.locationFilters.length > 0) {
+            this.props.updateData(null)
+            fetch(`http://localhost:3000/app/books/filters`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    categoryFilters: this.state.categoryFilters,
+                    locationFilters: this.state.locationFilters
+                })
             })
-        })
-            .then(d => d.json())
-            .then(res => {
-                this.props.updateData(res, this.state.query)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                .then(d => d.json())
+                .then(res => {
+                    this.props.updateData(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
     }
 
     render() {
@@ -121,31 +131,31 @@ class BookSearch extends Component {
                 <h5>Filter by Location</h5>
                 <div className="filter-options" >
                     <div className="option" >
-                        <input name="alabama" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <input name="Alabama" onChange={(e) => this.handleLocationChange(e)} id="cb-1" type="checkbox" />
                         <label >Alabama</label>
                     </div>
                     <div className="option" >
-                        <input name="alaska" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <input name="Alaska" onChange={(e) => this.handleLocationChange(e)} id="cb-1" type="checkbox" />
                         <label >Alaska</label>
                     </div>
                     <div className="option" >
-                        <input name="arizona" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <input name="Arizona" onChange={(e) => this.handleLocationChange(e)} id="cb-1" type="checkbox" />
                         <label >Arizona</label>
                     </div>
                     <div className="option" >
-                        <input name="arkansas" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <input name="Arkansas" onChange={(e) => this.handleLocationChange(e)} id="cb-1" type="checkbox" />
                         <label >Arkansas</label>
                     </div>
                     <div className="option" >
-                        <input name="california" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <input name="California" onChange={(e) => this.handleLocationChange(e)} id="cb-1" type="checkbox" />
                         <label >California</label>
                     </div>
                     <div className="option" >
-                        <input name="colorado" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <input name="Colorado" onChange={(e) => this.handleLocationChange(e)} id="cb-1" type="checkbox" />
                         <label >Colorado</label>
                     </div>
                     <div className="option" >
-                        <input name="connecticut" onChange={(e) => this.handleChange(e)} id="cb-1" type="checkbox" />
+                        <input name="Connecticut" onChange={(e) => this.handleLocationChange(e)} id="cb-1" type="checkbox" />
                         <label >Connecticut</label>
                     </div>
                 </div>
@@ -207,7 +217,9 @@ class BookSearch extends Component {
                         </div>
                     </div>
                 </div>
-                <button onClick={() => this.handleFilters()} className="apply-filters" >Apply filters</button>
+                <div className="apply-filters" >
+                    <button onClick={() => this.handleFilters()} >Apply filters</button>
+                </div>
             </div>
         )
     }
