@@ -218,7 +218,7 @@ class BookSearch extends Component {
                     </div>
                 </div>
                 <div className="apply-filters" >
-                    <button onClick={() => this.handleFilters()} >Apply filters</button>
+                    <button onClick={() => this.handleFilters()} >Apply filters & search</button>
                 </div>
             </div>
         )
