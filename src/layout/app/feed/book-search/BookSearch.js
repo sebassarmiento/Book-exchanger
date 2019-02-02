@@ -8,7 +8,7 @@ class BookSearch extends Component {
             query: '',
             categoryFilters: [],
             locationFilters: [],
-            ratingFilter: 0
+            ratingsFilter: 0
         }
         this.ratings = [React.createRef(), React.createRef(), React.createRef(), React.createRef(), React.createRef()]
     }
@@ -36,7 +36,12 @@ class BookSearch extends Component {
                 r.current.checked = false
             }
         })
-        this.setState({ ratingFilter: parseFloat(e.target.name) })
+        let rating = this.ratings.filter(r => r.current.checked)
+        if(rating.length !== 0){
+            this.setState({ ratingsFilter: parseFloat(rating[0].current.name) })
+        } else {
+            this.setState({ ratingsFilter: 0 })
+        }
     }
 
     handleQueryInput(e) {
@@ -57,7 +62,7 @@ class BookSearch extends Component {
     }
 
     handleFilters() {
-        if (this.state.categoryFilters.length > 0 || this.state.locationFilters.length > 0) {
+        if (this.state.categoryFilters.length > 0 || this.state.locationFilters.length > 0 || this.state.ratingsFilter !== 0) {
             this.props.updateData(null)
             fetch(`http://localhost:3000/app/books/filters`, {
                 method: 'POST',
@@ -67,7 +72,7 @@ class BookSearch extends Component {
                 body: JSON.stringify({
                     categoryFilters: this.state.categoryFilters,
                     locationFilters: this.state.locationFilters,
-                    ratingsFilter: this.state.ratingFilter
+                    ratingsFilter: this.state.ratingsFilter
                 })
             })
                 .then(d => d.json())
