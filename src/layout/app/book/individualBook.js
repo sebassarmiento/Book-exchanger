@@ -13,12 +13,8 @@ class BookRating extends Component {
         this.state = {}
     }
     componentDidMount() {
-        let rating = 0
-        if (this.props.rating.length > 0) {
-            rating = this.props.rating.reduce((a, b) => ({ rating: a.rating + b.rating })).rating / this.props.rating.length
-        }
-        console.log(rating)
-        this.setState({ rated: rating })
+        console.log(this.props.ratingsNumber)
+        this.setState({ rated: this.props.ratingsNumber })
     }
     handleRate() {
         this.setState({ rated: this.state.stars, ratingCount: true })
@@ -51,7 +47,7 @@ class BookRating extends Component {
                     <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 4 })} className={`${this.state.stars > 3 || this.state.rated > 3 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
                     <i onClick={() => this.handleRate()} onMouseLeave={() => this.setState({ stars: 0 })} onMouseEnter={() => this.setState({ stars: 5 })} className={`${this.state.stars > 4 || this.state.rated > 4 ? "rating-hover fas fa-star" : "far fa-star"}`}></i>
                 </div>
-                <small style={{ marginLeft: 4 }} >{(this.props.rating.length || 0) + (this.state.ratingCount ? 1 : 0)} ratings</small>
+                <small style={{ marginLeft: 4 }} >{(this.props.ratings.length || 0) + (this.state.ratingCount ? 1 : 0)} ratings</small>
             </React.Fragment>
         )
     }
@@ -120,6 +116,7 @@ class IndividualBook extends Component {
         }
     }
     render() {
+        console.log(this.state.data)
         return (
             <div className="individual-book" >
                 {/*<NavLink className="back-btn" to="/app/feed" ><h3><i className="fas fa-chevron-left"></i><small>Back</small></h3></NavLink>*/}
@@ -144,7 +141,8 @@ class IndividualBook extends Component {
                                 <BookRating
                                     notify={(category, message) => this.props.notify(category, message)}
                                     bookId={this.state.data._id}
-                                    rating={this.state.data.ratings}
+                                    ratings={this.state.data.ratings}
+                                    ratingsNumber={this.state.data.ratingsNumber}
                                     currentUser={this.props.userData._id}
                                 />
                             </div>

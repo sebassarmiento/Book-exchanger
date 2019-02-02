@@ -7,8 +7,10 @@ class BookSearch extends Component {
         this.state = {
             query: '',
             categoryFilters: [],
-            locationFilters: []
+            locationFilters: [],
+            ratingFilter: 0
         }
+        this.ratings = [React.createRef(), React.createRef(), React.createRef(), React.createRef(), React.createRef()]
     }
     handleCategoryChange(e) {
         let index = this.state.categoryFilters.findIndex(f => f === e.target.name)
@@ -27,6 +29,14 @@ class BookSearch extends Component {
         } else {
             this.setState({ locationFilters: [...this.state.locationFilters, e.target.name] })
         }
+    }
+    handleRatingChange(e){
+        this.ratings.map(r => {
+            if(parseFloat(e.target.name) !== this.ratings.indexOf(r) + 1){
+                r.current.checked = false
+            }
+        })
+        this.setState({ ratingFilter: parseFloat(e.target.name) })
     }
 
     handleQueryInput(e) {
@@ -56,7 +66,8 @@ class BookSearch extends Component {
                 },
                 body: JSON.stringify({
                     categoryFilters: this.state.categoryFilters,
-                    locationFilters: this.state.locationFilters
+                    locationFilters: this.state.locationFilters,
+                    ratingsFilter: this.state.ratingFilter
                 })
             })
                 .then(d => d.json())
@@ -162,7 +173,7 @@ class BookSearch extends Component {
                 <h5>Filter by ratings</h5>
                 <div className="filter-options" >
                     <div className="option" >
-                        <input type="checkbox" />
+                        <input ref={this.ratings[0]} name="1" onClick={(e) => this.handleRatingChange(e)} type="checkbox" />
                         <div className="rating-filter-option" >
                             <i className="fas fa-star" ></i>
                             <i className="far fa-star" ></i>
@@ -173,7 +184,7 @@ class BookSearch extends Component {
                         </div>
                     </div>
                     <div className="option" >
-                        <input type="checkbox" />
+                        <input ref={this.ratings[1]} name="2" onClick={(e) => this.handleRatingChange(e)} type="checkbox" />
                         <div className="rating-filter-option" >
                             <i className="fas fa-star" ></i>
                             <i className="fas fa-star" ></i>
@@ -184,7 +195,7 @@ class BookSearch extends Component {
                         </div>
                     </div>
                     <div className="option" >
-                        <input type="checkbox" />
+                        <input ref={this.ratings[2]} name="3" onClick={(e) => this.handleRatingChange(e)} type="checkbox" />
                         <div className="rating-filter-option" >
                             <i className="fas fa-star" ></i>
                             <i className="fas fa-star" ></i>
@@ -195,7 +206,7 @@ class BookSearch extends Component {
                         </div>
                     </div>
                     <div className="option" >
-                        <input type="checkbox" />
+                        <input ref={this.ratings[3]} name="4" onClick={(e) => this.handleRatingChange(e)} type="checkbox" />
                         <div className="rating-filter-option" >
                             <i className="fas fa-star" ></i>
                             <i className="fas fa-star" ></i>
@@ -206,7 +217,7 @@ class BookSearch extends Component {
                         </div>
                     </div>
                     <div className="option" >
-                        <input type="checkbox" />
+                        <input ref={this.ratings[4]} name="5" onClick={(e) => this.handleRatingChange(e)} type="checkbox" />
                         <div className="rating-filter-option" >
                             <i className="fas fa-star" ></i>
                             <i className="fas fa-star" ></i>
