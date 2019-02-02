@@ -43,7 +43,8 @@ class PublishBook extends Component {
                     if (res.message === 'Book was added!') {
                         this.handleClose()
                         setTimeout(() => {
-                            this.props.notify('success', 'Book was published successfully!')
+                            console.log(res.notification)
+                            this.props.notify(res.notification)
                         }, 400)
                     } else {
                         this.handleClose()
@@ -162,7 +163,7 @@ class PublishBook extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         closePublish: () => dispatch({ type: "CLOSE_PUBLISH_FORM" }),
-        notify: (category, message) => dispatch({ type: 'NOTIFICATION', payload: { category, message } })
+        notify: notification => dispatch({ type: 'NOTIFICATION', payload: notification })
     }
 }
 

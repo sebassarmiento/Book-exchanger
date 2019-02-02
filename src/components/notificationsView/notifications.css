@@ -15,7 +15,7 @@
 }
 
 .notifications-container.close-notifications{
-    transform-origin: center center !important;
+    transform-origin: bottom center;
     transform: translate(-50%, -50%) scale(0.6);
     opacity: 0;
 }
