@@ -89,7 +89,8 @@ class FeedView extends Component {
 
 const mapStateToProps = store => {
   return {
-    token: store.userData.token
+    token: store.userData.token,
+    newUser: store.newUser
   }
 }
 

@@ -209,7 +209,7 @@ class Signup extends Component {
                     {this.showBtn(0)}
                     <p className="small-text" >By clicking sign up you agree to our terms of services and policy.</p>
                 </div>
-                {this.state.redirect ? <Redirect to="/app/welcome-user" /> : null}
+                {this.state.redirect ? <Redirect to="/app/feed" /> : null}
                 {this.state.signUpTry ? <React.Fragment><div className="signup-try-loader" ></div><p className="signup-try-loader-text" >Creating user...</p></React.Fragment> : null}
             </div>
         )

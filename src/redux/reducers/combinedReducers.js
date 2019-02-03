@@ -4,7 +4,8 @@ const initialStore = {
     footer: true,
     appMenu: {
         status: 'closed'
-    }
+    },
+    newUser: true
 }
 
 const reducer =  (store = initialStore, action) => {
@@ -18,7 +19,9 @@ const reducer =  (store = initialStore, action) => {
         case Actions.BACK_TO_HOME:
         return {...store, footer: true, signUp: false, login: false}
         case Actions.NEW_USER_SIGNED:
-        return {...store, userData: {...action.payload}, signUp: false, logged: true}
+        return {...store, userData: {...action.payload}, signUp: false, logged: true, newUser: true}
+        case Actions.CLOSE_USER_WELCOME:
+        return {...store, newUser: false}
         case Actions.CHAT_CREATED:
         return {...store, userData: {...store.userData, chats: [...store.userData.chats, action.payload ]}}
         case Actions.ADD_BOOK_TO_WISHLIST_IN_STORE:

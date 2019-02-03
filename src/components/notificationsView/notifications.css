@@ -26,6 +26,7 @@
     border-radius: 4px;
     padding: 0px;
     width: 40%;
+    min-height: 50vh;
     max-height: 65vh;
     position: absolute;
     top: 50%;

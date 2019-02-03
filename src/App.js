@@ -14,6 +14,7 @@ import Profile from './layout/app/profile/Profile';
 import PublishBook from './components/publishBook/PublishBook';
 import Notification from './components/notification/Notification';
 import NotificationsView from './components/notificationsView/Notifications';
+import NewUserWelcome from './components/newUserWelcome/NewUserWelcome';
 
 class App extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class App extends Component {
                 {this.props.notificationsView ? <NotificationsView /> : null}
                 {this.props.publish ? <PublishBook /> : null}
                 {this.props.notification ? <Notification {...this.props.notification} /> : null}
+                {this.props.newUser ? <NewUserWelcome {...this.props.userData} /> : null}
               </div>
             }
             {this.props.footer ? <Footer /> : null}
@@ -62,7 +64,9 @@ const mapStateToProps = store => {
     publish: store.publish,
     notification: store.notification,
     appMenu: store.appMenu,
-    notificationsView: store.notificationsView
+    notificationsView: store.notificationsView,
+    newUser: store.newUser,
+    userData: store.userData
   }
 }
 

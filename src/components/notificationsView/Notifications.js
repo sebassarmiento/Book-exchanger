@@ -11,9 +11,8 @@ class Notifications extends Component {
     componentDidMount(){
         fetch(`http://localhost:3000/app/user/open-notifications/${this.props.userId}`)
         .then(d => d.json())
-        .then(res => {
-            console.log(res)
-        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
     handleClose(){
         this.setState({ closing: true })
@@ -22,12 +21,14 @@ class Notifications extends Component {
         }, 400)
     }
     handleClick(e, n){
-        console.log('MI NOTIFICATION', n)
-        this.setState({ redirect: `/app/books/id/${n.link}` })
+        if(n.message.endsWith('added!') || n.message.endsWith('successfully!') || n.message.endsWith('wishlist!')){
+            this.setState({ redirect: `/app/books/id/${n.link}` })
+        } else {
+            this.setState({ redirect: `/app/user/${n.link}` })
+        }
         this.handleClose()
     }
     render() {
-        console.log(this.props.notifications)
         const closing = this.state.closing ? 'close-notifications' : ''
         return (
             <React.Fragment>
