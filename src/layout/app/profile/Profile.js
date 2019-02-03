@@ -16,7 +16,6 @@ class Profile extends Component {
         this.interval = null
         this.scrollPublished = 0
         this.scrollLiked = 0
-        this.messages = [{userId: '5c3384e3f728c50d5a46984e', text: 'Hey there! wanna exchange some books?'},{userId: '5c30e4076d273619c7ffa123', text: 'Sure men lets do it!'}]
     }
     componentDidMount() {
         let url = this.props.location.pathname !== '/app/profile' ? this.props.location.pathname : `/app/user/${this.props.userData._id}`

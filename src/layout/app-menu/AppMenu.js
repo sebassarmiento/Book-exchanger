@@ -10,6 +10,14 @@ class AppMenu extends Component {
       menu: true
     }
   }
+  openPublish(){
+    this.props.openPublish()
+    this.handleClose()
+  }
+  openNotification(){
+    this.props.openNotificationsView()
+    this.handleClose()
+  }
   handleClose(){
     this.props.closingMenu()
     this.setState({closing: true})
@@ -23,10 +31,10 @@ class AppMenu extends Component {
       <div className={`app-menu ${this.props.appMenu.status === 'closing' ? 'app-menu-closed' : ''}`} >
         <h1 className="app-menu-title" >Menu</h1>
         <div className="menu-items-open" >
-          <Link className="menu-item" to="/app/feed" ><i className="fas fa-home"></i><span>Home</span></Link>
-          <a href="#" className="menu-item" onClick={() => this.props.publish()} ><i className="fas fa-plus"></i><span>Publish book</span></a>
-          <Link className="menu-item" to="/app/profile" ><i className="fas fa-user"></i><span>My Profile</span></Link>
-          <Link className="menu-item" to="#" ><i className="fas fa-bell"></i><span>Notifications</span></Link>
+          <Link onClick={() => this.handleClose()} className="menu-item" to="/app/feed" ><i className="fas fa-home"></i><span>Home</span></Link>
+          <a onClick={() => this.openPublish()} href="#" className="menu-item" ><i className="fas fa-plus"></i><span>Publish book</span></a>
+          <Link onClick={() => this.handleClose()} className="menu-item" to="/app/profile" ><i className="fas fa-user"></i><span>My Profile</span></Link>
+          <Link onClick={() => this.openNotification()} className="menu-item" to="#" ><i className="fas fa-bell"></i><span>Notifications</span></Link>
         </div>
         <h1 className="app-menu-title" >Your wishlist <span>({this.props.userData.books.liked.length})</span></h1>
         <div className="wishlist" >
@@ -50,7 +58,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    publish: () => dispatch({ type: 'OPEN_PUBLISH_FORM' }),
+    openPublish: () => dispatch({ type: 'OPEN_PUBLISH_FORM' }),
+    openNotificationsView: () => dispatch({ type: 'OPEN_NOTIFICATIONS_VIEW' }),
     closingMenu: () => dispatch({ type: "APP_MENU_CLOSING" }),
     closeMenu: () => dispatch({ type: "APP_MENU_CLOSE" })
   }

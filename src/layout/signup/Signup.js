@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './signup.css';
 import { connect } from 'react-redux';
-import Loader from '../../utils/loaders/Loader1';
 import { Redirect, NavLink } from 'react-router-dom';
 import Input from '../../utils/inputs/input';
 
@@ -90,7 +89,7 @@ class Signup extends Component {
 
     signUp() {
         console.log('ENTRA')
-        this.setState({userCreated: true, signUpTry: true})
+        this.setState({ userCreated: true, signUpTry: true })
         fetch('http://localhost:3000/signup', {
             method: 'POST',
             headers: {
@@ -121,16 +120,19 @@ class Signup extends Component {
 
         console.log(this.state)
 
-        const validEmail = <p className="valid-email-text" >Email is available!</p>
-        const invalidEmail = <p className="invalid-email-text" >Email is already taken!</p>
-        const emailChecker = this.state.checkingEmail ? <Loader size={"small"} /> : this.state.validEmail ? validEmail : this.state.invalidEmail ? invalidEmail : null
+        const validEmail = <i className="fas fa-check-circle"></i>
+        const invalidEmail = <i className="far fa-times-circle"></i>
+
+        const emailChecker = this.state.checkingEmail ? <div className="checking-email" ></div> : this.state.validEmail ? validEmail : this.state.invalidEmail ? invalidEmail : null
 
         return (
             <div className="signup-container" >
                 <div className={this.state.next ? "hidden" : "signup-form"} >
                     <h1>Sign up</h1>
-                    {emailChecker}
-                    <Input value={this.state.email} handleChange={(e) => this.handleChange(e)} label="Email" type="text" />
+                    <div className="signup-email-input" >
+                        {emailChecker}
+                        <Input value={this.state.email} handleChange={(e) => this.handleChange(e)} label="Email" type="text" />
+                    </div>
                     <Input value={this.state.password} handleChange={(e) => this.handleChange(e)} label="Password" type="password" />
                     <Input value={this.state.confirm} handleChange={(e) => this.handleChange(e)} label="Confirm" type="password" />
                     {this.showBtn(1)}

@@ -44,6 +44,16 @@ h1{
   outline: none;
 }
 
+/* Icons */
+
+.fas.fa-check-circle{
+  color: #009908;
+}
+
+.far.fa-times-circle{
+  color: rgba(255, 0, 0, 0.705);
+}
+
 /* Colors */
 
 :root{
