@@ -8,11 +8,12 @@ class BookChat extends Component {
         this.state = {
             newMessage: ''
         }
+        this.messagesContainer = React.createRef()
     }
 
-    componentDidMount() {
-        console.log(this.props.userData.chats, this.props.bookOwnerId)
+    componentDidMount() {        
         let chatId = this.props.userData.chats.find(c => c.userId === this.props.bookOwnerId)
+        
         if (chatId) {
             console.log('Mi chat id!', chatId)
             this.setState({ chatId: chatId.chatId })
@@ -21,6 +22,7 @@ class BookChat extends Component {
                 .then(res => {
                     console.log('Chat existe!', res)
                     this.setState({ messages: res.messages })
+                    this.messagesContainer.current.scrollTop = this.messagesContainer.current.scrollHeight
                 })
                 .catch(err => {
                     console.log(err)
@@ -51,7 +53,17 @@ class BookChat extends Component {
         let messages = this.state.messages.length > 0 ? this.state.messages : null
         if (this.state.newMessage.length > 0) {
             console.log("Agregamos msg al chat existente")
-            fetch('http://localhost:3000/app/chats/' + this.state.chatId, {
+            if (messages) {
+                this.setState({ messages: [...messages, { userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' }, () => this.postMessage())
+            } else {
+                this.setState({ messages: [{ userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' }, () => this.postMessage())
+            }
+        }
+    }
+
+    postMessage(){
+        this.messagesContainer.current.scrollTop = this.messagesContainer.current.scrollHeight
+        fetch('http://localhost:3000/app/chats/' + this.state.chatId, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -67,12 +79,6 @@ class BookChat extends Component {
                 .catch(err => {
                     console.log('Error', err)
                 })
-            if (messages) {
-                this.setState({ messages: [...messages, { userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' })
-            } else {
-                this.setState({ messages: [{ userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' })
-            }
-        }
     }
 
     handleChange(e) {
@@ -95,7 +101,7 @@ class BookChat extends Component {
         return (
             <div className="book-message" >
                 <h4>{this.props.title} <br /><small>{this.props.subtitle}</small></h4>
-                <div className="messages" >
+                <div ref={this.messagesContainer} className="messages" >
                     {this.state.messages && this.state.messages.length > 0 ? this.state.messages.map(msg => {
                         return (
                             <div key={msg.text} className={this.className(msg.userId)} >
