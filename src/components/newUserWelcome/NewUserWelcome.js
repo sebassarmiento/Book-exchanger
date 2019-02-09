@@ -22,7 +22,7 @@ class NewUserWelcome extends Component {
             </div>
             <div className={`user-welcome-container ${this.state.closing}`} >
                 <h2>Welcome aboard {this.props.username}!</h2>
-                <p>I'm Sebastian Sarmiento, the creator of this app. I wish you find this useful in any way and Hope you can find some interesting books and share yours, have fun exchanging knowledge and feel free to message me if you have any questions!</p>
+                <p>I'm Sebastian Sarmiento, the creator of this app. I wish you find this useful in any way. I hope you find some interesting books and share yours, have fun exchanging knowledge and feel free to message me if you have any questions!</p>
                 <button onClick={() => this.handleClose()} >Got it! <i className="far fa-thumbs-up"></i></button>
             </div>
             </React.Fragment>

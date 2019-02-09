@@ -21,7 +21,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 12px;
+    border-radius: 2px;
     color: white !important;
     transform-origin: top left;
     transition: all 0.4s ease-in-out;
