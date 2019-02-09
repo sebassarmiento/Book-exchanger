@@ -8,13 +8,12 @@ class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: 'seba@gmail.com',
+            email: '',
             password: 'caca',
             confirm: 'caca',
             username: '',
             location: '',
-            gender: '',
-            validEmail: true
+            description: ''
         }
     }
 
@@ -45,7 +44,7 @@ class Signup extends Component {
                 &&
                 this.state.password.length > 3
                 &&
-                this.state.location && this.state.gender) {
+                this.state.location && this.state.description) {
                 return <button
                     onClick={() => this.signUp()}
                     className="signup-form-next-btn" >Sign up
@@ -63,7 +62,7 @@ class Signup extends Component {
     }
 
     checkEmail() {
-        if (this.state.email.length > 3) {
+        if (this.state.email.length > 3 && this.state.email.indexOf('@') !== -1 && this.state.email.indexOf('.') !== -1) {
             this.setState({ checkingEmail: true })
             fetch(`http://localhost:3000/signup/check-email/${this.state.email}`)
                 .then(d => d.json())
@@ -99,7 +98,7 @@ class Signup extends Component {
                 email: this.state.email,
                 password: this.state.password,
                 username: this.state.username,
-                gender: this.state.gender,
+                description: this.state.description,
                 location: this.state.location
             })
         })
@@ -107,8 +106,10 @@ class Signup extends Component {
             .then(response => {
                 console.log(response)
                 if (response.message === 'User added successfully!') {
-                    this.setState({ redirect: true })
+                    this.setState({ redirect: '/app/feed' })
                     this.props.userCreated(response.user)
+                } else {
+                    this.setState({error: true})
                 }
             })
             .catch(err => {
@@ -123,7 +124,10 @@ class Signup extends Component {
         const validEmail = <i className="fas fa-check-circle"></i>
         const invalidEmail = <i className="far fa-times-circle"></i>
 
-        const emailChecker = this.state.checkingEmail ? <div className="checking-email" ></div> : this.state.validEmail ? validEmail : this.state.invalidEmail ? invalidEmail : null
+        const emailChecker = this.state.checkingEmail ? <div className="checking-email" ></div>
+                             : this.state.validEmail ? validEmail
+                             : this.state.invalidEmail ? invalidEmail
+                             : null
 
         return (
             <div className="signup-container" >
@@ -198,19 +202,13 @@ class Signup extends Component {
                             <option value="Wyoming">Wyoming</option>
                         </select>
                     </div>
-                    <div className="select-container" >
-                        <select name="gender" value={this.state.gender} onChange={(e) => this.handleChange(e)} >
-                            <option value="" disabled defaultValue>Choose your gender</option>
-                            <option value="Male" >Male</option>
-                            <option value="Female" >Female</option>
-                            <option value="Other" >Other</option>
-                        </select>
-                    </div>
+                    <textarea onChange={e => this.handleChange(e)} name="description" value={this.state.description} className="signup-user-description" placeholder="Tell us a little about yourself..." ></textarea>
                     {this.showBtn(0)}
                     <p className="small-text" >By clicking sign up you agree to our terms of services and policy.</p>
                 </div>
-                {this.state.redirect ? <Redirect to="/app/feed" /> : null}
-                {this.state.signUpTry ? <React.Fragment><div className="signup-try-loader" ></div><p className="signup-try-loader-text" >Creating user...</p></React.Fragment> : null}
+                {this.state.redirect ? <Redirect to={this.state.redirect} /> : null}
+                {this.state.signUpTry && !this.state.error ? <React.Fragment><div className="signup-try-loader" ></div><p className="signup-try-loader-text" >Creating user...</p></React.Fragment> : null}
+                {this.state.error ? <div className="signup-error" >There was an error trying to create your account.<br /><span>Please try again in a few moments.</span><button onClick={() => window.location.reload()} className="signup-try-again" >Try again</button></div> : null}
             </div>
         )
     }
