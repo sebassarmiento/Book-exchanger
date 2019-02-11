@@ -32,7 +32,7 @@ class AppMenu extends Component {
         <h1 className="app-menu-title" >Menu</h1>
         <div className="menu-items-open" >
           <Link onClick={() => this.handleClose()} className="menu-item" to="/app/feed" ><i className="fas fa-home"></i><span>Home</span></Link>
-          <a onClick={() => this.openPublish()} href="#" className="menu-item" ><i className="fas fa-plus"></i><span>Publish book</span></a>
+          <a onClick={() => this.openPublish()} href="#!" className="menu-item" ><i className="fas fa-plus"></i><span>Publish book</span></a>
           <Link onClick={() => this.handleClose()} className="menu-item" to="/app/profile" ><i className="fas fa-user"></i><span>My Profile</span></Link>
           <Link onClick={() => this.openNotification()} className="menu-item" to="#" ><i className="fas fa-bell"></i><span>Notifications</span></Link>
         </div>

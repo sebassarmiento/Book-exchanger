@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './individual-book.css';
 import { NavLink } from 'react-router-dom';
-import timeAgo from '../../../utils/TimeAgo';
 import { connect } from 'react-redux';
 import LayoutLoader from '../../../utils/loaders/LayoutLoader';
-import BookCarousel from './bookCarousel/BookCarousel';
 import BookChat from '../../../components/chat/BookChat';
 
 class BookRating extends Component {
@@ -81,8 +79,9 @@ class IndividualBook extends Component {
                 console.log(res._id, this.props.userData.books.liked)
                 this.props.userData.books.liked.map(book => {
                     if (book._id === res._id) {
-                        return this.setState({ unadd: true })
+                        this.setState({ unadd: true })
                     }
+                    return null
                 })
                 this.setState({ data: {...res, messages: this.messages}, fetchingData: false })
             })

@@ -35,6 +35,7 @@ class BookSearch extends Component {
             if(parseFloat(e.target.name) !== this.ratings.indexOf(r) + 1){
                 r.current.checked = false
             }
+            return null
         })
         let rating = this.ratings.filter(r => r.current.checked)
         if(rating.length !== 0){

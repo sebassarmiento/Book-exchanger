@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './navbar-app.css';
-import { NavLink, Redirect } from 'react-router-dom';
-import Logo from '../../img/bookshelf.png';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Menu = props => {

@@ -3,9 +3,6 @@ import './notification.css';
 import { connect } from 'react-redux';
 
 class Notification extends Component {
-    constructor(props) {
-        super(props)
-    }
     icon(){
         switch(this.props.category){
             case 'success':
