@@ -4,8 +4,7 @@ const initialStore = {
     footer: true,
     appMenu: {
         status: 'closed'
-    },
-    newUser: true
+    }
 }
 
 const reducer =  (store = initialStore, action) => {

@@ -158,15 +158,11 @@
     padding: 0px;
     margin: 12px;
     transition: all 0.4s;
-    height: 160px;
+    height: calc(100% - 24px);
 }
 
 .profile-book-preview:hover{
     box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.527);
     transform: translateY(-10px);
     cursor: pointer;
-}
-
-.profile-book-preview img{
-    height: 200px;
 }

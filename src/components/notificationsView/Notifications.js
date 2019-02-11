@@ -23,6 +23,9 @@ class Notifications extends Component {
     handleClick(e, n){
         if(n.message.endsWith('added!') || n.message.endsWith('successfully!') || n.message.endsWith('wishlist!')){
             this.setState({ redirect: `/app/books/id/${n.link}` })
+        } else if(n.link === 'publish') {
+            this.props.closeNotificationsView()
+            this.props.openPublishBook()
         } else {
             this.setState({ redirect: `/app/user/${n.link}` })
         }
@@ -63,7 +66,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        closeNotificationsView: () => dispatch({ type: "CLOSE_NOTIFICATIONS_VIEW" })
+        closeNotificationsView: () => dispatch({ type: "CLOSE_NOTIFICATIONS_VIEW" }),
+        openPublishBook: () => dispatch({ type: 'OPEN_PUBLISH_FORM' })
     }
 }
 
