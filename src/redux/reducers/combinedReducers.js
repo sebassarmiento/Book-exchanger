@@ -29,6 +29,10 @@ const reducer =  (store = initialStore, action) => {
         return {...store, publish: false}
         case Actions.OPEN_PUBLISH_FORM:
         return {...store, publish: true}
+        case Actions.MAIN_LOADER_ON: 
+        return {...store, appLoader: true}
+        case Actions.MAIN_LOADER_OFF:
+        return {...store, appLoader: false}
         case Actions.NOTIFICATION:
         let notification = {...action.payload}
         return {

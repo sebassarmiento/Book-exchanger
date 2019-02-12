@@ -42,6 +42,10 @@
     padding: 100px 12px;
     text-align: center;
     position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-second-container::after{
@@ -95,6 +99,12 @@
     padding-bottom: 100px;
     color: white;
     text-align: center;
+    height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-our-qualities{
@@ -145,6 +155,12 @@
     padding: 100px 12px;
     text-align: center;
     position: relative;
+    height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-fourth-container::before{

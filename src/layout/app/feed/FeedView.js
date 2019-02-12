@@ -14,6 +14,7 @@ class FeedView extends Component {
     this.location = this.props.location.pathname
   }
   componentDidMount() {
+    this.props.loaderOn()
     this.getData()
   }
   componentDidUpdate(){
@@ -32,6 +33,7 @@ class FeedView extends Component {
     })
       .then(d => d.json())
       .then(res => {
+        this.props.loaderOff()
         this.setState({fetching: false, count: res.count})
         if (this.state.data) {
           this.setState({ data: [...this.state.data, ...res.data]})
@@ -41,6 +43,7 @@ class FeedView extends Component {
       })
       .catch(err => {
         console.log(err)
+        this.props.loaderOff()
       })
   }
   queryData(data, query){
@@ -94,4 +97,11 @@ const mapStateToProps = store => {
   }
 }
 
-export default connect(mapStateToProps)(FeedView);
+const mapDispatchToProps = dispatch => {
+  return {
+      loaderOn: () => dispatch({ type: "MAIN_LOADER_ON" }),
+      loaderOff: () => dispatch({ type: "MAIN_LOADER_OFF" })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedView);

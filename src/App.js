@@ -37,6 +37,7 @@ class App extends Component {
               </Switch>
               :
               <div className="app-layout" >
+                {this.props.appLoader ? <MainLoader /> : null}
                 {this.props.appMenu.status !== 'closed' ? <AppMenu /> : null}
                 <Switch>
                   <Route path="/app/feed" exact component={FeedView} />
@@ -67,7 +68,8 @@ const mapStateToProps = store => {
     appMenu: store.appMenu,
     notificationsView: store.notificationsView,
     newUser: store.newUser,
-    userData: store.userData
+    userData: store.userData,
+    appLoader: store.appLoader
   }
 }
 

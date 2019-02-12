@@ -59,6 +59,7 @@ class IndividualBook extends Component {
         this.messages = [{text: 'Hey men i like your book!', userId: '5c3384e3f728c50d5a46984e'}, {text: 'Thanks man, i like yours of Harry Potter', userId: '5c30e27d6d273619c7ffa122'}, {text: 'Awesome lets exchange them!', userId: '5c3384e3f728c50d5a46984e'}]
     }
     componentDidMount() {
+        this.props.loaderOn()
         this.getData()
         this.route = this.props.location.pathname
     }
@@ -71,12 +72,10 @@ class IndividualBook extends Component {
     }
     getData() {
         this.setState({ fetchingData: true, data: null })
-        console.log('MI URL ', this.props.location.pathname)
         fetch(`http://localhost:3000${this.props.location.pathname}`)
             .then(d => d.json())
             .then(res => {
-                console.log('ENTRA POR ACA', res)
-                console.log(res._id, this.props.userData.books.liked)
+                this.props.loaderOff()
                 this.props.userData.books.liked.map(book => {
                     if (book._id === res._id) {
                         this.setState({ unadd: true })
@@ -87,6 +86,7 @@ class IndividualBook extends Component {
             })
             .catch(err => {
                 console.log('Error',err)
+                this.props.loaderOff()
             })
     }
     handleAdd() {
@@ -171,7 +171,9 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
     return {
         addToWishlist: book => dispatch({ type: 'ADD_BOOK_TO_WISHLIST_IN_STORE', payload: book }),
-        notify: notification => dispatch({ type: 'NOTIFICATION', payload: {...notification} })
+        notify: notification => dispatch({ type: 'NOTIFICATION', payload: {...notification} }),
+        loaderOn: () => dispatch({ type: "MAIN_LOADER_ON" }),
+        loaderOff: () => dispatch({ type: "MAIN_LOADER_OFF" })
     }
 }
 

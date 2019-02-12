@@ -1,7 +1,6 @@
 .profile-container{
     padding: 0px;
-    display: grid;
-    grid-template-columns: 2fr 5fr 3fr;
+    display: flex;
     background-color: rgb(240, 240, 240);
     width: 100%;
     background-color: #008a8a4d;
@@ -17,7 +16,19 @@
 
 .p-user-books {
     padding: 0px;
-    margin: 0px 12px;
+    margin: 12px;
+    overflow: hidden;
+    min-height: calc(100vh - 94px);
+    position: relative;
+    flex: 4;
+}
+
+.p-user-scroll{
+    position: relative;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.432);
+    margin-bottom: 12px;
+    height: calc(50% - 6px);
     overflow: hidden;
 }
 
@@ -26,17 +37,10 @@
     padding-left: 0;
     max-height: 100%;
     overflow: hidden;
+    flex: 2;
 }
 
 /* Scroll arows */
-.p-user-scroll{
-    position: relative;
-    background-color: white;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.432);
-    margin: 12px 0px;
-    min-height: calc(50vh - 94px);
-    background-color: red;
-}
 
 .p-user-scroll .left-arrow-container{
     position: absolute;
@@ -104,26 +108,4 @@
     justify-content: flex-start;
     cursor: pointer;
     transition: all 0.3s;
-}
-
-/* Profile book preview */
-
-.profile-book-preview{
-    padding: 0px;
-    margin: 12px;
-    transition: all 0.4s;
-    height: calc(100% - 24px);
-}
-
-.profile-book-preview:hover{
-    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.527);
-    transform: translateY(-10px);
-    cursor: pointer;
-}
-
-.b-c{
-    box-sizing: border-box;
-    height: calc(50vh - 24px);
-    max-width: 300px;
-    margin: 12px;
 }

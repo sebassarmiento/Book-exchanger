@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import './profile.css';
 import userPlaceholder from '../../../img/placeholder.user.png';
 import { Redirect } from 'react-router-dom';
-import LayoutLoader from '../../../utils/loaders/LayoutLoader';
 import Chat from '../../../components/chat/BookChat';
 import BookCarousel from '../../../components/bookCarousel/BookCarousel';
 
@@ -12,57 +11,25 @@ class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {}
-        this.likedScroll = React.createRef()
-        this.publishedScroll = React.createRef()
-        this.interval = null
-        this.scrollPublished = 0
-        this.scrollLiked = 0
     }
     componentDidMount() {
+        this.props.loaderOn()
         let url = this.props.location.pathname !== '/app/profile' ? this.props.location.pathname : `/app/user/${this.props.userData._id}`
         fetch(`http://localhost:3000${url}`)
             .then(d => d.json())
             .then(res => {
                 console.log('ACA', res)
                 this.setState({ data: res })
+                this.props.loaderOff()
+            })
+            .catch(err => {
+                console.log(err)
+                this.props.loaderOff()
             })
     }
     handleRedirect(id) {
         this.setState({ redirect: id })
     }
-    /*
-    handleScroll(rightArrow, x) {
-        let scrolledComponent = x ? this.publishedScroll : this.likedScroll
-
-        let scrollCount = x ? this.scrollPublished : this.scrollLiked
-
-        let maxScroll = scrolledComponent.current.scrollWidth - scrolledComponent.current.clientWidth
-
-        if (rightArrow && scrolledComponent.current.scrollLeft !== maxScroll && !this.interval) {
-            x ? this.scrollPublished += 400 : this.scrollLiked += 400
-            this.interval = setInterval(() => {
-                scrolledComponent.current.scrollLeft += 3
-                console.log('Se ejecuta', scrollCount, this.scrollPublishedas)
-                if (scrolledComponent.current.scrollLeft === maxScroll || scrolledComponent.current.scrollLeft > (x ? this.scrollPublished : this.scrollLiked)) {
-                    clearInterval(this.interval)
-                    this.interval = null
-                    console.log('Se para')
-                }
-            }, 1)
-        } else if (!rightArrow && scrolledComponent.current.scrollLeft !== 0 && !this.interval) {
-            x ? this.scrollPublished -= 400 : this.scrollLiked -= 400
-            this.interval = setInterval(() => {
-                scrolledComponent.current.scrollLeft -= 3
-                console.log('Se ejecuta', this.scrollPublished)
-                if (scrolledComponent.current.scrollLeft === 0 || scrolledComponent.current.scrollLeft < ((x ? this.scrollPublished : this.scrollLiked))) {
-                    clearInterval(this.interval)
-                    this.interval = null
-                    console.log('Se para')
-                }
-            }, 1)
-        }
-    }
-    */
     render() {
         const { data } = this.state
         console.log('HEREHERE', data)
@@ -99,4 +66,11 @@ const mapStateToProps = store => {
     }
 }
 
-export default connect(mapStateToProps)(Profile);
+const mapDispatchToProps = dispatch => {
+    return {
+        loaderOn: () => dispatch({ type: "MAIN_LOADER_ON" }),
+        loaderOff: () => dispatch({ type: "MAIN_LOADER_OFF" })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
