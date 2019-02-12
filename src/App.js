@@ -15,6 +15,7 @@ import PublishBook from './components/publishBook/PublishBook';
 import Notification from './components/notification/Notification';
 import NotificationsView from './components/notificationsView/Notifications';
 import NewUserWelcome from './components/newUserWelcome/NewUserWelcome';
+import MainLoader from './components/mainLoader/MainLoader';
 
 class App extends Component {
   constructor(props) {
