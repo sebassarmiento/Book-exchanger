@@ -9,7 +9,7 @@ export default date => {
         }
         interval = Math.floor(seconds / 2592000);
         if (interval >= 1) {
-          return interval + " months";
+          return interval + "mon";
         }
         interval = Math.floor(seconds / 86400);
         if (interval >= 1) {
@@ -21,7 +21,7 @@ export default date => {
         }
         interval = Math.floor(seconds / 60);
         if (interval >= 1) {
-          return interval + "m";
+          return interval + "min";
         }
         return Math.floor(seconds) + "s";
       

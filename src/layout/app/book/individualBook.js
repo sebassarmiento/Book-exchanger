@@ -118,7 +118,6 @@ class IndividualBook extends Component {
         console.log(this.state.data)
         return (
             <div className="individual-book" >
-                {/*<NavLink className="back-btn" to="/app/feed" ><h3><i className="fas fa-chevron-left"></i><small>Back</small></h3></NavLink>*/}
                 {this.state.data ?
                     <div className="book-grid">
                         <div className="book-info" >
@@ -153,9 +152,6 @@ class IndividualBook extends Component {
                         <div className="book-chat" >
                             <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
                         </div> : null}
-                        {/*<div className="other-books" >
-                            <BookCarousel redirect={() => this.forceUpdate()} url={this.state.data.otherBooks || "http://localhost:3000/app/books"} />
-                        </div>*/}
                     </div>
                     :
                     null

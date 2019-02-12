@@ -1,44 +1,71 @@
-.profile-container{
-    padding: 0px;
-    display: grid;
-    grid-template-columns: 2fr 5fr 3fr;
-    background-color: rgb(240, 240, 240);
-    width: 100%;
-    background-color: #008a8a4d;
-}
-
-.profile-container .p-user-info{
-    padding: 12px;
-    margin: 12px;
-    margin-right: 1px;
-    background-color: white;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.432);
-}
-
-.p-user-books {
-    padding: 0px;
-    margin: 0px 12px;
-    overflow: hidden;
-}
-
-.profile-chat{
-    padding: 12px;
-    padding-left: 0;
-    max-height: 100%;
-    overflow: hidden;
-}
-
-/* Scroll arows */
-.p-user-scroll{
+.book-carousel{
+    height: 100%;
     position: relative;
-    background-color: white;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.432);
-    margin: 12px 0px;
-    min-height: calc(50vh - 94px);
-    background-color: red;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    background-color: white;
 }
 
-.p-user-scroll .left-arrow-container{
+.book-carousel h4{
+    position: relative;
+    margin: 0px;
+    padding: 12px;
+}
+
+.book-carousel h4::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.205);
+}
+
+.book-carousel .no-data{
+    color: rgba(0, 0, 0, 0.466);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    font-size: 1.2em;
+}
+
+.book-carousel-scrollable{
+    padding: 12px;
+    display: flex;
+    overflow-x: scroll;
+    position: relative;
+    z-index: 0;
+    transition: all 1s;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+}
+
+
+/* Book Preview */
+
+.book-carousel .book-preview{
+    padding: 0px;
+    margin: 12px;
+    transition: all 0.4s;
+    height: calc(100% - 60px);
+    max-height: 180px;
+}
+
+.book-carousel .book-preview:hover{
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.527);
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+
+/* Scroll Arrows */
+
+.book-carousel .left-arrow-container{
     position: absolute;
     top: calc(50% + 6px);
     height: 50px;
@@ -56,7 +83,7 @@
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
 }
 
-.p-user-scroll .fa-angle-left{
+.book-carousel .fa-angle-left{
     position: absolute;
     top: calc(50% + 5px);
     height: 50px;
@@ -72,7 +99,7 @@
     transition: all 0.3s;
 }
 
-.p-user-scroll .right-arrow-container{
+.book-carousel .right-arrow-container{
     position: absolute;
     top: calc(50% + 0px);
     height: 50px;
@@ -90,7 +117,7 @@
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.514);
 }
 
-.p-user-scroll .fa-angle-right{
+.book-carousel .fa-angle-right{
     position: absolute;
     top: calc(50% + 18px);
     height: 50px;
@@ -104,26 +131,4 @@
     justify-content: flex-start;
     cursor: pointer;
     transition: all 0.3s;
-}
-
-/* Profile book preview */
-
-.profile-book-preview{
-    padding: 0px;
-    margin: 12px;
-    transition: all 0.4s;
-    height: calc(100% - 24px);
-}
-
-.profile-book-preview:hover{
-    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.527);
-    transform: translateY(-10px);
-    cursor: pointer;
-}
-
-.b-c{
-    box-sizing: border-box;
-    height: calc(50vh - 24px);
-    max-width: 300px;
-    margin: 12px;
 }
