@@ -57,7 +57,7 @@
 
 .notifications-display{
     max-height: 50vh;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .n-v-notification{

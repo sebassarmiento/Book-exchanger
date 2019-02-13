@@ -2,7 +2,6 @@
     padding: 0px;
     max-height: calc(100vh - 70px);
     width: 100%;
-    overflow: scroll;
     position: relative;
     background-color: #2fa35f34;
 }
@@ -34,13 +33,7 @@
     margin: 0px;
     width: 100%;
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: auto 1fr;
-    grid-row-gap: 6px;
-    overflow: scroll;
-    grid-row-start: 1;
-    grid-row-end: 3;
+    overflow-y: auto;
     max-height: calc(100vh - 94px);
 }
 

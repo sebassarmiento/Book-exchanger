@@ -16,7 +16,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 12px;
     width: 100%;
-    overflow: scroll;
+    overflow: auto;
     background-color: rgb(255, 255, 255);
     box-sizing: border-box;
     min-height: calc(100% - 62px);
@@ -24,6 +24,16 @@
     border-radius: 2px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.404);
     position: relative;
+}
+
+@media screen and (min-width: 1600px){
+    .feedview-container .feedview-books{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    .feedview-load-more{
+        grid-column-start: 1 !important;
+        grid-column-end: 4 !important;
+    }
 }
 
 @media screen and (max-width: 1100px){

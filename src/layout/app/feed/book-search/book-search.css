@@ -10,7 +10,7 @@
     width: 22vw;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.404);
     border-radius: 2px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .book-filters h4, .book-filters h5{
@@ -23,7 +23,7 @@
 
 .book-filters .filter-options{
     max-height: 40%;
-    overflow: scroll;
+    overflow: auto;
     width: 80%;
 }
 

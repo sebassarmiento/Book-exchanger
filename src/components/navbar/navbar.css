@@ -1,7 +1,6 @@
 .navbar{
     background-color: transparent;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    display: flex;
     height: 70px;
     align-items: center;
     position: fixed;
@@ -9,6 +8,7 @@
     transition: all 0.6s;
     color: white;
     z-index: 1;
+    padding: 0px 12px;
 }
 
 .navbar a{
@@ -24,6 +24,7 @@
     transition: all 0.3s;
     letter-spacing: -1px;
     word-spacing: 0px;
+    padding-left: 24px;
 }
 
 .navbar .brand:hover{
@@ -31,8 +32,12 @@
     cursor: pointer;
 }
 
-.navbar img{
+.navbar .brand img{
     margin-right: 12px;
+}
+
+.navbar-whitespace{
+    flex: 1;
 }
 
 .navbar.scrolled{
@@ -48,6 +53,7 @@
     align-items: center;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
+    padding-right: 48px;
 }
 
 /* Log in btn */

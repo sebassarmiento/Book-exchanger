@@ -34,7 +34,7 @@ class Navbar extends Component {
     return (
       <div className={this.state.scrolled ? "navbar scrolled" : "navbar"} >
         <NavLink onClick={() => this.props.backToHome()} className="brand" to="/" ><img src={Logo} alt="brand-logo" height="32px" />Book exchanger</NavLink>
-        <div></div>
+        <div className="navbar-whitespace" ></div>
         {
           this.props.logged ? loggedMenu : notLoggedMenu
         }

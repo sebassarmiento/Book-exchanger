@@ -56,7 +56,7 @@ class IndividualBook extends Component {
         super(props)
         this.state = {}
         this.route = ''
-        this.messages = [{text: 'Hey men i like your book!', userId: '5c3384e3f728c50d5a46984e'}, {text: 'Thanks man, i like yours of Harry Potter', userId: '5c30e27d6d273619c7ffa122'}, {text: 'Awesome lets exchange them!', userId: '5c3384e3f728c50d5a46984e'}]
+        this.messages = [{ text: 'Hey men i like your book!', userId: '5c3384e3f728c50d5a46984e' }, { text: 'Thanks man, i like yours of Harry Potter', userId: '5c30e27d6d273619c7ffa122' }, { text: 'Awesome lets exchange them!', userId: '5c3384e3f728c50d5a46984e' }]
     }
     componentDidMount() {
         this.props.loaderOn()
@@ -82,10 +82,10 @@ class IndividualBook extends Component {
                     }
                     return null
                 })
-                this.setState({ data: {...res, messages: this.messages}, fetchingData: false })
+                this.setState({ data: { ...res, messages: this.messages }, fetchingData: false })
             })
             .catch(err => {
-                console.log('Error',err)
+                console.log('Error', err)
                 this.props.loaderOff()
             })
     }
@@ -121,37 +121,39 @@ class IndividualBook extends Component {
                 {this.state.data ?
                     <div className="book-grid">
                         <div className="book-info" >
-                            <img src={this.state.data.image} alt={this.state.data.name} />
-                            <div>
-                                <h6>In <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h6>
-                                <h2>{this.state.data.name}</h2>
-                                <p>{this.state.data.author}</p>
-                                <p><i className="fas fa-map-marker" ></i> {this.state.data.location}</p>
-                                <p>{this.state.data.pages} pages.</p>
-                                <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
-                                <button className="wishlist-btn"
-                                    onMouseEnter={() => this.setState({ added: true })}
-                                    onMouseLeave={() => this.setState({ added: false })}
-                                    onClick={() => this.handleAdd()} >
-                                    {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
-                                    {this.state.unadd ? " Remove from wishlist" : " Add to wishlist"}
-                                </button>
-                                <BookRating
-                                    notify={(category, message) => this.props.notify(category, message)}
-                                    bookId={this.state.data._id}
-                                    ratings={this.state.data.ratings}
-                                    ratingsNumber={this.state.data.ratingsNumber}
-                                    currentUser={this.props.userData._id}
-                                />
+                            <div style={{ display: 'flex', width: '100%' }} >
+                                <img src={this.state.data.image} alt={this.state.data.name} />
+                                <div style={{ flex: '1' }} >
+                                    <h6>In <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h6>
+                                    <h2>{this.state.data.name}</h2>
+                                    <p>{this.state.data.author}</p>
+                                    <p><i className="fas fa-map-marker" ></i> {this.state.data.location}</p>
+                                    <p>{this.state.data.pages} pages.</p>
+                                    <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
+                                    <button className="wishlist-btn"
+                                        onMouseEnter={() => this.setState({ added: true })}
+                                        onMouseLeave={() => this.setState({ added: false })}
+                                        onClick={() => this.handleAdd()} >
+                                        {this.state.unadd || this.state.added ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
+                                        {this.state.unadd ? " Remove from wishlist" : " Add to wishlist"}
+                                    </button>
+                                    <BookRating
+                                        notify={(category, message) => this.props.notify(category, message)}
+                                        bookId={this.state.data._id}
+                                        ratings={this.state.data.ratings}
+                                        ratingsNumber={this.state.data.ratingsNumber}
+                                        currentUser={this.props.userData._id}
+                                    />
+                                </div>
                             </div>
                             <div className="book-description" >
                                 <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
                             </div>
                         </div>
-                        {this.state.data.userId !== this.props.userData._id ? 
-                        <div className="book-chat" >
-                            <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
-                        </div> : null}
+                        {this.state.data.userId !== this.props.userData._id ?
+                            <div className="book-chat" >
+                                <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
+                            </div> : null}
                     </div>
                     :
                     null
@@ -171,7 +173,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
     return {
         addToWishlist: book => dispatch({ type: 'ADD_BOOK_TO_WISHLIST_IN_STORE', payload: book }),
-        notify: notification => dispatch({ type: 'NOTIFICATION', payload: {...notification} }),
+        notify: notification => dispatch({ type: 'NOTIFICATION', payload: { ...notification } }),
         loaderOn: () => dispatch({ type: "MAIN_LOADER_ON" }),
         loaderOff: () => dispatch({ type: "MAIN_LOADER_OFF" })
     }
