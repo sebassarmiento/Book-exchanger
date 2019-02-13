@@ -19,7 +19,7 @@
 
 .book-message .messages{
     max-height: 100%;
-    overflow: scroll;
+    overflow: auto;
     margin: 12px 0px;
     padding: 0px 12px;
 }
