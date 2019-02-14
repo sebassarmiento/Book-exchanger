@@ -15,7 +15,7 @@ class Profile extends Component {
     componentDidMount() {
         this.props.loaderOn()
         let url = this.props.location.pathname !== '/app/profile' ? this.props.location.pathname : `/app/user/${this.props.userData._id}`
-        fetch(`http://bookexchangerapi.herokuapp.com${url}`)
+        fetch(`https://bookexchangerapi.herokuapp.com${url}`)
             .then(d => d.json())
             .then(res => {
                 console.log('ACA', res)

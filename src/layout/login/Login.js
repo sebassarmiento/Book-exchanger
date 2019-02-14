@@ -25,7 +25,7 @@ class Login extends Component {
   handleLogin() {
     this.setState({ loginTry: true, invalidLogin: false })
     this.props.loaderOn()
-    fetch('http://bookexchangerapi.herokuapp.com/login', {
+    fetch('https://bookexchangerapi.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

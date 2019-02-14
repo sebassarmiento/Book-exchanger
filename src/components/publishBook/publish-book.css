@@ -31,7 +31,9 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 500px;
+    width: 40vw;
+    min-width: 400px;
+    max-width: 800px;
     height: 100%;
     background-color: rgb(240, 240, 240);
     box-sizing: border-box;

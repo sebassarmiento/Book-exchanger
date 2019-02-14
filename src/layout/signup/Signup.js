@@ -64,7 +64,7 @@ class Signup extends Component {
     checkEmail() {
         if (this.state.email.length > 3 && this.state.email.indexOf('@') !== -1 && this.state.email.indexOf('.') !== -1) {
             this.setState({ checkingEmail: true })
-            fetch(`http://bookexchangerapi.herokuapp.com/signup/check-email/${this.state.email}`)
+            fetch(`https://bookexchangerapi.herokuapp.com/signup/check-email/${this.state.email}`)
                 .then(d => d.json())
                 .then(res => {
                     this.setState({ checkingEmail: false })
@@ -89,7 +89,7 @@ class Signup extends Component {
     signUp() {
         console.log('ENTRA')
         this.setState({ userCreated: true, signUpTry: true })
-        fetch('http://bookexchangerapi.herokuapp.com/signup', {
+        fetch('https://bookexchangerapi.herokuapp.com/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

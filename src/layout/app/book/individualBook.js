@@ -16,7 +16,7 @@ class BookRating extends Component {
     }
     handleRate() {
         this.setState({ rated: this.state.stars, ratingCount: true })
-        fetch(`http://bookexchangerapi.herokuapp.com/app/books/${this.props.bookId}/rating`, {
+        fetch(`https://bookexchangerapi.herokuapp.com/app/books/${this.props.bookId}/rating`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ class IndividualBook extends Component {
     }
     getData() {
         this.setState({ fetchingData: true, data: null })
-        fetch(`http://bookexchangerapi.herokuapp.com${this.props.location.pathname}`)
+        fetch(`https://bookexchangerapi.herokuapp.com${this.props.location.pathname}`)
             .then(d => d.json())
             .then(res => {
                 this.props.loaderOff()
@@ -92,7 +92,7 @@ class IndividualBook extends Component {
     handleAdd() {
         this.setState({ added: !this.state.added, unadd: !this.state.unadd, adding: true })
         if (!this.state.adding) {
-            fetch(`http://bookexchangerapi.herokuapp.com/app/user/wishlist/${this.props.userData._id}`, {
+            fetch(`https://bookexchangerapi.herokuapp.com/app/user/wishlist/${this.props.userData._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

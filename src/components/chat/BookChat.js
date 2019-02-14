@@ -17,7 +17,7 @@ class BookChat extends Component {
         if (chatId) {
             console.log('Mi chat id!', chatId)
             this.setState({ chatId: chatId.chatId })
-            fetch(`http://bookexchangerapi.herokuapp.com/app/chats/${chatId.chatId}`)
+            fetch(`https://bookexchangerapi.herokuapp.com/app/chats/${chatId.chatId}`)
                 .then(d => d.json())
                 .then(res => {
                     console.log('Chat existe!', res)
@@ -28,7 +28,7 @@ class BookChat extends Component {
                     console.log(err)
                 })
         } else {
-            fetch('http://bookexchangerapi.herokuapp.com/app/chats/newChat', {
+            fetch('https://bookexchangerapi.herokuapp.com/app/chats/newChat', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -63,7 +63,7 @@ class BookChat extends Component {
 
     postMessage(){
         this.messagesContainer.current.scrollTop = this.messagesContainer.current.scrollHeight
-        fetch('http://bookexchangerapi.herokuapp.com/app/chats/' + this.state.chatId, {
+        fetch('https://bookexchangerapi.herokuapp.com/app/chats/' + this.state.chatId, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'

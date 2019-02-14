@@ -25,7 +25,7 @@ class FeedView extends Component {
   getData(more) {
     if(this.state.data)this.setState({fetching: true})
     if (more) this.count += 20
-    fetch(`http://bookexchangerapi.herokuapp.com/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`, {
+    fetch(`https://bookexchangerapi.herokuapp.com/app/books${this.props.category ? `/category/${this.props.category}` : ''}${this.count > 0 ? `/?search=${this.count}` : ''}`, {
       method: 'GET',
       headers: {
         'authorization': this.props.token
