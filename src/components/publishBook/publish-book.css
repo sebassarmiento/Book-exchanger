@@ -84,12 +84,17 @@
 .p-b-image img{
     position: absolute;
     max-height: 100%;
+    max-width: 100%;
 }
 
 .p-b-image p{
     position: absolute;
     z-index: 200;
-    bottom: 20px;
+    bottom: 0px;
+    background-color: rgb(243, 243, 243);
+    padding: 12px;
+    border-radius: 12px;
+    z-index: -2;
 }
 
 .p-b-image i{

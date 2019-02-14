@@ -24,6 +24,7 @@ class Login extends Component {
 
   handleLogin() {
     this.setState({ loginTry: true, invalidLogin: false })
+    this.props.loaderOn()
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
@@ -43,6 +44,7 @@ class Login extends Component {
           this.props.loginSuccess({ ...res.user, token: res.token })
         } else {
           this.setState({ invalidLogin: true })
+          this.props.loaderOff()
         }
       })
       .catch(err => {
@@ -71,7 +73,9 @@ class Login extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     loginView: () => dispatch({ type: "LOGIN_VIEW" }),
-    loginSuccess: userData => dispatch({ type: "LOGIN_SUCCESS", payload: { ...userData } })
+    loginSuccess: userData => dispatch({ type: "LOGIN_SUCCESS", payload: { ...userData } }),
+    loaderOn: () => dispatch({ type: 'MAIN_LOADER_ON' }),
+    loaderOff: () => dispatch({ type: 'MAIN_LOADER_OFF' })
   }
 }
 

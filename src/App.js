@@ -27,6 +27,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
+          {this.props.appLoader ? <MainLoader /> : null}
             {this.props.logged ? <NavbarApp /> : <Navbar />}
             {!this.props.logged ?
               <Switch>
@@ -37,7 +38,6 @@ class App extends Component {
               </Switch>
               :
               <div className="app-layout" >
-                {this.props.appLoader ? <MainLoader /> : null}
                 {this.props.appMenu.status !== 'closed' ? <AppMenu /> : null}
                 <Switch>
                   <Route path="/app/feed" exact component={FeedView} />

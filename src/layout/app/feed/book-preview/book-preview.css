@@ -24,7 +24,6 @@
 
 .book-preview-img{
     margin: 12px 0px;
-    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +34,7 @@
 }
 
 .book-preview img{
-    height: 100%;
+    max-width: 100%;
 }
 
 .book-preview p{

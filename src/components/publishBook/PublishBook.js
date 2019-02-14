@@ -10,11 +10,12 @@ class PublishBook extends Component {
             name: '',
             category: '',
             location: '',
-            image: '//unsplash.it/500/750?random',
+            image: '',
             author: '',
             description: '',
             pages: 0
         }
+        this.imageFile = React.createRef()
     }
     handleClose() {
         this.setState({ closed: true })
@@ -22,7 +23,23 @@ class PublishBook extends Component {
             this.props.closePublish()
         }, 400)
     }
+    handleImageChange(e) {
+        this.handleChange(e)
+        if (this.imageFile.current.files && this.imageFile.current.files[0]) {
+            let fileReader = new FileReader()
+
+            fileReader.onload = e => {
+                console.log(e.target.result)
+                this.setState({ imagePreview: e.target.result })
+            }
+
+            fileReader.readAsDataURL(this.imageFile.current.files[0])
+        } else {
+            this.setState({ imagePreview: null })
+        }
+    }
     handleChange(e) {
+        console.log(this.imageFile.current.files[0])
         this.setState({ [e.target.name]: e.target.value })
     }
     handlePublish() {
@@ -30,12 +47,21 @@ class PublishBook extends Component {
         if (state.name.length > 0 && state.category.length > 0 && state.location.length > 0 && state.author.length > 0) {
             this.setState({ publishTry: true, cantPublish: false })
 
+            let formData = new FormData()
+            formData.append('image', this.imageFile.current.files[0])
+            formData.append('name', this.state.name)
+            formData.append('category', this.state.category)
+            formData.append('location', this.state.location)
+            formData.append('author', this.state.author)
+            formData.append('description', this.state.description)
+            formData.append('pages', this.state.pages)
+            formData.append('username', this.props.username)
+            formData.append('userId', this.props.userId)
+            formData.append('date', Date.now())
+
             fetch('http://localhost:3000/app/books', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ ...this.state, username: this.props.username, userId: this.props.userId, date: Date.now() })
+                body: formData
             })
                 .then(d => d.json())
                 .then(res => {
@@ -143,10 +169,10 @@ class PublishBook extends Component {
                             </select>
                         </div>
                         <div className="p-b-input" ><input onChange={(e) => this.handleChange(e)} autoComplete="off" required name="pages" type="number" /><label htmlFor="pages">Pages</label></div>
-                        <input type="file" />
+                        <input onChange={e => this.handleImageChange(e)} name="image" value={this.state.image} ref={this.imageFile} accept="image/*" type="file" />
                         <div className="p-b-image" >
-                            <img alt="book-placeholder" src={BookPlaceholder} />
-                            {this.state.image ? <p>Image added! <i className="far fa-check-circle"></i></p> : <p>Please add an image.</p>}
+                            <img alt="book-placeholder" src={this.state.imagePreview ? this.state.imagePreview : BookPlaceholder} />
+                            {this.state.image ? null : <p>Please add an image.</p>}
                         </div>
                     </div>
                     <div className="p-b-input" ><textarea name="description" onChange={(e) => this.handleChange(e)} required ></textarea><label>Description</label></div>
