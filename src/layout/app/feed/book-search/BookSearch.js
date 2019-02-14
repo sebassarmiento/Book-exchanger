@@ -51,7 +51,7 @@ class BookSearch extends Component {
     handleSearch() {
         if (this.state.query.length > 0) {
             this.props.updateData(null)
-            fetch(`http://localhost:3000/app/books/search?name=${this.state.query}`)
+            fetch(`http://bookexchangerapi.herokuapp.com/app/books/search?name=${this.state.query}`)
                 .then(d => d.json())
                 .then(res => {
                     this.props.updateData(res, this.state.query)
@@ -65,7 +65,7 @@ class BookSearch extends Component {
     handleFilters() {
         if (this.state.categoryFilters.length > 0 || this.state.locationFilters.length > 0 || this.state.ratingsFilter !== 0) {
             this.props.updateData(null)
-            fetch(`http://localhost:3000/app/books/filters`, {
+            fetch(`http://bookexchangerapi.herokuapp.com/app/books/filters`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

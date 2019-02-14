@@ -59,7 +59,7 @@ class PublishBook extends Component {
             formData.append('userId', this.props.userId)
             formData.append('date', Date.now())
 
-            fetch('http://localhost:3000/app/books', {
+            fetch('http://bookexchangerapi.herokuapp.com/app/books', {
                 method: 'POST',
                 body: formData
             })

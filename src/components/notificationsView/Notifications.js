@@ -9,7 +9,7 @@ class Notifications extends Component {
         this.state = {}
     }
     componentDidMount(){
-        fetch(`http://localhost:3000/app/user/open-notifications/${this.props.userId}`)
+        fetch(`http://bookexchangerapi.herokuapp.com/app/user/open-notifications/${this.props.userId}`)
         .then(d => d.json())
         .then(res => console.log(res))
         .catch(err => console.log(err))

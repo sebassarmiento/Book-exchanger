@@ -9,8 +9,8 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: 'sebi_sarmiento@hotmail.com',
-      password: 'caca'
+      email: '',
+      password: ''
     }
   }
 
@@ -25,7 +25,7 @@ class Login extends Component {
   handleLogin() {
     this.setState({ loginTry: true, invalidLogin: false })
     this.props.loaderOn()
-    fetch('http://localhost:3000/login', {
+    fetch('http://bookexchangerapi.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
