@@ -122,7 +122,7 @@ class IndividualBook extends Component {
                     <div className="book-grid">
                         <div className="book-info" >
                             <div style={{ display: 'flex', width: '100%' }} >
-                                <img src={this.state.data.image} alt={this.state.data.name} />
+                                <img src={`https://bookexchangerapi.herokuapp.com/${this.state.data.image}`} alt={this.state.data.name} />
                                 <div style={{ flex: '1' }} >
                                     <h6>In <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h6>
                                     <h2>{this.state.data.name}</h2>
