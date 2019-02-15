@@ -44,7 +44,7 @@ class PublishBook extends Component {
     }
     handlePublish() {
         const { state } = this
-        if (state.name.length > 0 && state.category.length > 0 && state.location.length > 0 && state.author.length > 0) {
+        if (state.name.length > 0 && state.category.length > 0 && state.location.length > 0 && state.author.length > 0 && state.image && state.image !== '') {
             this.setState({ publishTry: true, cantPublish: false })
 
             let formData = new FormData()
@@ -67,6 +67,7 @@ class PublishBook extends Component {
                 .then(res => {
                     console.log(res)
                     if (res.message === 'Book was added!') {
+                        console.log('Entra al 1')
                         this.handleClose()
                         setTimeout(() => {
                             console.log(res.notification)
@@ -74,13 +75,19 @@ class PublishBook extends Component {
                         }, 400)
                     } else {
                         this.handleClose()
+                        console.log('Entra al 2')
                         setTimeout(() => {
-                            this.props.notify('error', 'Error publishing book. Try again later.')
+                            this.props.notify({ category: 'error', message: 'Error publishing book. Please try again later.' })
                         }, 400)
                     }
                 })
                 .catch(err => {
                     console.log(err)
+                    this.handleClose()
+                    console.log('Entra al 3')
+                    setTimeout(() => {
+                        this.props.notify({ category: 'error', message: 'Error publishing book. Please try again later.' })
+                    }, 400)
                 })
 
         } else {

@@ -12,7 +12,7 @@
     border-radius: 2px;
     font-weight: bold;
     animation: showNotification 5.1s ease-in-out;
-    z-index: 100000000000;
+    z-index: 100;
 }
 
 .notification p{

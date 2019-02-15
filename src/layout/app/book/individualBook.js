@@ -56,7 +56,6 @@ class IndividualBook extends Component {
         super(props)
         this.state = {}
         this.route = ''
-        this.messages = [{ text: 'Hey men i like your book!', userId: '5c3384e3f728c50d5a46984e' }, { text: 'Thanks man, i like yours of Harry Potter', userId: '5c30e27d6d273619c7ffa122' }, { text: 'Awesome lets exchange them!', userId: '5c3384e3f728c50d5a46984e' }]
     }
     componentDidMount() {
         this.props.loaderOn()
@@ -65,7 +64,6 @@ class IndividualBook extends Component {
     }
     componentDidUpdate() {
         if (this.route !== this.props.location.pathname) {
-            console.log('Fetching data!')
             this.route = this.props.location.pathname
             this.getData()
         }
