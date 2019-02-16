@@ -19,7 +19,6 @@ class Notification extends Component {
         }, 5000)
     }
     render() {
-        console.log('ACACACACA', this.props.category, this.props.message)
         return (
             <div className="notification" >
                 {this.icon()}

@@ -32,7 +32,6 @@ class NavbarApp extends Component {
   }
 
   componentDidUpdate(){
-    console.log('Se monta')
     if(this.props.appMenu.status !== 'open' && this.state.menuOpened){
       this.setState({menuOpened: false})
     }

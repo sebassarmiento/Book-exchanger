@@ -35,11 +35,10 @@ class Profile extends Component {
     }
     render() {
         const { data } = this.state
-        console.log('HEREHERE', data)
         return (
             <div className="profile-container" >
                 <div className="p-user-info" >
-                    <img alt="user" src={data && data.image ? data.image : userPlaceholder} height={200} />
+                    <img alt="user" src={data && data.image ? data.image : userPlaceholder} />
                     <h1>{data ? data.username : null}</h1>
                     <p><i className="fas fa-map-marker" ></i> {data ? data.location : null}</p>
                     <p>{data ? data.email : null}</p>

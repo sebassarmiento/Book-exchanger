@@ -28,11 +28,11 @@ class BookRating extends Component {
         })
             .then(d => d.json())
             .then(res => {
-                console.log('ACAAAAAAAA EL RATING', res)
                 this.props.notify(res.notification)
             })
             .catch(err => {
                 console.log(err)
+                this.props.notify({ type: 'error', message: 'There was an error adding your rating. Please try again later.' })
             })
     }
     render() {
@@ -85,6 +85,7 @@ class IndividualBook extends Component {
             .catch(err => {
                 console.log('Error', err)
                 this.props.loaderOff()
+                this.setState({ fetchingData: false })
             })
     }
     handleAdd() {
@@ -102,32 +103,34 @@ class IndividualBook extends Component {
             })
                 .then(d => d.json())
                 .then(res => {
-                    console.log(res)
                     this.setState({ adding: false })
                     if (res.notification && res.user) {
-                        console.log('ENTRA!')
                         this.props.addToWishlist(res.user.books)
                         this.props.notify(res.notification)
                     }
                 })
+                .catch(err => {
+                    console.log(err)
+                    this.props.notify({ type: 'error', message: 'There was an error adding the book to your wishlist. Please try again later' })
+                })
         }
     }
     render() {
-        console.log(this.state.data)
+        const { data } = this.state
         return (
             <div className="individual-book" >
-                {this.state.data ?
+                {data ?
                     <div className="book-grid">
                         <div className="book-info" >
                             <div style={{ display: 'flex', width: '100%' }} >
-                                <img src={`https://bookexchangerapi.herokuapp.com/${this.state.data.image}`} alt={this.state.data.name} />
+                                <img src={`https://bookexchangerapi.herokuapp.com/${data.image}`} alt={data.name} />
                                 <div style={{ flex: '1' }} >
-                                    <h6>In <NavLink to={`/app/books/${this.state.data.category.toLowerCase()}`} >{this.state.data.category}</NavLink></h6>
-                                    <h2>{this.state.data.name}</h2>
-                                    <p>{this.state.data.author}</p>
-                                    <p><i className="fas fa-map-marker" ></i> {this.state.data.location}</p>
-                                    <p>{this.state.data.pages} pages.</p>
-                                    <p><strong>Owner: </strong><NavLink to={`/app/user/${this.state.data.userId}`} >{this.state.data.username}</NavLink></p>
+                                    <h6>In <NavLink to={`/app/books/${data.category.toLowerCase()}`} >{data.category}</NavLink></h6>
+                                    <h2>{data.name}</h2>
+                                    <p>{data.author}</p>
+                                    <p><i className="fas fa-map-marker" ></i> {data.location}</p>
+                                    <p>{data.pages} pages.</p>
+                                    <p><strong>Owner: </strong><NavLink to={`/app/user/${data.userId}`} >{data.username}</NavLink></p>
                                     <button className="wishlist-btn"
                                         onMouseEnter={() => this.setState({ added: true })}
                                         onMouseLeave={() => this.setState({ added: false })}
@@ -137,20 +140,20 @@ class IndividualBook extends Component {
                                     </button>
                                     <BookRating
                                         notify={(category, message) => this.props.notify(category, message)}
-                                        bookId={this.state.data._id}
-                                        ratings={this.state.data.ratings}
-                                        ratingsNumber={this.state.data.ratingsNumber}
+                                        bookId={data._id}
+                                        ratings={data.ratings}
+                                        ratingsNumber={data.ratingsNumber}
                                         currentUser={this.props.userData._id}
                                     />
                                 </div>
                             </div>
                             <div className="book-description" >
-                                <p>{this.state.data.description ? this.state.data.description : "No description available."}</p>
+                                <p>{data.description ? data.description : "No description available."}</p>
                             </div>
                         </div>
-                        {this.state.data.userId !== this.props.userData._id ?
+                        {data.userId !== this.props.userData._id ?
                             <div className="book-chat" >
-                                <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={this.state.data.userId} messages={this.state.data.messages} title="Like this book?" subtitle="Chat with the owner." />
+                                <BookChat userData={this.props.userData} currentUserId={this.props.userData._id} bookOwnerId={data.userId} messages={data.messages} title="Like this book?" subtitle="Chat with the owner." />
                             </div> : null}
                     </div>
                     :

@@ -29,7 +29,6 @@ class PublishBook extends Component {
             let fileReader = new FileReader()
 
             fileReader.onload = e => {
-                console.log(e.target.result)
                 this.setState({ imagePreview: e.target.result })
             }
 
@@ -39,7 +38,6 @@ class PublishBook extends Component {
         }
     }
     handleChange(e) {
-        console.log(this.imageFile.current.files[0])
         this.setState({ [e.target.name]: e.target.value })
     }
     handlePublish() {
@@ -65,17 +63,13 @@ class PublishBook extends Component {
             })
                 .then(d => d.json())
                 .then(res => {
-                    console.log(res)
                     if (res.message === 'Book was added!') {
-                        console.log('Entra al 1')
                         this.handleClose()
                         setTimeout(() => {
-                            console.log(res.notification)
                             this.props.notify(res.notification)
                         }, 400)
                     } else {
                         this.handleClose()
-                        console.log('Entra al 2')
                         setTimeout(() => {
                             this.props.notify({ category: 'error', message: 'Error publishing book. Please try again later.' })
                         }, 400)
@@ -84,7 +78,6 @@ class PublishBook extends Component {
                 .catch(err => {
                     console.log(err)
                     this.handleClose()
-                    console.log('Entra al 3')
                     setTimeout(() => {
                         this.props.notify({ category: 'error', message: 'Error publishing book. Please try again later.' })
                     }, 400)
@@ -95,7 +88,6 @@ class PublishBook extends Component {
         }
     }
     render() {
-        console.log(this.state, this.state.location)
         return (
             <div className="publish-book-container" >
                 <div onClick={() => this.handleClose()} className={`p-b-background ${this.state.closed ? 'p-b-background-out' : null}`} ></div>
@@ -108,15 +100,24 @@ class PublishBook extends Component {
                         <div className="p-b-select" >
                             <select name="category" value={this.state.category} onChange={(e) => this.handleChange(e)} >
                                 <option value="" disabled defaultValue>Choose a category</option>
+                                <option value="Art">Art</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Business">Business</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Cryptocurrency">Cryptocurrency</option>
+                                <option value="Cooking">Cooking</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Economincs">Economincs</option>
                                 <option value="Finance">Finance</option>
-                                <option value="Technology">Technology</option>
+                                <option value="Health">Health</option>
+                                <option value="Investing">Investing</option>
+                                <option value="Maths">Maths</option>
+                                <option value="Romance">Romance</option>
                                 <option value="Science">Science</option>
                                 <option value="Science-fiction">Science fiction</option>
-                                <option value="Romance">Romance</option>
                                 <option value="Statistics">Statistics</option>
-                                <option value="Self-improvement">Self-improvement</option>
-                                <option value="Biology">Biology</option>
-                                <option value="Maths">Maths</option>
+                                <option value="Technology">Technology</option>
                             </select>
                         </div>
                         <div className="p-b-select" >

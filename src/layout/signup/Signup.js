@@ -68,7 +68,6 @@ class Signup extends Component {
                 .then(d => d.json())
                 .then(res => {
                     this.setState({ checkingEmail: false })
-                    console.log(res)
                     if (res.message === 'Email is available!') {
                         this.setState({ validEmail: true, invalidEmail: false })
                     } else {
@@ -76,18 +75,13 @@ class Signup extends Component {
                     }
                 })
                 .catch(err => {
-                    this.setState({ checkingEmail: false })
+                    this.setState({ checkingEmail: false, validEmail: false })
                     console.log(err)
                 })
         }
     }
 
-    handleGender(e) {
-        this.setState({ gender: e.target.id }, () => console.log(this.state.gender))
-    }
-
     signUp() {
-        console.log('ENTRA')
         this.setState({ userCreated: true, signUpTry: true })
         fetch('https://bookexchangerapi.herokuapp.com/signup', {
             method: 'POST',
@@ -104,7 +98,6 @@ class Signup extends Component {
         })
             .then(d => d.json())
             .then(response => {
-                console.log(response)
                 if (response.message === 'User added successfully!') {
                     this.setState({ redirect: '/app/feed' })
                     this.props.userCreated(response.user)
@@ -114,12 +107,11 @@ class Signup extends Component {
             })
             .catch(err => {
                 console.log(err)
+                this.setState({error: true})
             })
     }
 
     render() {
-
-        console.log(this.state)
 
         const validEmail = <i className="fas fa-check-circle"></i>
         const invalidEmail = <i className="far fa-times-circle"></i>

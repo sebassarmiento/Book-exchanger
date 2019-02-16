@@ -87,7 +87,6 @@ class BookSearch extends Component {
     }
 
     render() {
-        console.log('MI SYTATE', this.state)
         return (
             <div className="book-filters" >
                 <div className="search-bar" >
@@ -449,7 +448,7 @@ class BookSearch extends Component {
                             <i className="fas fa-star" ></i>
                             <i className="fas fa-star" ></i>
                             <i className="fas fa-star" ></i>
-                            <span> & up</span>
+                            <span></span>
                         </div>
                     </div>
                 </div>

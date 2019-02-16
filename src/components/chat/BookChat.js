@@ -20,7 +20,6 @@ class BookChat extends Component {
             fetch(`https://bookexchangerapi.herokuapp.com/app/chats/${chatId.chatId}`)
                 .then(d => d.json())
                 .then(res => {
-                    console.log('Chat existe!', res)
                     this.setState({ messages: res.messages })
                     this.messagesContainer.current.scrollTop = this.messagesContainer.current.scrollHeight
                 })
@@ -39,7 +38,6 @@ class BookChat extends Component {
             })
                 .then(d => d.json())
                 .then(res => {
-                    console.log('Chat fue creado!', res)
                     this.setState({ messages: res.messages, chatId: res._id })
                     this.props.chatCreated(res)
                 })
@@ -52,7 +50,6 @@ class BookChat extends Component {
     handleClick(e) {
         let messages = this.state.messages.length > 0 ? this.state.messages : null
         if (this.state.newMessage.length > 0) {
-            console.log("Agregamos msg al chat existente")
             if (messages) {
                 this.setState({ messages: [...messages, { userId: this.props.currentUserId, text: this.state.newMessage }], newMessage: '' }, () => this.postMessage())
             } else {
@@ -97,7 +94,6 @@ class BookChat extends Component {
     }
 
     render() {
-        console.log('ACAMISTATE', this.state)
         return (
             <div className="book-message" >
                 <h4>{this.props.title} <br /><small>{this.props.subtitle}</small></h4>

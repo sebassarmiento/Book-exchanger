@@ -24,20 +24,14 @@ class Navbar extends Component {
   }
 
   render() {
-
-    const loggedMenu = <div>Welcome!</div>
-    const notLoggedMenu = <div className={this.props.signUp ? "transparent" : "navbar-btns"} >
-                            <NavLink to="/login" className="navbar-login" >Log in</NavLink>
-                            <NavLink to="/signup" className="navbar-signup" >Sign up</NavLink>
-                          </div>
-
     return (
       <div className={this.state.scrolled ? "navbar scrolled" : "navbar"} >
         <NavLink onClick={() => this.props.backToHome()} className="brand" to="/" ><img src={Logo} alt="brand-logo" height="32px" />Book exchanger</NavLink>
         <div className="navbar-whitespace" ></div>
-        {
-          this.props.logged ? loggedMenu : notLoggedMenu
-        }
+        <div className={this.props.signUp ? "transparent" : "navbar-btns"} >
+          <NavLink to="/login" className="navbar-login" >Log in</NavLink>
+          <NavLink to="/signup" className="navbar-signup" >Sign up</NavLink>
+        </div>
         {this.state.redirect ? <Redirect to="/" /> : null}
       </div>
     )
