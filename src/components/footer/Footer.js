@@ -14,7 +14,7 @@ class Footer extends Component {
             <NavLink to='/' >Donate</NavLink>
             <NavLink to='/' >Contact us</NavLink>
         </div>
-        <p>Book exchange 2019 ©. Developed by Sebastian Sarmiento.</p>
+        <p>Book exchanger 2019 ©. Developed by Sebastian Sarmiento.</p>
       </div>
     )
   }

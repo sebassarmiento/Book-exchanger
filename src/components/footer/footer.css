@@ -35,3 +35,18 @@
     margin: auto;
     color: black;
 }
+
+@media screen and (max-width: 700px){
+    .footer-first-row{
+        display: none;
+    }
+
+    .footer p{
+        position: relative;
+        margin: 0px;
+        padding: 0px 12px;
+        transform: translateX(-0%);
+        bottom: 0px;
+        left: 0px;
+    }
+}
