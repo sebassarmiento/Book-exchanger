@@ -99,7 +99,7 @@ class PublishBook extends Component {
                         <div className="p-b-input" ><input onChange={(e) => this.handleChange(e)} autoComplete="off" required name="author" type="text" /><label htmlFor="Author">Author</label></div>
                         <div className="p-b-select" >
                             <select name="category" value={this.state.category} onChange={(e) => this.handleChange(e)} >
-                                <option value="" disabled defaultValue>Choose a category</option>
+                                <option value="" disabled defaultValue>Category</option>
                                 <option value="Art">Art</option>
                                 <option value="Biology">Biology</option>
                                 <option value="Business">Business</option>
@@ -122,7 +122,7 @@ class PublishBook extends Component {
                         </div>
                         <div className="p-b-select" >
                             <select name="location" value={this.state.location} onChange={(e) => this.handleChange(e)} >
-                                <option value="" disabled defaultValue>Choose a state</option>
+                                <option value="" disabled defaultValue>Location</option>
                                 <option value="Alabama">Alabama</option>
                                 <option value="Alaska">Alaska</option>
                                 <option value="Arizona">Arizona</option>

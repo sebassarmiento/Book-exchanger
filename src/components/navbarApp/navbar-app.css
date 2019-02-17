@@ -236,3 +236,26 @@
     }
 }
 
+
+
+@media screen and (max-width: 800px){
+    .app-navbar{
+        position: sticky !important;
+        top: 0px;
+        left: 0px;
+    }
+
+    .app-navbar div:nth-child(1) a{
+        display: none;
+    }
+
+    .app-navbar .navbar-settings {
+        padding: 0px;
+        padding-right: 12px;
+    }
+
+    .app-navbar .navbar-settings i{
+        margin: 0px 3px;
+    }
+
+}

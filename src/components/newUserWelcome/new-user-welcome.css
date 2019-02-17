@@ -16,6 +16,7 @@
     background-color: rgb(0, 161, 113);
     background-color: rgb(0, 82, 75);
     width: 400px;
+    max-width: 80vw;
     padding: 24px;
     position: absolute;
     top: 50%;

@@ -119,3 +119,24 @@
     cursor: pointer;
     transition: all 0.3s;
 }
+
+
+@media screen and (max-width: 800px){
+    .profile-container{
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .p-user-info{
+        margin: 12px !important;
+        margin-bottom: 0px !important;
+    }
+
+    .p-user-books{
+        min-height: auto;
+    }
+
+    .p-user-scroll{
+        height: 50vh;
+    }
+}

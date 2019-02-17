@@ -169,3 +169,10 @@
         opacity: 1;
     }
 }
+
+
+@media screen and (max-width: 800px){
+    .app-menu, .app-menu-bg{
+        position: fixed;
+    }
+}
