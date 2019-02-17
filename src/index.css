@@ -60,4 +60,14 @@ h1{
 :root{
   --color1: #008a8a;
   --color2: #00af66;
+  --color3: #ff1100;
+  --inputColor: #008a8a;
+}
+
+
+
+@media screen and (max-width: 800px){
+  :root{
+    --inputColor: white;
+  }
 }

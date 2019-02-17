@@ -71,50 +71,11 @@
     transform: scale(1);
     transition: all 0.3s ease-in-out;
     text-align: center;
-    color: red;
+    color: var(--color3);
     font-weight: 300;
     padding-bottom: 12px;
     margin: 0px;
     margin-bottom: 0px !important;
-}
-
-/* LOADER */
-
-.login-loader{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100%;
-    width: 100%;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.24);
-    animation: showLoginLoader 0.3s ease-in-out;
-}
-
-.login-loader div:nth-child(1){
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 50px;
-    width: 50px;
-    padding: 12px;
-    border-radius: 50%;
-}
-
-.login-loader div:nth-child(1)::after{
-    content: '';
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    height: calc(100% - 8px - 12px);
-    width: calc(100% - 8px - 12px);
-    border-radius: 50%;
-    border: 2px solid rgba(253, 253, 253, 0.671);
-    border-top: 2px solid rgb(34, 165, 84);
-    animation: loginLoader 1s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
-    z-index: 1000;
 }
 
 @keyframes loginLoader {
@@ -132,5 +93,19 @@
     }
     100%{
         opacity: 1;
+    }
+}
+
+
+@media screen and (max-width: 800px){
+    .login-form{
+        background-color: transparent;
+        box-shadow: none;
+        color: white !important;
+        width: 80vw;
+    }
+
+    .login-form input{
+        color: white;
     }
 }

@@ -80,7 +80,7 @@
 }
 
 .signup-user-created{
-    transition: all 0.5s cubic-bezier(0.93,-0.69, 1, 0.96);
+    transition: all 0.4s cubic-bezier(0.93,-0.69, 1, 0.96);
     transform: scale(0);
     opacity: 0;
     width: 400px;
@@ -210,22 +210,6 @@
     }
 }
 
-/* 
-
-0%{
-        opacity: 0;
-        transform: translate(0px, -60px) rotate(-30deg) scale(0.4);
-    }
-    70%{
-        opacity: 1;
-        transform: translate(0px, 0px) rotate(0deg) scale(1.1);
-    }
-    100%{
-        opacity: 1;
-        transform: translate(0px, 0px) rotate(0deg) scale(1);
-    }
-    */
-
 @keyframes signupFormEnter1{
     0%{
         opacity: 0.6;
@@ -315,4 +299,34 @@ select {
     background: linear-gradient(var(--color1), var(--color2));
     color: white;
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 800px){
+    .signup-form, .signup-form-2 {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        color: white !important;
+        width: 80vw !important;
+    }
+
+    .signup-container i{
+        color: white !important;
+    }
+
+    .signup-container input, .signup-container textarea, .signup-container select{ 
+        color: white;
+    }
+    .signup-container textarea::placeholder{
+        color: white;
+    }
+
+    .signup-user-created{
+        transition: all 0.5s;
+        transform: scale(1);
+        opacity: 0;
+        filter: blur(20px);
+        width: 400px;
+        z-index: 1;
+    }
 }
