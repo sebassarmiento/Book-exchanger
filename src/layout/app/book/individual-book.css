@@ -95,3 +95,48 @@
 .other-books{
     max-width: 40vw;
 }
+
+@media screen and (max-width: 600px){
+    .individual-book{
+        max-height: none;
+    }
+
+    .book-grid{
+        flex-direction: column;
+    }
+
+    .book-info{
+        margin-bottom: 12px;
+        max-height: none;
+    }
+
+    .book-info img{
+        min-height: 100px;
+    }
+
+    .book-info button{
+        width: 100%;
+    }
+
+    .book-info div:nth-child(1){
+        flex-direction: column;
+    }
+
+    .i-b-rating{
+        text-align: center;
+        padding-top: 12px;
+    }
+
+    .book-info small{
+        width: 100%;
+        text-align: center;
+        display: block;
+        margin: 0px !important;
+        padding-bottom: 12px;
+    }
+
+    .book-chat{
+        margin-left: 0px;
+        height: 60vh;
+    }
+}

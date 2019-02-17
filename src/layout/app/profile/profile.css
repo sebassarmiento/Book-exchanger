@@ -123,20 +123,38 @@
 
 @media screen and (max-width: 800px){
     .profile-container{
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
         height: 100%;
     }
 
     .p-user-info{
         margin: 12px !important;
         margin-bottom: 0px !important;
+        max-width: calc(100vw - 24px);
+        box-sizing: border-box;
+    }
+
+    .p-user-info img{
+        max-height: none !important;
     }
 
     .p-user-books{
-        min-height: auto;
+        margin: 12px !important;
+        margin-bottom: 0px !important;
+        max-width: calc(100vw - 24px);
+        box-sizing: border-box;
     }
 
     .p-user-scroll{
         height: 50vh;
+        background-color: green;
+    }
+
+    .profile-chat{
+        padding: 12px !important;
+        grid-row-start: 2;
+        height: 50vh;
+        padding-bottom: 0px !important;
     }
 }

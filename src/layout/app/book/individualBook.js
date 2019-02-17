@@ -125,9 +125,8 @@ class IndividualBook extends Component {
                             <div style={{ display: 'flex', width: '100%' }} >
                                 <img src={`https://bookexchangerapi.herokuapp.com/${data.image}`} alt={data.name} />
                                 <div style={{ flex: '1' }} >
-                                    <h6>In <NavLink to={`/app/books/${data.category.toLowerCase()}`} >{data.category}</NavLink></h6>
                                     <h2>{data.name}</h2>
-                                    <p>{data.author}</p>
+                                    <p>By {data.author}</p>
                                     <p><i className="fas fa-map-marker" ></i> {data.location}</p>
                                     <p>{data.pages} pages.</p>
                                     <p><strong>Owner: </strong><NavLink to={`/app/user/${data.userId}`} >{data.username}</NavLink></p>

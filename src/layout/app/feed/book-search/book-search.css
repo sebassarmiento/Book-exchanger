@@ -132,3 +132,23 @@
 .fas.fa-star{
     color: rgb(255, 208, 0);
 }
+
+
+
+@media screen and (max-width: 800px){
+    .book-filters{
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0px;
+    }
+
+    .book-filters .filter-options{
+        max-height: 30vh;
+    }
+    .book-filters .search-bar{
+        padding-bottom: 0px;
+    }
+    .book-filters h5{
+        padding: 0px 12px;
+    }
+}

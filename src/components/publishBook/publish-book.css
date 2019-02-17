@@ -440,6 +440,10 @@
 
 
 @media screen and (max-width: 800px){
+    .publish-book-container{
+        position: fixed;
+    }
+
     .p-b-form{
         width: 500px;
         min-width: auto;

@@ -133,3 +133,21 @@
     font-size: 1.4em;
     color: rgba(0, 0, 0, 0.288);
 }
+
+
+@media screen and (max-width: 800px){
+    .feedview-container{
+        display: block;
+        max-height: none;
+        width: 100%;
+        padding: 12px;
+    }
+
+    .feedview-column-2{
+        max-height: none;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0px;
+        padding-top: 12px;
+    }
+}
