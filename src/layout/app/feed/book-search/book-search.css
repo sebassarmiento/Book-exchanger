@@ -134,12 +134,25 @@
 }
 
 
-
 @media screen and (max-width: 800px){
     .book-filters{
         width: 100%;
         box-sizing: border-box;
         margin: 0px;
+        min-height: 0px !important;
+        transition: all 1s ease-in-out;
+        padding-bottom: 12px;
+    }
+
+    .book-filters .filters-mobile-closed{
+        max-height: 0px !important;
+        transition: all 1s ease-in-out;
+        opacity: 0;
+        overflow: hidden;
+    }
+    .book-filters .filters-mobile-open{
+        max-height: 800px !important;
+        transition: all 1s ease-in-out;
     }
 
     .book-filters .filter-options{
@@ -150,5 +163,23 @@
     }
     .book-filters h5{
         padding: 0px 12px;
+    }
+
+    .apply-filters button{
+        margin-bottom: -12px;
+    }
+
+    .filters-toggler{
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        box-sizing: border-box;
+        margin: 0px;
+        margin-top: 12px;
+        background: linear-gradient(to right, var(--color1), var(--color2));
+        color: white;
+        border-radius: 2px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.9em;
     }
 }

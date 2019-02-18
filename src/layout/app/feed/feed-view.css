@@ -150,4 +150,12 @@
         padding: 0px;
         padding-top: 12px;
     }
+
+    .feedview-column-2 .status-bar{
+        font-size: 0.9em;
+    }
+
+    .feedview-container .feedview-books{
+        min-height: 50vh;
+    }
 }

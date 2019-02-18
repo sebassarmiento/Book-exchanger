@@ -10,7 +10,7 @@ class StatusBar extends Component {
     if(this.props.books){
       if(this.props.query){
         if(this.props.books.length === 0){
-          return `No results for '${this.props.query}'`
+          return (<p>No results for '<strong>{this.props.query}'</strong></p>)
         } else {
           return (<p>Showing {this.props.books.length} results for '<strong>{this.props.query}</strong>'</p>)
         }
