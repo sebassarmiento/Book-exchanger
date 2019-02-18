@@ -230,6 +230,8 @@
     .home-first-container{
         width: 100%;
         font-size: 0.8em;
+        background-position: center;
+        background-size: cover !important;
     }
 
     .home-second-container{

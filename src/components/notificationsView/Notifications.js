@@ -42,7 +42,7 @@ class Notifications extends Component {
             <div className="notifications-display" >
                 {this.props.notifications.slice(0).reverse().map(n => {
                     return (
-                        <div onClick={(e) => this.handleClick(e, n)} className="n-v-notification" >
+                        <div key={n._id} onClick={(e) => this.handleClick(e, n)} className="n-v-notification" >
                             {!n.opened ? <span>New!</span> : null}
                             <i className="fa fa-check-circle" ></i>
                             <p>{n.message}</p>

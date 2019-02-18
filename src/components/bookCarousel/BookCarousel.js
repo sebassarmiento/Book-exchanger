@@ -44,7 +44,7 @@ class BookCarousel extends Component {
                 {scroll ? <div onClick={() => this.handleScroll()} className="left-arrow-container" ><i className="fas fa-angle-left"></i></div> : null}
                 <div ref={this.scrollComponent} className="book-carousel-scrollable" >
                     {this.props.books && this.props.books.length > 0 ? this.props.books.map(b => {
-                        return (<img onClick={() => this.setState({ redirect: b._id })} className="book-preview" src={`https://bookexchangerapi.herokuapp.com/${b.image}`} />)
+                        return (<img alt={b.name} onClick={() => this.setState({ redirect: b._id })} className="book-preview" src={`https://bookexchangerapi.herokuapp.com/${b.image}`} />)
                     }) : this.props.books ? <p className="no-data" >No books to show.</p> : <LayoutLoader />}
                 </div>
                 {scroll ? <div onClick={() => this.handleScroll(1)} className="right-arrow-container" ><i className="fas fa-angle-right"></i></div> : null}

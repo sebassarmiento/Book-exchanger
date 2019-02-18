@@ -9,23 +9,39 @@ class Navbar extends Component {
   constructor(props) {
     super(props)
     this.state = {}
+    this.mounted = false
   }
 
   componentDidMount() {
+    this.mounted = true
     window.onscroll = this.handleScroll.bind(this)
   }
 
+  componentWillUnmount() {
+    this.mounted = false
+  }
+
+  componentDidUpdate() {
+    if (!this.props.footer && (this.props.signUp || this.props.login) && !this.state.signin) {
+      this.setState({ signin: true })
+    } else if (this.props.footer && this.state.signin) {
+      this.setState({ signin: false })
+    }
+  }
+
   handleScroll() {
-    if (window.scrollY > 500) {
-      this.setState({ scrolled: true })
-    } else {
-      this.setState({ scrolled: false })
+    if (this.mounted) {
+      if (window.scrollY > 500) {
+        this.setState({ scrolled: true })
+      } else {
+        this.setState({ scrolled: false })
+      }
     }
   }
 
   render() {
     return (
-      <div className={this.state.scrolled ? "navbar scrolled" : "navbar"} >
+      <div className={`navbar ${this.state.scrolled ? 'scrolled' : ''} ${this.state.signin ? 'signin' : ''}`} >
         <NavLink onClick={() => this.props.backToHome()} className="brand" to="/" ><img src={Logo} alt="brand-logo" height="32px" />Book exchanger</NavLink>
         <div className="navbar-whitespace" ></div>
         <div className={this.props.signUp ? "transparent" : "navbar-btns"} >
@@ -41,7 +57,8 @@ class Navbar extends Component {
 const mapStateToProps = store => {
   return {
     signUp: store.signUp || store.login,
-    logged: store.logged
+    logged: store.logged,
+    footer: store.footer
   }
 }
 
