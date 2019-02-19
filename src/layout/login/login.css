@@ -108,4 +108,8 @@
     .login-form input{
         color: white;
     }
+
+    .login-to-signup a{
+        color: rgb(71, 71, 71);
+    }
 }

@@ -4,6 +4,7 @@
     width: 100%;
     position: relative;
     background-color: #2fa35f34;
+    background: linear-gradient(to bottom, var(--color1), var(--color2));
 }
 
 /* Book rating */

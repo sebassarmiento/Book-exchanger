@@ -39,7 +39,7 @@ class AppMenu extends Component {
         <h1 className="app-menu-title" >Your wishlist <span>({this.props.userData.books.liked.length})</span></h1>
         <div className="wishlist" >
           {this.props.userData.books.liked.length > 0 ? this.props.userData.books.liked.map(b => {
-            return (<Link className="menu-item" to={`/app/books/id/${b._id}`} ><i className="fas fa-book"></i><span>{b.name}</span></Link>)
+            return (<Link onClick={() => this.handleClose()} className="menu-item" to={`/app/books/id/${b._id}`} ><i className="fas fa-book"></i><span>{b.name}</span></Link>)
           }) : <p className="empty-wishlist" >You have no books on your wishlist.</p>}
         </div>
       </div>

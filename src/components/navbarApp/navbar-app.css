@@ -258,4 +258,8 @@
         margin: 0px 3px;
     }
 
+    .navbar-menu{
+        position: fixed;
+    }
+
 }

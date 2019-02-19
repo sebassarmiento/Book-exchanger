@@ -184,8 +184,8 @@ class PublishBook extends Component {
                         </div>
                     </div>
                     <div className="p-b-input" ><textarea name="description" onChange={(e) => this.handleChange(e)} required ></textarea><label>Description</label></div>
-                    <button onClick={() => this.handlePublish()} className="p-b-btn" >Publish book</button>
                     {this.state.cantPublish ? <p className="p-b-invalid-form" >Please fill out the form <i className="fas fa-exclamation"></i></p> : null}
+                    <button onClick={() => this.handlePublish()} className="p-b-btn" >Publish book</button>
                     {this.state.publishTry ? <div className="p-b-loader" ><div></div><div>Publishing book...</div></div> : null}
                     {this.state.bookPublished ? <div className="p-b-published" ><i className="far fa-check-circle"></i><div>Book was published!</div></div> : null}
                 </div>

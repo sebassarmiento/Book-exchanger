@@ -329,4 +329,8 @@ select {
         width: 400px;
         z-index: 1;
     }
+
+    .signup-to-login a{
+        color: rgb(71, 71, 71);
+    }
 }
