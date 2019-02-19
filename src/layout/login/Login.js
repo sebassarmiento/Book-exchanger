@@ -19,40 +19,42 @@ class Login extends Component {
   }
 
   handleChange(e) {
-    if(e.target.value.length < 60){
+    if (e.target.value.length < 60) {
       this.setState({ [e.target.name]: e.target.value })
     }
   }
 
   handleLogin() {
-    this.setState({ loginTry: true, invalidLogin: false })
-    this.props.loaderOn()
-    fetch('https://bookexchangerapi.herokuapp.com/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
+    if (this.state.email.length > 4 && this.state.password.length > 3) {
+      this.setState({ loginTry: true, invalidLogin: false })
+      this.props.loaderOn()
+      fetch('https://bookexchangerapi.herokuapp.com/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password
+        })
       })
-    })
-      .then(d => d.json())
-      .then(res => {
-        console.log(res)
-        this.setState({ loginTry: false })
-        if (res.message === 'Auth successful') {
-          this.setState({ loginSuccess: true })
-          this.props.loginSuccess({ ...res.user, token: res.token })
-        } else {
-          this.setState({ invalidLogin: true })
+        .then(d => d.json())
+        .then(res => {
+          console.log(res)
+          this.setState({ loginTry: false })
+          if (res.message === 'Auth successful') {
+            this.setState({ loginSuccess: true })
+            this.props.loginSuccess({ ...res.user, token: res.token })
+          } else {
+            this.setState({ invalidLogin: true })
+            this.props.loaderOff()
+          }
+        })
+        .catch(err => {
+          console.log(err)
           this.props.loaderOff()
-        }
-      })
-      .catch(err => {
-        console.log(err)
-        this.props.loaderOff()
-      })
+        })
+    }
   }
 
   render() {
@@ -60,8 +62,8 @@ class Login extends Component {
       <div className="login-container" >
         <div className={`login-form ${this.state.loginTry ? "blur" : ''}`} >
           <h1>Login</h1>
-          <Input value={this.state.email} handleChange={(e) => this.handleChange(e)} label="Email" type="text" />
-          <Input value={this.state.password} handleChange={(e) => this.handleChange(e)} label="Password" type="password" />
+          <Input icon='fas fa-user' value={this.state.email} handleChange={(e) => this.handleChange(e)} label="Email" type="text" />
+          <Input icon='fas fa-key' value={this.state.password} handleChange={(e) => this.handleChange(e)} label="Password" type="password" />
           <p className={this.state.invalidLogin ? "invalid-login" : "invalid-login-hidden"} >Invalid email or password.</p>
           <button onClick={() => this.handleLogin()} className="login-form-btn" >Log in</button>
           <p className="login-to-signup" >Don't have an account? <NavLink to="/signup" >Sign up</NavLink></p>

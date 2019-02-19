@@ -4,6 +4,18 @@
     margin-top: 24px;
 }
 
+.input-container i{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 100%;
+    width: 32px;
+    color: rgba(0, 0, 0, 0.534);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .input-container input{
     display: block;
     box-sizing: border-box;
