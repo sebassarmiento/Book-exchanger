@@ -69,3 +69,48 @@
         transform: translateY(-300px);
     }
 }
+
+@media screen and (max-width: 600px){
+    .notification{
+        top: 80px;
+        left: calc(50% - 35vw);
+        width: 70vw;
+        max-width: 70vw;
+        min-width: 70vw;
+        max-width: none;
+        min-width: none;
+        background: linear-gradient(to right, var(--color1), var(--color2));
+        animation: showNotificationMobile 5.1s ease-in-out;
+        z-index: 7;
+        height: auto;
+        max-height: none;
+        position: fixed;
+    }
+}
+
+@keyframes showNotificationMobile {
+    0%{
+        transform: translateY(-300px);
+    }
+    10%{
+        transform: translateY(15px);
+    }
+    12%{
+        transform: translateY(-5px);
+    }
+    14%{
+        transform: translateY(6px);
+    }
+    16%{
+        transform: translateY(0px);
+    }
+    84%{
+        transform: translateY(0px);
+    }
+    86%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(-300px);
+    }
+}

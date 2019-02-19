@@ -110,8 +110,12 @@
 
 
 @media screen and (max-width: 800px){
+    .notifications-bg{
+        position: fixed;
+    }
     .notifications-container{
         width: 80vw;
+        position: fixed;
     }
 
 }
