@@ -58,9 +58,10 @@ h1{
 /* Colors */
 
 :root{
-  --color1: #008a8a;
+  --color1: #008A8A;
   --color2: #00af66;
-  --color3: #ff1100;
+  --color3: #B83434;
+  --color4: #E79B34;
   --inputColor: #008a8a;
 }
 

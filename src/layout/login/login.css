@@ -39,7 +39,7 @@
 }
 
 .login-form-btn{
-    background-color: rgb(255, 135, 55);
+    background-color: rgb(247, 159, 36);    ;
     border: none;
     border-radius: 2px;
     padding: 12px 24px;
@@ -54,14 +54,14 @@
 
 .login-form-btn:hover{
     cursor: pointer;
-    background-color: rgb(224, 116, 44);
+    background-color: rgb(212, 125, 2);
 }
 
 /* Invalid login */
 
 .invalid-login-hidden{
     text-align: center;
-    color: red;
+    color: var(--color3);
     margin: 12px 0px;
     margin-bottom: 0px !important;
     transform: scale(1, 0);

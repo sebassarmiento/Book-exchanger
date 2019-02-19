@@ -22,7 +22,7 @@
 /* Filter options */
 
 .book-filters .filter-options{
-    max-height: 40%;
+    max-height: 40vh;
     overflow: auto;
     width: 80%;
 }
@@ -69,21 +69,26 @@
 
 .apply-filters button{
     width: 100%;
-    padding: 10px;
-    border: 1px solid #00979c;
+    padding: 12px;
+    border: none;
     border-radius: 2px;
     font-family: 'Roboto', sans-serif;
     font-size: 0.9em;
-    color: #00979c;
+    color: white;
     margin-top: 6px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     box-sizing: border-box;
+    background: linear-gradient(to right, var(--color4), rgb(255, 196, 0));
 }
 
 .apply-filters button:hover{
     color: white;
-    background-color: #00979c;
+    background-color: var(--color4);
+}
+
+.filters-toggler{
+    display: none;
 }
 
 /* Search Bar */
@@ -112,13 +117,14 @@
 }
 
 .search-bar input:focus{
-    border: 1px solid #00979c;
+    border: 1px solid var(--color4);
 }
 
 .search-bar i{
     margin: 0px;
     padding: 12px;
-    background-color: #00979c;
+    background-color: var(--color4);
+    background: radial-gradient(rgb(255, 186, 58) ,var(--color4));
     border: none;
     color: white;
     cursor: pointer;
@@ -168,9 +174,15 @@
 
     .apply-filters button{
         margin-bottom: -12px;
+        background-color: var(--color4);
+        background: linear-gradient(to right, var(--color4), rgb(255, 196, 0));
+        border: none;
+        color: white;
+        padding: 12px;
     }
 
     .filters-toggler{
+        display: block;
         width: 100%;
         text-align: center;
         padding: 12px;
@@ -178,6 +190,7 @@
         margin: 0px;
         margin-top: 12px;
         background: linear-gradient(to right, var(--color1), var(--color2));
+        background: linear-gradient(to right, var(--color2), var(--color1));
         color: white;
         border-radius: 2px;
         font-family: 'Roboto', sans-serif;

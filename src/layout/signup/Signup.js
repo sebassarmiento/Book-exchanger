@@ -58,7 +58,9 @@ class Signup extends Component {
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value }, e.target.name === 'email' ? this.checkEmail : null)
+        if(e.target.value.length < 60 || e.target.name === 'description'){
+            this.setState({ [e.target.name]: e.target.value }, e.target.name === 'email' ? this.checkEmail : null)
+        }
     }
 
     checkEmail() {

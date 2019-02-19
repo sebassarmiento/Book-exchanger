@@ -47,7 +47,9 @@ class BookSearch extends Component {
     }
 
     handleQueryInput(e) {
-        this.setState({ [e.target.name]: e.target.value })
+        if(e.target.value.length < 40){
+            this.setState({ [e.target.name]: e.target.value })
+        }
     }
     handleSearch() {
         if (this.state.query.length > 0) {

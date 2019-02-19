@@ -5,8 +5,7 @@
     box-sizing: border-box;
     position: relative;
     right: 0;
-    background: linear-gradient(to bottom, #00af6688, #008a8a8c);
-    background-color: #00000041;
+    background-color: rgb(240, 240, 240);
     display: flex;
     overflow: hidden;
 }

@@ -42,6 +42,10 @@
     position: relative;
 }
 
+.signup-email-input input{
+    padding-right: 36px !important;
+}
+
 .signup-email-input i{
     position: absolute;
     top: 50%;

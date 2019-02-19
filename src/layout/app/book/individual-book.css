@@ -3,8 +3,7 @@
     max-height: calc(100vh - 70px);
     width: 100%;
     position: relative;
-    background-color: #2fa35f34;
-    background: linear-gradient(to bottom, var(--color1), var(--color2));
+    background-color: rgb(240, 240, 240);
 }
 
 /* Book rating */
@@ -76,7 +75,8 @@
     padding: 12px 24px;
     font-family: 'Roboto', sans-serif;
     color: white;
-    background-color: var(--color2);
+    background-color: var(--color4);
+    background: linear-gradient(to right, var(--color4), rgb(255, 196, 0));
     font-size: 1em;
     cursor: pointer;
     margin: 6px 0px;
