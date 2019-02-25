@@ -1,6 +1,12 @@
-### Book exchanger app
+## Book exchanger app
 
 Book exchanger is the software that allows you to trade those solitary books laying in the shelf for other books you might like from other users all around the country. Choose from over 100.000 books, chat with over 20.000 users, leave comments, read reviews and most importantly have fun exchanging knowledge!
+
+## Technology 
+- CSS3
+- React.js
+- Redux
+
 
 ## Available Scripts
 
