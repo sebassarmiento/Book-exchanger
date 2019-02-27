@@ -161,6 +161,10 @@ class BookSearch extends Component {
                             <label htmlFor="cb-2" >Science</label>
                         </div>
                         <div className="option" >
+                            <input name="Statistics" onChange={(e) => this.handleCategoryChange(e)} id="cb-2" type="checkbox" />
+                            <label htmlFor="cb-2" >Statistics</label>
+                        </div>
+                        <div className="option" >
                             <input name="Technology" onChange={(e) => this.handleCategoryChange(e)} id="cb-3" type="checkbox" />
                             <label htmlFor="cb-3" >Technology</label>
                         </div>

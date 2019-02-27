@@ -123,7 +123,7 @@ class IndividualBook extends Component {
                     <div className="book-grid">
                         <div className="book-info" >
                             <div style={{ display: 'flex', width: '100%' }} >
-                                <img src={`https://bookexchangerapi.herokuapp.com/${data.image}`} alt={data.name} />
+                                <img src={data.image.startsWith('public') ? `https://bookexchangerapi.herokuapp.com/${data.image}` : data.image} alt={data.name} />
                                 <div style={{ flex: '1' }} >
                                     <h2>{data.name}</h2>
                                     <p>By {data.author}</p>

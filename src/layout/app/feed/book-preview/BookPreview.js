@@ -11,8 +11,8 @@ class BookPreview extends Component {
     render() {
         return (
             <div className="book-preview" >
-                <p>In <NavLink to={`/app/books/${this.props.category.toLowerCase()}`} >{this.props.category}</NavLink><span style={{float: 'right', fontSize: '0.9em'}} >{timeAgo(this.props.date)} ago</span></p>
-                <div onClick={() => this.setState({redirect: true})} className="book-preview-img" ><img src={`https://bookexchangerapi.herokuapp.com/${this.props.image}`} alt="book-preview" /></div>
+                <p>In <span className="bp-category" >{this.props.category}</span><span style={{float: 'right', fontSize: '0.9em'}} >{timeAgo(this.props.date)} ago</span></p>
+                <div onClick={() => this.setState({redirect: true})} className="book-preview-img" ><img src={this.props.image.startsWith('public') ? `https://bookexchangerapi.herokuapp.com/${this.props.image}` : this.props.image} alt="book-preview" /></div>
                 <p><i className="fas fa-map-marker"></i> {this.props.location}</p>
                 <NavLink className="book-preview-title" to={`/app/books/id/${this.props._id}`} >{this.props.name}</NavLink>
                 {this.state.redirect ? <Redirect to={`/app/books/id/${this.props._id}`} /> : null}
